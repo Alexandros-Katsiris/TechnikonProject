@@ -16,4 +16,8 @@ public class Controller {
     public String showThis() {
         return "Hello World";
     }
+    @GetMapping("/Bye")
+    public String showThat(){
+        return "Bye bye World"
+    }
 }
