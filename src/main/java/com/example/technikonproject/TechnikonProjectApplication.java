@@ -10,4 +10,5 @@ public class TechnikonProjectApplication {
         SpringApplication.run(TechnikonProjectApplication.class, args);
     }
 
+
 }
