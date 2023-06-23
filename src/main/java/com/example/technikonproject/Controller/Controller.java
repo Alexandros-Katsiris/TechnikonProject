@@ -18,6 +18,6 @@ public class Controller {
     }
     @GetMapping("/Bye")
     public String showThat(){
-        return "Bye bye World"
+        return "Bye bye World";
     }
 }

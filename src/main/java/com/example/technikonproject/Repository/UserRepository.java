@@ -1,11 +1,11 @@
 package com.example.technikonproject.Repository;
 
-import com.example.technikonproject.Model.Owner;
+import com.example.technikonproject.Model.Parent.User;
 
-public interface OwnerRepository {
+public interface UserRepository {
 
     boolean createOwner();
-    Owner readOwner();
+    User readOwner();
     boolean updateOwner();
     boolean deleteOwner();
 }
