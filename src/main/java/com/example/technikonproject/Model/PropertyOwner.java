@@ -2,21 +2,27 @@ package com.example.technikonproject.Model;
 
 import com.example.technikonproject.Model.enums.Address;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-public class User {
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "property_owner")
+public class PropertyOwner {
 
     @Id
-    private String tin;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn (name = "id")
-    private Address addressId;
+    private Integer tin;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Address address;
     @Column
-    private String name;
+    private String firstName;
     @Column
     private String lastName;
     @Column

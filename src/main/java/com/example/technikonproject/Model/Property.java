@@ -8,8 +8,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
-
 @Getter
 @Setter
 @Entity
@@ -17,22 +15,24 @@ import java.util.Date;
 public class Property{
 
     @Id
+    @Column(name = "id")
     private Integer e9;
 
-    @OneToOne (fetch = FetchType.LAZY)
-    @JoinColumn (name = "id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address addressId;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "property_type", referencedColumnName = "id")
     private PropertyType propertyType;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "repair_status", referencedColumnName = "id")
     private RepairStatus repairStatus;
 
     @Column
-    private Date yearOfConstruction;
+    private Integer yearOfConstruction;
+
 
     //To add picture
     //To add map location

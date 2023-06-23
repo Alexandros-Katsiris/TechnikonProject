@@ -7,8 +7,6 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.UUID;
-
 @Getter
 @Setter
 @Entity
@@ -16,7 +14,8 @@ import java.util.UUID;
 public class RepairStatus {
 
     @Id
-    private UUID id;
+    @Column(name = "id")
+    private Integer id;
     @Column
     private String repairStatusDescription;
 
