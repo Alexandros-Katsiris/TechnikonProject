@@ -16,7 +16,7 @@ public class PropertyController {
     public PropertyController(PropertyService propertyService) {
         this.propertyService = propertyService;
     }
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}")
     public Property findById(@PathVariable("id") Integer id){
         return propertyService.findById(id);
     }

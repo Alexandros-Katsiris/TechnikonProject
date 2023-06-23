@@ -1,0 +1,37 @@
+INSERT INTO address (id,postal_code, street_address)
+values
+    (1,54321, '456 Elm St'),
+    (2,54321, '456 Elm St'),
+    (3,54321, '456 Elm St'),
+    (4,54321, '456 Elm St'),
+    (5,54321, '456 Elm St'),
+    (6,54321, '456 Elm St'),
+    (7,54321, '456 Elm St'),
+    (8,54321, '456 Elm St');
+
+INSERT INTO property_owner (tin, email, is_admin, last_name, first_name, phone_number,address_id)
+VALUES
+    (1, 'owner1@example.com', false, 'Lastname1', 'Owner1', '123-456-789001', 1),
+    (2, 'owner2@example.com', true, 'Lastname2', 'Owner2', '123-456-789002', 2),
+    (3, 'owner3@example.com', false, 'Lastname3', 'Owner3', '123-456-789003', 3),
+    (4, 'owner4@example.com', true, 'Lastname4', 'Owner4', '123-456-789004', 4),
+    (5, 'owner5@example.com', false, 'Lastname5', 'Owner5', '123-456-789005', 5),
+    (6, 'owner6@example.com', true, 'Lastname6', 'Owner6', '123-456-789006', 6),
+    (7, 'owner7@example.com', false, 'Lastname7', 'Owner7', '123-456-789007', 7),
+    (8, 'owner8@example.com', true, 'Lastname8', 'Owner8', '123-456-789008', 8);
+
+
+INSERT INTO property_type(id,property_type_description)
+VALUES
+    (100,'ANAKATASKEYH'),
+    (101,'GKREMISMA');
+
+INSERT INTO repair_status(id,repair_status_description)
+VALUES
+    (200,'KSEKINISE'),
+    (201,'TELEIWSE');
+
+INSERT INTO property (address_id,id,year_of_construction, property_type,repair_status)
+values
+    (1,1,100,100,200),
+    (2,2,101,101,201)
