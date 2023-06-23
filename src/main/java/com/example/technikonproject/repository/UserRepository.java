@@ -1,6 +1,6 @@
-package com.example.technikonproject.Repository;
+package com.example.technikonproject.repository;
 
-import com.example.technikonproject.Model.Parent.User;
+import com.example.technikonproject.Model.User;
 
 public interface UserRepository {
 

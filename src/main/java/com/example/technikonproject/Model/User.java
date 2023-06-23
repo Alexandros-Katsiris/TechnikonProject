@@ -1,6 +1,6 @@
-package com.example.technikonproject.Model.Parent;
+package com.example.technikonproject.Model;
 
-import com.example.technikonproject.Model.Kids.Address;
+import com.example.technikonproject.Model.enums.Address;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

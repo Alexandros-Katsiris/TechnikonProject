@@ -1,7 +1,7 @@
-package com.example.technikonproject.Repository.RepositoryImpl;
+package com.example.technikonproject.repository.RepositoryImpl;
 
-import com.example.technikonproject.Model.Parent.User;
-import com.example.technikonproject.Repository.UserRepository;
+import com.example.technikonproject.Model.User;
+import com.example.technikonproject.repository.UserRepository;
 
 public class UserRepositoryImpl implements UserRepository {
     @Override

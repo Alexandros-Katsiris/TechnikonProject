@@ -1,4 +1,4 @@
-package com.example.technikonproject.Model.Kids;
+package com.example.technikonproject.Model.enums;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,13 +12,12 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-@Table(name = "address")
-public class Address {
+@Table(name = "repairStatus")
+public class RepairStatus {
 
     @Id
     private UUID id;
     @Column
-    private String streetAddress;
-    @Column
-    private Integer postalCode;
+    private String repairStatusDescription;
+
 }

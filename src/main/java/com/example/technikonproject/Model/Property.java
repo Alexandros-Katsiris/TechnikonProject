@@ -1,9 +1,9 @@
-package com.example.technikonproject.Model.Parent;
+package com.example.technikonproject.Model;
 
 
-import com.example.technikonproject.Model.Kids.Address;
-import com.example.technikonproject.Model.Kids.PropertyType;
-import com.example.technikonproject.Model.Kids.RepairStatus;
+import com.example.technikonproject.Model.enums.Address;
+import com.example.technikonproject.Model.enums.PropertyType;
+import com.example.technikonproject.Model.enums.RepairStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
