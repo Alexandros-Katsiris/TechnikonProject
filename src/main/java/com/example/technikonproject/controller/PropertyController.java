@@ -1,14 +1,10 @@
 package com.example.technikonproject.controller;
 
 import com.example.technikonproject.Model.Property;
-import com.example.technikonproject.service.PropertyService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.technikonproject.service.property.PropertyService;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/property")
+@RestController("/property")
 public class PropertyController {
 
     private final PropertyService propertyService;
@@ -16,8 +12,24 @@ public class PropertyController {
     public PropertyController(PropertyService propertyService) {
         this.propertyService = propertyService;
     }
-    @GetMapping(value = "/{id}")
-    public Property findById(@PathVariable("id") Integer id){
-        return propertyService.findById(id);
+
+    @GetMapping("/{e9Number}")
+    public Property readProperty(@PathVariable Long e9Number){
+        return propertyService.readProperty(e9Number);
+    }
+
+    @PostMapping("/addProperty")
+    public void addProperty(@RequestBody Property property){
+        propertyService.addNewProperty(property);
+    }
+
+    @PutMapping("/updateProperty/{e9Number}")
+    public void updateProperty(@RequestBody Property property, @PathVariable Long e9Number){
+        propertyService.update(property, e9Number);
+    }
+
+    @DeleteMapping("/delete/{e9Number}")
+    public void deleteProperty(@PathVariable Long e9Number){
+        propertyService.deleteProperty(e9Number);
     }
 }

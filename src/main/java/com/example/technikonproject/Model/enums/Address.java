@@ -1,26 +1,31 @@
 package com.example.technikonproject.Model.enums;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
-@Table(name = "address")
 public class Address {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name="addressId")
+    private Long addressId;
 
-    private String streetAddress;
+    @Column(name = "streetName",
+    nullable = false)
+    private String streetName;
 
-    private Integer postalCode;
+    @Column(name = "streetNumber",
+    nullable = false)
+    private Integer streetNumber;
 
+    @Column(name = "zipcode")
+    private Integer zipcode;
 }

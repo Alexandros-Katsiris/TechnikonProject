@@ -1,39 +1,39 @@
 package com.example.technikonproject.Model;
 
-
 import com.example.technikonproject.Model.enums.Address;
-import com.example.technikonproject.Model.enums.PropertyType;
-import com.example.technikonproject.Model.enums.RepairStatus;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name = "property")
-public class Property{
+public class Property {
 
     @Id
-    @Column(name = "id")
-    private Integer e9;
+    @Column(name = "e9Number")
+    private Long e9Number;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
-    private Address addressId;
+    @Column(name = "yearOfConstruction")
+    private Date yearOfConstruction;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "property_type", referencedColumnName = "id")
-    private PropertyType propertyType;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "addressId")
+    private Address address;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "repair_status", referencedColumnName = "id")
-    private RepairStatus repairStatus;
+    @ManyToOne()
+    @JoinColumn(name = "tinNumber")
+    private WebUser webUser;
 
-    @Column
-    private Integer yearOfConstruction;
+    @Column(name = "picture")
+    private String picture;
 
-
-    //To add picture
-    //To add map location
+    @Column(name = "location")
+    private String location;
 }
