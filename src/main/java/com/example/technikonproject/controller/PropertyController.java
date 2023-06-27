@@ -4,7 +4,8 @@ import com.example.technikonproject.Model.Property;
 import com.example.technikonproject.service.property.PropertyService;
 import org.springframework.web.bind.annotation.*;
 
-@RestController("/property")
+@RestController
+@RequestMapping("/property")
 public class PropertyController {
 
     private final PropertyService propertyService;

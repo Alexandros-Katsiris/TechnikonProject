@@ -4,7 +4,8 @@ import com.example.technikonproject.Model.WebUser;
 import com.example.technikonproject.service.webUser.WebUserService;
 import org.springframework.web.bind.annotation.*;
 
-@RestController("/web")
+@RestController
+@RequestMapping("/user")
 public class WebUserController {
     private final WebUserService webUserService;
 
@@ -15,13 +16,13 @@ public class WebUserController {
     // Develop -> remove all hard copy elements and variables
     // Develop -> Search also with email and name
 
-    @GetMapping("/user/{tinNumber}")
-    public WebUser readWebUser(@PathVariable Long tin){
-        return webUserService.readWebUser(tin);
+    @GetMapping("/{tinNumber}")
+    public WebUser readWebUser(@PathVariable Long tinNumber){
+        return webUserService.readWebUser(tinNumber);
         //return webUser;
     }
 
-    @PostMapping("/addUser")
+    @PostMapping("/add")
     public void addWebUser(@RequestBody WebUser webUser){
         webUserService.addWebUser(webUser);
     }

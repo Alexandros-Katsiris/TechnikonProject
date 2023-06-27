@@ -15,14 +15,14 @@ import lombok.Setter;
 @Entity
 public class Address {
     @Id
-    @Column(name="addressId")
+    @Column(name="id")
     private Long addressId;
 
-    @Column(name = "streetName",
+    @Column(name = "street_name",
     nullable = false)
     private String streetName;
 
-    @Column(name = "streetNumber",
+    @Column(name = "street_number",
     nullable = false)
     private Integer streetNumber;
 
