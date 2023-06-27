@@ -1,6 +1,6 @@
-package com.example.mytechnikonproject.service.property;
+package com.example.technikonproject.service.property;
 
-import com.example.mytechnikonproject.entity.Property;
+import com.example.technikonproject.Model.Property;
 
 import java.util.List;
 

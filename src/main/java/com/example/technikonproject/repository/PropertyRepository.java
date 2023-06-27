@@ -1,6 +1,6 @@
-package com.example.mytechnikonproject.repository;
+package com.example.technikonproject.repository;
 
-import com.example.mytechnikonproject.entity.Property;
+import com.example.technikonproject.Model.Property;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

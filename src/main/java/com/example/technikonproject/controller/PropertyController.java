@@ -1,7 +1,7 @@
-package com.example.mytechnikonproject.controller;
+package com.example.technikonproject.controller;
 
-import com.example.mytechnikonproject.entity.Property;
-import com.example.mytechnikonproject.service.property.PropertyService;
+import com.example.technikonproject.Model.Property;
+import com.example.technikonproject.service.property.PropertyService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController("/property")

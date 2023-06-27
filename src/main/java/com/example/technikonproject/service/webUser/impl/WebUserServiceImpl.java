@@ -1,9 +1,9 @@
-package com.example.mytechnikonproject.service.webUser.impl;
+package com.example.technikonproject.service.webUser.impl;
 
-import com.example.mytechnikonproject.entity.Address;
-import com.example.mytechnikonproject.entity.WebUser;
-import com.example.mytechnikonproject.repository.WebUserRepository;
-import com.example.mytechnikonproject.service.webUser.WebUserService;
+import com.example.technikonproject.Model.enums.Address;
+import com.example.technikonproject.Model.WebUser;
+import com.example.technikonproject.repository.WebUserRepository;
+import com.example.technikonproject.service.webUser.WebUserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.mytechnikonproject.entity;
+package com.example.technikonproject.Model.enums;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

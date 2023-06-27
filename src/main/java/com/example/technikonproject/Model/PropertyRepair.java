@@ -1,5 +1,7 @@
-package com.example.mytechnikonproject.entity;
+package com.example.technikonproject.Model;
 
+import com.example.technikonproject.Model.enums.RepairStatus;
+import com.example.technikonproject.Model.enums.RepairType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,23 +1,23 @@
 package com.example.technikonproject.Model.enums;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.UUID;
-
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name = "repairStatus")
 public class RepairStatus {
 
     @Id
-    private UUID id;
-    @Column
-    private String repairStatusDescription;
+    @SequenceGenerator(name = "repairStatusGenerator", sequenceName = "repairStatusGenerator", allocationSize = 1)
+    @GeneratedValue(generator = "repairStatusGenerator", strategy = GenerationType.AUTO)
+    private Long repairStatusId;
 
+    @Column(name = "repairStatus")
+    private String repairStatus;
 }

@@ -1,7 +1,7 @@
-package com.example.mytechnikonproject.controller;
+package com.example.technikonproject.controller;
 
-import com.example.mytechnikonproject.entity.WebUser;
-import com.example.mytechnikonproject.service.webUser.WebUserService;
+import com.example.technikonproject.Model.WebUser;
+import com.example.technikonproject.service.webUser.WebUserService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController("/web")
