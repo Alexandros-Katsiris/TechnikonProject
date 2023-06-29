@@ -22,27 +22,27 @@ public class PropertyRepair {
     @GeneratedValue(generator = "propertyRepairGenerator", strategy = GenerationType.AUTO)
     private Long propertyRepairId;
 
-    @Column(name = "dateOfScheduledRepair")
+    @Column
     private Date dateOfScheduledRepair;
 
-    @Column(name = "repairDescription")
+    @Column
     private String repairDescription;
 
     @OneToOne
-    @JoinColumn(name = "repairTypeId")
+    @JoinColumn(name = "repair_type_id")
     private RepairType repairType;
 
     @OneToOne
-    @JoinColumn(name = "repairStatusId")
+    @JoinColumn(name = "repair_status_id")
     private RepairStatus repairStatus;
 
-    @Column(name = "costOfRepair")
+    @Column
     private Double costOfRepair;
 
-    @Column(name = "webUserId")
+    @Column
     private Long webUserId;
 
-    @Column(name = "propertyId")
+    @Column
     private Long propertyId;
 
 }

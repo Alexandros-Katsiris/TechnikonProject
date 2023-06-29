@@ -1,4 +1,4 @@
-package com.example.technikonproject.service.property;
+package com.example.technikonproject.service;
 
 import com.example.technikonproject.Model.Property;
 

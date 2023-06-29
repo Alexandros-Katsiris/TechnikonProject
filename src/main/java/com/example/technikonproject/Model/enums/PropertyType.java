@@ -13,11 +13,15 @@ import lombok.Setter;
 @Entity
 public class PropertyType {
 
+    public PropertyType(String propertyType) {
+        this.propertyType = propertyType;
+    }
+
     @Id
     @SequenceGenerator(name = "propertyTypeIdGenerator", sequenceName = "propertyTypeIdGenerator", allocationSize = 1)
     @GeneratedValue(generator = "propertyTypeGenerator", strategy = GenerationType.AUTO)
     private Long propertyTypeId;
 
-    @Column(name = "propertyType")
+    @Column
     private String propertyType;
 }

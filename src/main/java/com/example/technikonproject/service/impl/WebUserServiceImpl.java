@@ -1,9 +1,9 @@
-package com.example.technikonproject.service.webUser.impl;
+package com.example.technikonproject.service.impl;
 
-import com.example.technikonproject.Model.enums.Address;
 import com.example.technikonproject.Model.WebUser;
+import com.example.technikonproject.Model.enums.Address;
 import com.example.technikonproject.repository.WebUserRepository;
-import com.example.technikonproject.service.webUser.WebUserService;
+import com.example.technikonproject.service.WebUserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,10 +29,19 @@ public class WebUserServiceImpl implements WebUserService {
         //return webUser;
     }
 
-    @Override
-    public List<WebUser> searchWebUser(Long tin, String email, String name) {
-        return webUserRepository.findById(tin).stream().toList();
+    public List<WebUser> readWebUserByFirstName(String name){
+        return webUserRepository.readWebUserByFirstName(name);
     }
+
+    @Override
+    public WebUser readWebUserByEmail(String email) {
+        return webUserRepository.readWebUserByEmail(email);
+    }
+
+//    @Override
+//    public List<WebUser> searchWebUser(Long tin, String email, String name) {
+//        return webUserRepository.findById(tin).stream().toList();
+//    }
 
     @Override
     ///public void updateWebUser(Integer tinNumber, String streetName, Integer streetNumber, Integer zipcode, String email, String password) throws Exception {
@@ -51,6 +60,8 @@ public class WebUserServiceImpl implements WebUserService {
             if(!webUser.getPassword().isEmpty())
                 webUser.setPassword(webUser.getPassword());
             webUserUpdated.setAddress(address);
+            if(!webUser.getFirstName().isEmpty())
+                webUserUpdated.setFirstName(webUser.getFirstName());
             webUserRepository.save(webUserUpdated);
     }
 

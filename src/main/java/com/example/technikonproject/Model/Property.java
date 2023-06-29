@@ -17,23 +17,27 @@ import java.util.Date;
 public class Property {
 
     @Id
-    @Column(name = "e9Number")
+    @Column
     private Long e9Number;
 
-    @Column(name = "yearOfConstruction")
+    @Column
     private Date yearOfConstruction;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "addressId")
+    @ManyToOne
+    @JoinColumn(name = "address_id")
     private Address address;
 
     @ManyToOne()
-    @JoinColumn(name = "tinNumber")
+    @JoinColumn(name = "tin_number")
     private WebUser webUser;
 
-    @Column(name = "picture")
+    @Column
     private String picture;
 
-    @Column(name = "location")
+    @Column
     private String location;
+
+    @OneToOne
+    @JoinColumn(name = "property_repair_id")
+    private PropertyRepair propertyRepairId;
 }

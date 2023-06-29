@@ -1,8 +1,10 @@
 package com.example.technikonproject.controller;
 
 import com.example.technikonproject.Model.WebUser;
-import com.example.technikonproject.service.webUser.WebUserService;
+import com.example.technikonproject.service.WebUserService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -19,7 +21,16 @@ public class WebUserController {
     @GetMapping("/{tinNumber}")
     public WebUser readWebUser(@PathVariable Long tinNumber){
         return webUserService.readWebUser(tinNumber);
-        //return webUser;
+    }
+
+    @GetMapping("/name/{name}")
+    public List<WebUser> readWebUserByFirstName(@PathVariable String name){
+        return webUserService.readWebUserByFirstName(name);
+    }
+
+    @GetMapping("/email/{email}")
+    public WebUser readWebUserByEmail(@PathVariable String email){
+        return webUserService.readWebUserByEmail(email);
     }
 
     @PostMapping("/add")
@@ -28,12 +39,12 @@ public class WebUserController {
     }
 
     @PutMapping("/update/{tinNumber}")
-    public void updateWebUser(@RequestBody WebUser webUser, @PathVariable Long tin) throws Exception {
-        webUserService.updateWebUser(webUser,tin);
+    public void updateWebUser(@RequestBody WebUser webUser, @PathVariable Long tinNumber) throws Exception {
+        webUserService.updateWebUser(webUser,tinNumber);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteWebUser(@PathVariable Long tin){
-        webUserService.deleteWebUser(tin);
+    @DeleteMapping("/delete/{tinNumber}")
+    public void deleteWebUser(@PathVariable Long tinNumber){
+        webUserService.deleteWebUser(tinNumber);
     }
 }

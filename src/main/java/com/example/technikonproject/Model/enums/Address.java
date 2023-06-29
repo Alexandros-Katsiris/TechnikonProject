@@ -18,14 +18,12 @@ public class Address {
     @Column(name="id")
     private Long addressId;
 
-    @Column(name = "street_name",
-    nullable = false)
+    @Column(nullable = false)
     private String streetName;
 
-    @Column(name = "street_number",
-    nullable = false)
+    @Column(nullable = false)
     private Integer streetNumber;
 
-    @Column(name = "zipcode")
+    @Column
     private Integer zipcode;
 }

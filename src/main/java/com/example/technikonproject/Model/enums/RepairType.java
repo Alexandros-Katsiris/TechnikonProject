@@ -18,6 +18,6 @@ public class RepairType {
     @GeneratedValue(generator = "repairTypeGenerator", strategy = GenerationType.AUTO)
     private Long repairTypeId;
 
-    @Column(name = "repairType")
+    @Column
     private String repairType;
 }

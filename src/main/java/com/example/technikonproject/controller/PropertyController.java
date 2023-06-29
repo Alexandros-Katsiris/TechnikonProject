@@ -1,7 +1,7 @@
 package com.example.technikonproject.controller;
 
 import com.example.technikonproject.Model.Property;
-import com.example.technikonproject.service.property.PropertyService;
+import com.example.technikonproject.service.PropertyService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,6 +24,8 @@ public class PropertyController {
         propertyService.addNewProperty(property);
     }
 
+
+    //To create-------->
     @PutMapping("/updateProperty/{e9Number}")
     public void updateProperty(@RequestBody Property property, @PathVariable Long e9Number){
         propertyService.update(property, e9Number);
