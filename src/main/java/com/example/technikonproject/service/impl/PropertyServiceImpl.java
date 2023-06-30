@@ -22,8 +22,8 @@ public class PropertyServiceImpl implements PropertyService {
     }
 
     @Override
-    public List<Property> searchProperty(Long e9number, Long tin) {
-        return propertyRepository.findById(e9number).stream().toList();
+    public List<Property> searchPropertiesByTin(Long tin) {
+        return propertyRepository.searchPropertiesByTin(tin).stream().toList();
     }
 
     @Override
@@ -33,6 +33,7 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public void update(Property property, Long e9Number) {
+
     }
 
     @Override

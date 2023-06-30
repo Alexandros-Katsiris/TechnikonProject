@@ -18,6 +18,7 @@ public class WebUserController {
     // Develop -> remove all hard copy elements and variables
     // Develop -> Search also with email and name
 
+    // Search User Methods
     @GetMapping("/{tinNumber}")
     public WebUser readWebUser(@PathVariable Long tinNumber){
         return webUserService.readWebUser(tinNumber);
@@ -38,6 +39,7 @@ public class WebUserController {
         webUserService.addWebUser(webUser);
     }
 
+    // Update User Methods
     @PutMapping("/update/{tin}")
     public void updateWebUser(@RequestBody WebUser webUser, @PathVariable("tin") Long tinNumber) throws Exception {
         webUserService.updateWebUser(webUser,tinNumber);

@@ -12,3 +12,4 @@ insert into property (e9number,address_id,tin_number,year_of_construction)
 values
     (1,1, 1, CAST('2012-12-12' AS TIMESTAMP)),
     (2,2, 2, CAST('2012-12-12' AS TIMESTAMP));
+

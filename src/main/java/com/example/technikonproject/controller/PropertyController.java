@@ -4,6 +4,8 @@ import com.example.technikonproject.Model.Property;
 import com.example.technikonproject.service.PropertyService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/property")
 public class PropertyController {
@@ -14,9 +16,15 @@ public class PropertyController {
         this.propertyService = propertyService;
     }
 
-    @GetMapping("/{e9Number}")
+    // Search Properties. Search by e9 -> admin/user, search by tin number -> admin only
+    @GetMapping("/getByE9/{e9Number}")
     public Property readProperty(@PathVariable Long e9Number){
         return propertyService.readProperty(e9Number);
+    }
+
+    @GetMapping("/getByTin/{tin}")
+    public List<Property> readPropertiesByTin(@PathVariable Long tin){
+        return propertyService.searchPropertiesByTin(tin);
     }
 
     @PostMapping("/addProperty")
