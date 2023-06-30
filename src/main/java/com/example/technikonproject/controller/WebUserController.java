@@ -38,9 +38,14 @@ public class WebUserController {
         webUserService.addWebUser(webUser);
     }
 
-    @PutMapping("/update/{tinNumber}")
-    public void updateWebUser(@RequestBody WebUser webUser, @PathVariable Long tinNumber) throws Exception {
+    @PutMapping("/update/{tin}")
+    public void updateWebUser(@RequestBody WebUser webUser, @PathVariable("tin") Long tinNumber) throws Exception {
         webUserService.updateWebUser(webUser,tinNumber);
+    }
+
+    @PutMapping("/updateEmail/{tin}")
+    public void updateEmail(@PathVariable Long tin,@RequestParam(name = "email") String email) throws Exception{
+        webUserService.updateUserEmailNew(tin,email);
     }
 
     @DeleteMapping("/delete/{tinNumber}")

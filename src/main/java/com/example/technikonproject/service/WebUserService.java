@@ -14,6 +14,7 @@ public interface WebUserService {
     WebUser readWebUserByEmail(String email);
     //void updateWebUser(Integer tinNumber, String streetName, Integer streetNumber, Integer zipcode, String email, String password) throws Exception;
     void updateWebUser(WebUser webUser, Long tinNumber) throws Exception;
+    void updateUserEmailNew(Long tin, String email) throws Exception;
 
     void deleteWebUser(Long tinNumber);
 }

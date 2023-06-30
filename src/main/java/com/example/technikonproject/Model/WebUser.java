@@ -24,7 +24,7 @@ public class WebUser {
     private String Surname;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "adress id")
+    @JoinColumn(name = "address_id")
     private Address address;
 
     @Column(name = "phoneNumber")
