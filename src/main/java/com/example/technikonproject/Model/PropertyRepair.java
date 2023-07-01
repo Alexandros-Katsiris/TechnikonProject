@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,7 +23,7 @@ public class PropertyRepair {
     private Long propertyRepairId;
 
     @Column
-    private Date dateOfScheduledRepair;
+    private LocalDate dateOfScheduledRepair;
 
     @Column
     private String repairDescription;

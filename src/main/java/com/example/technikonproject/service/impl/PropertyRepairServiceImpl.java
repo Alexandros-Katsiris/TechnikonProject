@@ -5,7 +5,7 @@ import com.example.technikonproject.repository.PropertyRepairRepository;
 import com.example.technikonproject.service.PropertyRepairService;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -23,18 +23,17 @@ public class PropertyRepairServiceImpl implements PropertyRepairService {
     }
 
     @Override
-    public List<PropertyRepair> searchPropertyRepairs(Date date) {
-        return null;
+    public List<PropertyRepair> searchPropertyRepairs(LocalDate date) {
+        return propertyRepairRepository.searchPropertyRepair(date);
     }
 
     @Override
     public List<PropertyRepair> searchPropertyRepairs(Long tin) {
-        return null;
+        return propertyRepairRepository.searchPropertyRepair(tin);
     }
 
     @Override
     public void updatePropertyRepair() {
-
     }
 
     @Override
