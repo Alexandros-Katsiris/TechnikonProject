@@ -27,8 +27,8 @@ public class WebUserServiceImpl implements WebUserService {
 
     @Override
     public WebUser readWebUser(Long tin) {
-        return webUserRepository.readWebUserByTin(tin);
-        //return webUserRepository.findById(tin).orElseThrow();
+        //return webUserRepository.readWebUserByTin(tin);
+        return webUserRepository.findById(tin).orElseThrow();
         //return webUser;
     }
 
