@@ -16,7 +16,7 @@ public class RepairType {
     @Id
     @SequenceGenerator(name = "repairTypeGenerator", sequenceName = "repairTypeGenerator", allocationSize = 1)
     @GeneratedValue(generator = "repairTypeGenerator", strategy = GenerationType.AUTO)
-    private Long repairTypeId;
+    private Long id;
 
     @Column
     private String repairType;

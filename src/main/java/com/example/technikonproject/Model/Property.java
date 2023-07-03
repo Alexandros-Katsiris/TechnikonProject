@@ -1,6 +1,7 @@
 package com.example.technikonproject.Model;
 
 import com.example.technikonproject.Model.enums.Address;
+import com.example.technikonproject.Model.enums.PropertyType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,11 +25,14 @@ public class Property {
     private Date yearOfConstruction;
 
     @ManyToOne
-    @JoinColumn(name = "address_id")
+    @JoinColumn
     private Address address;
 
+    @ManyToOne
+    @JoinColumn
+    private PropertyType propertyType;
+
     @ManyToOne()
-    @JoinColumn(name = "tin_number")
     private WebUser webUser;
 
     @Column
@@ -37,7 +41,4 @@ public class Property {
     @Column
     private String location;
 
-    @OneToOne
-    @JoinColumn(name = "property_repair_id")
-    private PropertyRepair propertyRepairId;
 }

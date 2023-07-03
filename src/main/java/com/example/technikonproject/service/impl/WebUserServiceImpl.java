@@ -47,16 +47,26 @@ public class WebUserServiceImpl implements WebUserService {
 //    }
 
     @Override
-    ///public void updateWebUser(Integer tinNumber, String streetName, Integer streetNumber, Integer zipcode, String email, String password) throws Exception {
-    public void updateWebUser(WebUser webUserNew, Long tin) throws Exception {
-        WebUser webUserOld = webUserRepository.findById(tin).orElseThrow(
-                () -> new RuntimeException("owner with id -> %s does not exist".formatted(tin)));
+    public void updateWebUser(Long tin, String email, String password, String name) throws Exception {
+        if(!(email.isEmpty())){
+            updateUserEmailNew(tin,email);
+        }
+        if(!(password.isEmpty())){
+            updateUserPassword(tin,password);
+        }
+        if (!(name.isEmpty())){
+            updateUserName(tin,name);
+        }
 
-        webUserOld.setAddress(updateUserAddress(webUserNew));
-        webUserOld.setEmail(updateUserEmail(webUserNew, webUserOld));
-        webUserOld.setPassword(updateUserPassword(webUserOld, webUserNew));
-        webUserOld.setFirstName(updateUserName(webUserNew, webUserOld));
-        webUserRepository.save(webUserOld);
+//
+//        WebUser webUserOld = webUserRepository.findById(tin).orElseThrow(
+//                () -> new RuntimeException("owner with id -> %s does not exist".formatted(tin)));
+//
+//        webUserOld.setAddress(updateUserAddress(webUserNew));
+//        webUserOld.setEmail(updateUserEmail(webUserNew, webUserOld));
+//        webUserOld.setPassword(updateUserPassword(webUserOld, webUserNew));
+//        webUserOld.setFirstName(updateUserName(webUserNew, webUserOld));
+//        webUserRepository.save(webUserOld);
     }
 
     public void updateUserEmailNew(Long tin, String email){
@@ -65,6 +75,22 @@ public class WebUserServiceImpl implements WebUserService {
         webUser.setEmail(email);
         webUserRepository.save(webUser);
     }
+
+    public void updateUserPassword(Long tin, String password){
+        WebUser webUser = webUserRepository.findById(tin).orElseThrow(
+                () -> new RuntimeException("Owner Doesnt Exist".formatted(tin)));
+        webUser.setPassword(password);
+        webUserRepository.save(webUser);
+    }
+
+
+    public void updateUserName(Long tin, String name) throws Exception {
+        WebUser webUser = webUserRepository.findById(tin).orElseThrow(
+                () -> new RuntimeException("Owner Doesnt Exist".formatted(tin)));
+        webUser.setUsername(name);
+        webUserRepository.save(webUser);
+    }
+
 
     private String updateUserName(WebUser webUserNew, WebUser webUserOld) {
         if (!webUserNew.getFirstName().isEmpty()) {

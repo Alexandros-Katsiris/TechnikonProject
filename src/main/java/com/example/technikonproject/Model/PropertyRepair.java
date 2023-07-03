@@ -20,29 +20,25 @@ public class PropertyRepair {
     @Id
     @SequenceGenerator(name = "propertyRepairGenerator", sequenceName = "propertyRepairGenerator", allocationSize = 1)
     @GeneratedValue(generator = "propertyRepairGenerator", strategy = GenerationType.AUTO)
-    private Long propertyRepairId;
+    private Long id;
 
     @Column
     private LocalDate dateOfScheduledRepair;
 
     @Column
-    private String repairDescription;
-
-    @OneToOne
-    @JoinColumn(name = "repair_type_id")
-    private RepairType repairType;
-
-    @OneToOne
-    @JoinColumn(name = "repair_status_id")
-    private RepairStatus repairStatus;
-
-    @Column
     private Double costOfRepair;
 
-    @Column
-    private Long webUserId;
+    @ManyToOne
+    private RepairType repairType;
 
-    @Column
-    private Long propertyId;
+    @ManyToOne
+    private RepairStatus repairStatus;
+
+
+    @ManyToOne
+    private WebUser webUser;
+
+    @ManyToOne
+    private Property property;
 
 }

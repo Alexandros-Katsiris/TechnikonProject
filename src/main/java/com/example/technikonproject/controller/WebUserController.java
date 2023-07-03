@@ -40,14 +40,32 @@ public class WebUserController {
     }
 
     // Update User Methods
-    @PutMapping("/update/{tin}")
-    public void updateWebUser(@RequestBody WebUser webUser, @PathVariable("tin") Long tinNumber) throws Exception {
-        webUserService.updateWebUser(webUser,tinNumber);
+//    @PutMapping("/update/{tin}")
+//    public void updateWebUser(@RequestBody WebUser webUser, @PathVariable("tin") Long tinNumber) throws Exception {
+//        webUserService.updateWebUser(webUser,tinNumber);
+//    }
+
+    @PutMapping("/updateUser/{tin}")
+    public void updateUser(@PathVariable("tin")Long tin,
+                           @RequestParam(name ="email")String email,
+                           @RequestParam(name="password")String password,
+                           @RequestParam(name="userName")String name) throws Exception{
+        webUserService.updateWebUser(tin,email,password,name);
     }
 
     @PutMapping("/updateEmail/{tin}")
     public void updateEmail(@PathVariable Long tin,@RequestParam(name = "email") String email) throws Exception{
         webUserService.updateUserEmailNew(tin,email);
+    }
+
+    @PutMapping("/updatePassword/{tin}")
+    public void updateUserPassword(@PathVariable Long tin,@RequestParam(name = "password") String password) throws Exception{
+        webUserService.updateUserPassword(tin,password);
+    }
+
+    @PutMapping("/updateUserName/{tin}")
+    public void updateUserName(@PathVariable Long tin, @RequestParam(name = "userName")String name)throws Exception{
+        webUserService.updateUserName(tin,name);
     }
 
     @DeleteMapping("/delete/{tinNumber}")

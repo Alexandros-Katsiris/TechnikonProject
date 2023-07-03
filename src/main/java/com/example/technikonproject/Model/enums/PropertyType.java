@@ -20,7 +20,7 @@ public class PropertyType {
     @Id
     @SequenceGenerator(name = "propertyTypeIdGenerator", sequenceName = "propertyTypeIdGenerator", allocationSize = 1)
     @GeneratedValue(generator = "propertyTypeGenerator", strategy = GenerationType.AUTO)
-    private Long propertyTypeId;
+    private Long id;
 
     @Column
     private String propertyType;

@@ -13,14 +13,14 @@ import lombok.Setter;
 @Entity
 public class RepairStatus {
 
-    public RepairStatus(Long repairStatusId) {
-        this.repairStatusId = repairStatusId;
+    public RepairStatus(Long id) {
+        this.id = id;
     }
 
     @Id
     @SequenceGenerator(name = "repairStatusGenerator", sequenceName = "repairStatusGenerator", allocationSize = 1)
     @GeneratedValue(generator = "repairStatusGenerator", strategy = GenerationType.AUTO)
-    private Long repairStatusId;
+    private Long id;
 
     @Column
     private String repairStatus;
