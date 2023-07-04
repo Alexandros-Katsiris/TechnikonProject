@@ -1,6 +1,6 @@
 package com.example.technikonproject.controller;
 
-import com.example.technikonproject.Model.Property;
+import com.example.technikonproject.domain.Property;
 import com.example.technikonproject.service.PropertyService;
 import org.springframework.web.bind.annotation.*;
 

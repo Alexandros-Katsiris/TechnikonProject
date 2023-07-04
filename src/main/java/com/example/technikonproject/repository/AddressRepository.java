@@ -1,6 +1,6 @@
 package com.example.technikonproject.repository;
 
-import com.example.technikonproject.Model.enums.Address;
+import com.example.technikonproject.domain.subDomain.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

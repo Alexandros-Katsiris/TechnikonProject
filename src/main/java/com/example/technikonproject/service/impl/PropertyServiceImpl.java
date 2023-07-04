@@ -1,6 +1,6 @@
 package com.example.technikonproject.service.impl;
 
-import com.example.technikonproject.Model.Property;
+import com.example.technikonproject.domain.Property;
 import com.example.technikonproject.repository.PropertyRepository;
 import com.example.technikonproject.service.PropertyService;
 import org.springframework.stereotype.Service;

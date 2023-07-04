@@ -1,6 +1,6 @@
 package com.example.technikonproject.service;
 
-import com.example.technikonproject.Model.WebUser;
+import com.example.technikonproject.domain.WebUser;
 
 import java.util.List;
 

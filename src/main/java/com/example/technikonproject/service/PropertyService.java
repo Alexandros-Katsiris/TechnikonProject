@@ -1,6 +1,6 @@
 package com.example.technikonproject.service;
 
-import com.example.technikonproject.Model.Property;
+import com.example.technikonproject.domain.Property;
 
 import java.util.List;
 

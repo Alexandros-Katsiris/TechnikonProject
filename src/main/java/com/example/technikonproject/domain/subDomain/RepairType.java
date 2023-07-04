@@ -1,4 +1,4 @@
-package com.example.technikonproject.Model.enums;
+package com.example.technikonproject.domain.subDomain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

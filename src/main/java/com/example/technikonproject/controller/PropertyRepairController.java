@@ -1,6 +1,6 @@
 package com.example.technikonproject.controller;
 
-import com.example.technikonproject.Model.PropertyRepair;
+import com.example.technikonproject.domain.PropertyRepair;
 import com.example.technikonproject.service.PropertyRepairService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

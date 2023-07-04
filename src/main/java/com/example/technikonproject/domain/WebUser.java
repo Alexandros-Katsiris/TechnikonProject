@@ -1,6 +1,6 @@
-package com.example.technikonproject.Model;
+package com.example.technikonproject.domain;
 
-import com.example.technikonproject.Model.enums.Address;
+import com.example.technikonproject.domain.subDomain.Address;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,6 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
+@Table(name = "webusers")
 public class WebUser {
 
     @Id
@@ -22,20 +23,16 @@ public class WebUser {
     @Column(nullable = false)
     private String Surname;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id")
+    @JoinColumn(nullable = false)
     private Address address;
-
-    @Column(name = "phoneNumber")
+    @Column(nullable = false)
     private Integer phoneNumber;
-    @Column(name = "email",
-    nullable = false)
+    @Column(nullable = false)
     private String email;
-    @Column(name = "username",
-    nullable = false)
+    @Column(nullable = false)
     private String username;
-    @Column(name = "password",
-    nullable = false)
+    @Column(nullable = false)
     private String password;
-
-
+    @Column(nullable = false)
+    private boolean isAdmin;
 }

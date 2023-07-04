@@ -1,7 +1,7 @@
 package com.example.technikonproject.service.impl;
 
-import com.example.technikonproject.Model.WebUser;
-import com.example.technikonproject.Model.enums.Address;
+import com.example.technikonproject.domain.WebUser;
+import com.example.technikonproject.domain.subDomain.Address;
 import com.example.technikonproject.repository.WebUserRepository;
 import com.example.technikonproject.service.AddressService;
 import com.example.technikonproject.service.WebUserService;

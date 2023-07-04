@@ -1,6 +1,6 @@
 package com.example.technikonproject.service;
 
-import com.example.technikonproject.Model.PropertyRepair;
+import com.example.technikonproject.domain.PropertyRepair;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -1,7 +1,7 @@
-package com.example.technikonproject.Model;
+package com.example.technikonproject.domain;
 
-import com.example.technikonproject.Model.enums.RepairStatus;
-import com.example.technikonproject.Model.enums.RepairType;
+import com.example.technikonproject.domain.subDomain.RepairStatus;
+import com.example.technikonproject.domain.subDomain.RepairType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

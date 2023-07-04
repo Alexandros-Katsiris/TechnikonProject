@@ -3,7 +3,7 @@ values
     (1, 'omirou', 8, 11141),
     (2, 'vasileiadou', 18, 11141);
 
-insert into webuser (id,tin,"address_id",email,firstname,phonenumber,password, surname, username)
+insert into webusers (id,tin,"address_id",email,firstname,phonenumber,password, surname, username)
 values
     (1,170214943, 1, 'email@email.com', ',mitsos', 694018495, 'password', 'paparis', 'user'),
     (2,248966566, 2, 'email2@email.com', 'giannis', 696969696, 'scytalys', 'malakas', 'name');

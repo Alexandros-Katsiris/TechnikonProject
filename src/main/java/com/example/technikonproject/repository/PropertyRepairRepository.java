@@ -1,6 +1,6 @@
 package com.example.technikonproject.repository;
 
-import com.example.technikonproject.Model.PropertyRepair;
+import com.example.technikonproject.domain.PropertyRepair;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

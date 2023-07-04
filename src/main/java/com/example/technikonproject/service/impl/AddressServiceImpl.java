@@ -1,6 +1,6 @@
 package com.example.technikonproject.service.impl;
 
-import com.example.technikonproject.Model.enums.Address;
+import com.example.technikonproject.domain.subDomain.Address;
 import com.example.technikonproject.repository.AddressRepository;
 import com.example.technikonproject.service.AddressService;
 import org.springframework.stereotype.Service;

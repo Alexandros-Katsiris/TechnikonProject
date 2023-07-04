@@ -1,7 +1,7 @@
-package com.example.technikonproject.Model;
+package com.example.technikonproject.domain;
 
-import com.example.technikonproject.Model.enums.Address;
-import com.example.technikonproject.Model.enums.PropertyType;
+import com.example.technikonproject.domain.subDomain.Address;
+import com.example.technikonproject.domain.subDomain.PropertyType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

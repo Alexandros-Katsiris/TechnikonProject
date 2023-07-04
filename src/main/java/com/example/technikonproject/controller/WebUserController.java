@@ -1,6 +1,6 @@
 package com.example.technikonproject.controller;
 
-import com.example.technikonproject.Model.WebUser;
+import com.example.technikonproject.domain.WebUser;
 import com.example.technikonproject.service.WebUserService;
 import org.springframework.web.bind.annotation.*;
 

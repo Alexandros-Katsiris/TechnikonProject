@@ -1,7 +1,7 @@
 package com.example.technikonproject.repository;
 
-import com.example.technikonproject.Model.WebUser;
-import com.example.technikonproject.Model.enums.Address;
+import com.example.technikonproject.domain.WebUser;
+import com.example.technikonproject.domain.subDomain.Address;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
