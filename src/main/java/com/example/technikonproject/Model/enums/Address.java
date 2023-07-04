@@ -23,6 +23,6 @@ public class Address {
     @Column(nullable = false)
     private Integer streetNumber;
 
-    @Column
+    @Column(nullable = false)
     private Integer zipcode;
 }
