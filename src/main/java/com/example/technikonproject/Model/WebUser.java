@@ -14,15 +14,13 @@ import lombok.Setter;
 public class WebUser {
 
     @Id
-    @Column(name="tin")
+    private Long id;
+    @Column(unique = true)
     private Long tin;
-    @Column(name = "firstName",
-    nullable = false)
+    @Column(nullable = false)
     private String firstName;
-    @Column(name = "surname",
-    nullable = false)
+    @Column(nullable = false)
     private String Surname;
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;

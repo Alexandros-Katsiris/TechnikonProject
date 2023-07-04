@@ -18,7 +18,9 @@ import java.util.Date;
 public class Property {
 
     @Id
-    @Column
+    private Long id;
+
+    @Column(unique = true)
     private Long e9Number;
 
     @Column
