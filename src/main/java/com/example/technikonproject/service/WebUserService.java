@@ -18,6 +18,6 @@ public interface WebUserService {
     void updateUserPassword(Long tin, String password) throws Exception;
     void updateUserName(Long tin, String Name) throws Exception;
     void updateWebUser(Long tin, String email, String password, String name) throws Exception;
-
+    void updateWebUser(WebUser webuser) throws Exception;
     void deleteWebUser(Long tinNumber);
 }

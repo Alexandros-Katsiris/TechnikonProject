@@ -41,42 +41,39 @@ public class WebUserServiceImpl implements WebUserService {
         return webUserRepository.readWebUserByEmail(email);
     }
 
-//    @Override
-//    public List<WebUser> searchWebUser(Long tin, String email, String name) {
-//        return webUserRepository.findById(tin).stream().toList();
-//    }
-
     @Override
     public void updateWebUser(Long tin, String email, String password, String name) throws Exception {
-        if(!(email.isEmpty())){
-            updateUserEmailNew(tin,email);
+        if (!(email.isEmpty())) {
+            updateUserEmailNew(tin, email);
         }
-        if(!(password.isEmpty())){
-            updateUserPassword(tin,password);
+        if (!(password.isEmpty())) {
+            updateUserPassword(tin, password);
         }
-        if (!(name.isEmpty())){
-            updateUserName(tin,name);
+        if (!(name.isEmpty())) {
+            updateUserName(tin, name);
         }
 
-//
-//        WebUser webUserOld = webUserRepository.findById(tin).orElseThrow(
-//                () -> new RuntimeException("owner with id -> %s does not exist".formatted(tin)));
-//
-//        webUserOld.setAddress(updateUserAddress(webUserNew));
-//        webUserOld.setEmail(updateUserEmail(webUserNew, webUserOld));
-//        webUserOld.setPassword(updateUserPassword(webUserOld, webUserNew));
-//        webUserOld.setFirstName(updateUserName(webUserNew, webUserOld));
-//        webUserRepository.save(webUserOld);
     }
 
-    public void updateUserEmailNew(Long tin, String email){
+    @Override
+    public void updateWebUser(WebUser webUser) throws Exception {
+
+        WebUser webUserOld = webUserRepository.findById(webUser.getId()).orElseThrow();
+        webUserOld.setEmail(updateUserEmail(webUser, webUserOld));
+        webUserOld.setPassword(updateUserPassword(webUser, webUserOld));
+        webUserOld.setFirstName(updateUserName(webUser, webUserOld));
+        webUserOld.setAddress(updateUserAddress(webUser.getAddress(),webUserOld.getAddress()));
+        webUserRepository.save(webUserOld);
+    }
+
+    public void updateUserEmailNew(Long tin, String email) {
         WebUser webUser = webUserRepository.findById(tin).orElseThrow(
                 () -> new RuntimeException("Owner doesnt exist".formatted(tin)));
         webUser.setEmail(email);
         webUserRepository.save(webUser);
     }
 
-    public void updateUserPassword(Long tin, String password){
+    public void updateUserPassword(Long tin, String password) {
         WebUser webUser = webUserRepository.findById(tin).orElseThrow(
                 () -> new RuntimeException("Owner Doesnt Exist".formatted(tin)));
         webUser.setPassword(password);
@@ -93,7 +90,8 @@ public class WebUserServiceImpl implements WebUserService {
 
 
     private String updateUserName(WebUser webUserNew, WebUser webUserOld) {
-        if (!webUserNew.getFirstName().isEmpty()) {
+        if (!webUserNew.getFirstName().isEmpty() &&
+                !webUserNew.getFirstName().equals(webUserOld.getFirstName())) {
             //webUserOld.setFirstName(webUserNew.getFirstName());
             return webUserNew.getFirstName();
         }
@@ -101,41 +99,50 @@ public class WebUserServiceImpl implements WebUserService {
     }
 
     private String updateUserPassword(WebUser webUserOld, WebUser webUserNew) {
-        if (!webUserNew.getPassword().isEmpty())
-            return webUserNew.getPassword();
-        return webUserOld.getPassword();
+        if (!webUserNew.getPassword().isEmpty() &&
+                !webUserNew.getPassword().equals(webUserOld.getPassword()))
+            return webUserOld.getPassword();
+        return webUserNew.getPassword();
     }
 
     private String updateUserEmail(WebUser webUserNew, WebUser webUserOld) {
-        if (!webUserNew.getEmail().isEmpty()) {
+        if (!webUserNew.getEmail().isEmpty() &&
+                !webUserNew.getEmail().equals(webUserOld.getEmail())) {
             return webUserNew.getEmail();
         }
         return webUserOld.getEmail();
 
     }
 
-    private Address updateUserAddress(WebUser webUserNew) {
-        Address address = webUserNew.getAddress();
+    private Address updateUserAddress(Address newAddress, Address oldAddress) {
+        boolean updateAddress = false;
+        if (!newAddress.getStreetName().equals(oldAddress.getStreetName()) &&
+            !newAddress.getStreetName().isEmpty()){
+            updateAddress = true;
+        }
+        if (!(newAddress.getStreetNumber().equals(oldAddress.getStreetNumber())) &&
+            !(newAddress.getStreetNumber() == 0) &&
+            !(newAddress.getStreetNumber() == null)){
+            updateAddress = true;
+        }
+        if(!(newAddress.getZipcode().equals(oldAddress.getZipcode())) &&
+            !(newAddress.getZipcode() == 0) &&
+            !(newAddress.getZipcode() == null)){
+            updateAddress = true;
+        }
+        //To be implemented\/
 
-        int c =0;
-        if (!webUserNew.getAddress().getStreetName().isEmpty()) {
-            address.setStreetName(webUserNew.getAddress().getStreetName());
-            c++;
+        if (updateAddress) {
+            Address existingAddress = addressService.addressExist(newAddress);
+            if(existingAddress==null){
+                addressService.addAddress(newAddress);
+                return newAddress;
+            }else{
+                return existingAddress;
+            }
+        }else{
+            return oldAddress;
         }
-        if (webUserNew.getAddress().getStreetNumber() > 0) {
-            address.setStreetNumber(webUserNew.getAddress().getStreetNumber());
-            c++;
-        }
-        if (webUserNew.getAddress().getZipcode() > 0) {
-            address.setZipcode(webUserNew.getAddress().getZipcode());
-            c++;
-        }
-        if (c>0){
-
-            //address.setAddressId(addressRepository.count()+1L);
-            addressService.addAddress(address);
-        }
-        return address;
     }
 
     @Override

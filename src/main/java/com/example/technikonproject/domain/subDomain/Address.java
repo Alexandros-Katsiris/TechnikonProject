@@ -12,9 +12,16 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Address {
+
+    public Address(String streetName, Integer streetNumber, Integer zipcode) {
+        this.streetName = streetName;
+        this.streetNumber = streetNumber;
+        this.zipcode = zipcode;
+    }
+
     @Id
     @SequenceGenerator(name = "addressGenerator", sequenceName = "addressGenerator", allocationSize = 1)
-    @GeneratedValue(generator = "addressGenerator", strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "addressGenerator", strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(nullable = false)

@@ -47,10 +47,13 @@ public class WebUserController {
 
     @PutMapping("/updateUser/{tin}")
     public void updateUser(@PathVariable("tin")Long tin,
-                           @RequestParam(name ="email")String email,
-                           @RequestParam(name="password")String password,
-                           @RequestParam(name="userName")String name) throws Exception{
-        webUserService.updateWebUser(tin,email,password,name);
+                            @RequestBody WebUser webUser
+//                           @RequestParam(name ="email")String email,
+//                           @RequestParam(name="password")String password,
+//                           @RequestParam(name="userName")String name
+                               )
+            throws Exception{
+        webUserService.updateWebUser(webUser);
     }
 
     @PutMapping("/updateEmail/{tin}")

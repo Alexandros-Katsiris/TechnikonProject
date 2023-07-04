@@ -15,7 +15,21 @@ import lombok.Setter;
 @Setter
 public class WebUser {
 
+    public WebUser(Long tin, String firstName, String surname, Address address, Integer phoneNumber, String email, String username, String password, boolean isAdmin) {
+        this.tin = tin;
+        this.firstName = firstName;
+        Surname = surname;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.isAdmin = isAdmin;
+    }
+
     @Id
+    @SequenceGenerator(name = "userGenerator", sequenceName = "userGenerator", allocationSize = 1)
+    @GeneratedValue(generator = "userGenerator", strategy = GenerationType.AUTO)
     private Long id;
     @Column(unique = true)
     private Long tin;
