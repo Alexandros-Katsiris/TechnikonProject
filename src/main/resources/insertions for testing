@@ -1,44 +1,38 @@
-insert into address (id,street_name,street_number, zipcode)
+insert into address (id,streetname,streetnumber, zipcode)
 values
     (1, 'omirou', 8, 11141),
     (2, 'vasileiadou', 18, 11141);
 
-insert into web_user (tin,"address_id",email,first_name,phone_number,password, surname, username)
+insert into webuser (id,tin,"address_id",email,firstname,phonenumber,password, surname, username)
 values
-    (1, 1, 'email@email.com', ',mitsos', 694018495, 'password', 'paparis', 'user'),
-    (2, 2, 'email2@email.com', 'giannis', 696969696, 'scytalys', 'malakas', 'name');
+    (1,170214943, 1, 'email@email.com', ',mitsos', 694018495, 'password', 'paparis', 'user'),
+    (2,248966566, 2, 'email2@email.com', 'giannis', 696969696, 'scytalys', 'malakas', 'name');
 
-insert into property_type(id, property_type)
+insert into propertytype(id, propertytype)
 values
     (1,'SPITI'),
     (2,'KATASTIMA');
 
-insert into repair_type(id, repair_type)
+insert into repairtype(id, repairtype)
 values
     (1,'ANAKATASKEYH'),
     (2,'EPISKEYH'),
     (3,'VAPSIMO');
 
-insert into repair_status(id, repair_status)
+insert into repairstatus(id, repairstatus)
 values
     (1,'TELEIWSE'),
     (2,'KSEKINISE');
 
-insert into property (e9number,address_id,web_user_tin,year_of_construction)
+insert into property (id,e9number,address_id,webuser_id,yearofconstruction)
 values
-    (1,1, 1, CAST('2012-12-12' AS TIMESTAMP)),
-    (2,2, 2, CAST('2012-12-12' AS TIMESTAMP));
+    (1,15439857,1, 1, CAST('2012-12-12' AS TIMESTAMP)),
+    (2,25465765,2, 2, CAST('2012-12-12' AS TIMESTAMP));
 
-insert into property_repair(cost_of_repair, date_of_scheduled_repair, id,
-                            property_e9number, repair_status_id, repair_type_id,
-                            web_user_tin)
+insert into propertyrepair(costofrepair, dateofscheduledrepair, id,
+                            property_id, repairstatus_id, repairtype_id,
+                            webuser_id)
 values
     (5000,CAST('2012-12-12' AS TIMESTAMP),1,1,1,1,1),
     (1000,CAST('2012-12-12' AS TIMESTAMP),2,2,2,2,2);
 
-
-#spring.jpa.hibernate.ddl-auto=create-drop
-#spring.datasource.url=jdbc:postgresql://0.0.0.0:5432/postgres
-#spring.datasource.username=postgres
-#spring.datasource.password=1111
-#spring.datasource.driverClassName=org.postgresql.Driver
