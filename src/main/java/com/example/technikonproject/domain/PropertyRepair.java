@@ -1,7 +1,7 @@
 package com.example.technikonproject.domain;
 
-import com.example.technikonproject.domain.subDomain.RepairStatus;
-import com.example.technikonproject.domain.subDomain.RepairType;
+import com.example.technikonproject.domain.enums.RepairStatus;
+import com.example.technikonproject.domain.enums.RepairType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,10 +25,10 @@ public class PropertyRepair extends BaseModel{
     @Column
     private Double costOfRepair;
 
-    @ManyToOne
+    @Column
     private RepairType repairType;
 
-    @ManyToOne
+    @Column
     private RepairStatus repairStatus;
 
 

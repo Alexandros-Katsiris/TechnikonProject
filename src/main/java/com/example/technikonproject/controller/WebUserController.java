@@ -19,9 +19,13 @@ public class WebUserController {
     // Develop -> Search also with email and name
 
     // Search User Methods
-    @GetMapping("/{tinNumber}")
-    public WebUser readWebUser(@PathVariable Long tinNumber){
-        return webUserService.readWebUser(tinNumber);
+//    @GetMapping("/{tinNumber}")
+//    public WebUser readWebUser(@PathVariable Long tinNumber){
+//        return webUserService.readWebUser(tinNumber);
+//    }
+    @GetMapping("/")
+    public WebUser readWebUser(@RequestParam(name ="tin") Long tin){
+        return webUserService.readWebUser(tin);
     }
 
     @GetMapping("/name/{name}")

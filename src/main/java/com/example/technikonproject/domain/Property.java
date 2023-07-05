@@ -1,7 +1,7 @@
 package com.example.technikonproject.domain;
 
 import com.example.technikonproject.domain.subDomain.Address;
-import com.example.technikonproject.domain.subDomain.PropertyType;
+import com.example.technikonproject.domain.enums.PropertyType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,8 +30,7 @@ public class Property extends BaseModel{
     @JoinColumn
     private Address address;
 
-    @ManyToOne
-    @JoinColumn
+    @Column
     private PropertyType propertyType;
 
     @ManyToOne()
