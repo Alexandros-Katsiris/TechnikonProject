@@ -31,6 +31,7 @@ public class Property extends BaseModel{
     private Address address;
 
     @Column
+    @Enumerated(EnumType.STRING)
     private PropertyType propertyType;
 
     @ManyToOne()

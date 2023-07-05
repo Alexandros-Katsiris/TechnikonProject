@@ -33,7 +33,7 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public void update(Property property, Long e9Number) {
-
+        propertyRepository.save(property);
     }
 
     @Override
