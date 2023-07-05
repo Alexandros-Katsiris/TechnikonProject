@@ -15,10 +15,10 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-public class Property {
+@Table(name="properties")
+@SequenceGenerator(name = "idGenerator", sequenceName = "property_seq", initialValue = 1, allocationSize = 1)
+public class Property extends BaseModel{
 
-    @Id
-    private Long id;
 
     @Column(unique = true)
     private Long e9Number;

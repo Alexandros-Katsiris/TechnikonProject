@@ -13,42 +13,36 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class WebUser {
+@Table(name="webUsers")
+@SequenceGenerator(name = "idGenerator", sequenceName = "web_user_seq", initialValue = 1, allocationSize = 1)
+public class WebUser extends BaseModel{
 
-    public WebUser(Long tin, String firstName, String surname, Address address, Integer phoneNumber, String email, String username, String password, boolean isAdmin) {
-        this.tin = tin;
-        this.firstName = firstName;
-        Surname = surname;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        this.isAdmin = isAdmin;
-    }
-
-    @Id
-    @SequenceGenerator(name = "userGenerator", sequenceName = "userGenerator", allocationSize = 1)
-    @GeneratedValue(generator = "userGenerator", strategy = GenerationType.AUTO)
-    private Long id;
     @Column(unique = true)
     private Long tin;
+
     @Column(nullable = false)
     private String firstName;
+
     @Column(nullable = false)
     private String Surname;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(nullable = false)
     private Address address;
+
     @Column(nullable = false)
     private Integer phoneNumber;
+
     @Email
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
-    @Column(nullable = false)
+
+    @Column(nullable = false, unique = true)
     private String username;
+
     @Column(nullable = false)
     private String password;
+
     @Column(nullable = false)
     private boolean isAdmin;
 }

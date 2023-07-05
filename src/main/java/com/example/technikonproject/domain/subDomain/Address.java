@@ -1,5 +1,6 @@
 package com.example.technikonproject.domain.subDomain;
 
+import com.example.technikonproject.domain.BaseModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,18 +12,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Address {
+@Table(name="addresses")
+@SequenceGenerator(name = "idGenerator", sequenceName = "address_seq", initialValue = 1, allocationSize = 1)
+public class Address extends BaseModel {
 
-    public Address(String streetName, Integer streetNumber, Integer zipcode) {
-        this.streetName = streetName;
-        this.streetNumber = streetNumber;
-        this.zipcode = zipcode;
-    }
-
-    @Id
-    @SequenceGenerator(name = "addressGenerator", sequenceName = "addressGenerator", allocationSize = 1)
-    @GeneratedValue(generator = "addressGenerator", strategy = GenerationType.SEQUENCE)
-    private Long id;
 
     @Column(nullable = false)
     private String streetName;

@@ -15,12 +15,9 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-public class PropertyRepair {
-
-    @Id
-    @SequenceGenerator(name = "propertyRepairGenerator", sequenceName = "propertyRepairGenerator", allocationSize = 1)
-    @GeneratedValue(generator = "propertyRepairGenerator", strategy = GenerationType.AUTO)
-    private Long id;
+@Table(name="propertyRepairs")
+@SequenceGenerator(name = "idGenerator", sequenceName = "property_repair_seq", initialValue = 1, allocationSize = 1)
+public class PropertyRepair extends BaseModel{
 
     @Column
     private LocalDate dateOfScheduledRepair;
