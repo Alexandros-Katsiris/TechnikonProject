@@ -17,32 +17,33 @@ import lombok.Setter;
 @SequenceGenerator(name = "idGenerator", sequenceName = "web_user_seq", initialValue = 1, allocationSize = 1)
 public class WebUser extends BaseModel{
 
-    @Column(unique = true)
+    @Column(unique = true, updatable = false)
     private Long tin;
 
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false,updatable = false)
     private String firstName;
 
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false, updatable = false)
     private String Surname;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(nullable = false)
     private Address address;
 
-    @Column(nullable = false)
+    @Column(nullable = false,updatable = false)
     private Integer phoneNumber;
 
     @Email
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false, unique = true)
+    @Column(length = 20,
+            nullable = false, unique = true,updatable = false)
     private String username;
 
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
+    @Column(nullable = false,updatable = false)
     private boolean isAdmin;
 }

@@ -28,13 +28,13 @@ public class WebUserController {
         return webUserService.readWebUser(tin);
     }
 
-    @GetMapping("/name/{name}")
-    public List<WebUser> readWebUserByFirstName(@PathVariable String name){
+    @GetMapping("/name/")
+    public List<WebUser> readWebUserByFirstName(@RequestParam(name ="name") String name){
         return webUserService.readWebUserByFirstName(name);
     }
 
-    @GetMapping("/email/{email}")
-    public WebUser readWebUserByEmail(@PathVariable String email){
+    @GetMapping("/email/")
+    public WebUser readWebUserByEmail(@RequestParam String email){
         return webUserService.readWebUserByEmail(email);
     }
 
@@ -50,29 +50,9 @@ public class WebUserController {
 //    }
 
     @PutMapping("/updateUser/{tin}")
-    public void updateUser(@PathVariable("tin")Long tin,
-                            @RequestBody WebUser webUser
-//                           @RequestParam(name ="email")String email,
-//                           @RequestParam(name="password")String password,
-//                           @RequestParam(name="userName")String name
-                               )
+    public void updateUser(@RequestBody WebUser webUser)
             throws Exception{
         webUserService.updateWebUser(webUser);
-    }
-
-    @PutMapping("/updateEmail/{tin}")
-    public void updateEmail(@PathVariable Long tin,@RequestParam(name = "email") String email) throws Exception{
-        webUserService.updateUserEmailNew(tin,email);
-    }
-
-    @PutMapping("/updatePassword/{tin}")
-    public void updateUserPassword(@PathVariable Long tin,@RequestParam(name = "password") String password) throws Exception{
-        webUserService.updateUserPassword(tin,password);
-    }
-
-    @PutMapping("/updateUserName/{tin}")
-    public void updateUserName(@PathVariable Long tin, @RequestParam(name = "userName")String name)throws Exception{
-        webUserService.updateUserName(tin,name);
     }
 
     @DeleteMapping("/delete/{tinNumber}")
