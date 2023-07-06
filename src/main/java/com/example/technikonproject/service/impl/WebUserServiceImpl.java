@@ -66,29 +66,6 @@ public class WebUserServiceImpl implements WebUserService {
         webUserRepository.save(webUserOld);
     }
 
-    public void updateUserEmailNew(Long tin, String email) {
-        WebUser webUser = webUserRepository.findById(tin).orElseThrow(
-                () -> new RuntimeException("Owner doesnt exist".formatted(tin)));
-        webUser.setEmail(email);
-        webUserRepository.save(webUser);
-    }
-
-    public void updateUserPassword(Long tin, String password) {
-        WebUser webUser = webUserRepository.findById(tin).orElseThrow(
-                () -> new RuntimeException("Owner Doesnt Exist".formatted(tin)));
-        webUser.setPassword(password);
-        webUserRepository.save(webUser);
-    }
-
-
-    public void updateUserName(Long tin, String name) throws Exception {
-        WebUser webUser = webUserRepository.findById(tin).orElseThrow(
-                () -> new RuntimeException("Owner Doesnt Exist".formatted(tin)));
-        webUser.setUsername(name);
-        webUserRepository.save(webUser);
-    }
-
-
     private String updateUserName(WebUser webUserNew, WebUser webUserOld) {
         if (!webUserNew.getFirstName().isEmpty() &&
                 !webUserNew.getFirstName().equals(webUserOld.getFirstName())) {
