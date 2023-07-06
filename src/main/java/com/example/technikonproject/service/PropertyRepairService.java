@@ -13,6 +13,3 @@ public interface PropertyRepairService {
     List<PropertyRepair> searchPropertyRepairsByWebUserId(Long tin);
 
     void updatePropertyRepair();
-
-    void deletePropertyRepair(Long propertyRepairId);
-}
