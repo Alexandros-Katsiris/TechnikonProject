@@ -16,31 +16,29 @@ public class PropertyController {
         this.propertyService = propertyService;
     }
 
-    // Search Properties. Search by e9 -> admin/user, search by tin number -> admin only
-    @GetMapping("/getByE9/{e9Number}")
-    public Property readProperty(@PathVariable Long e9Number){
-        return propertyService.findProperty(e9Number);
+    @PostMapping("/addProperty")
+    public void addProperty(@RequestBody Property property) {
+        propertyService.create(property);
     }
 
+    // Search Properties. Search by e9 -> admin/user, search by tin number -> admin only
     @GetMapping("/getByTin/{tin}")
-    public List<Property> readPropertiesByTin(@PathVariable Long tin){
+    public List<Property> readPropertiesByTin(@PathVariable Long tin) {
         return propertyService.findPropertiesByTin(tin);
     }
 
-    @PostMapping("/addProperty")
-    public void addProperty(@RequestBody Property property){
-        propertyService.addNewProperty(property);
+    @GetMapping("/getById")
+    public Property read(@RequestParam(name = "id") Long id) {
+        return propertyService.read(id);
     }
 
-
-    //To create-------->
-    @PutMapping("/updateProperty/{e9Number}")
-    public void updateProperty(@RequestBody Property property, @PathVariable Long e9Number){
-        propertyService.update(property, e9Number);
+    @PutMapping("/updateProperty")
+    public void updateProperty(@RequestBody Property property) {
+        propertyService.update(property);
     }
 
     @DeleteMapping("/delete/{e9Number}")
-    public void deleteProperty(@PathVariable Long e9Number){
-        propertyService.deleteProperty(e9Number);
+    public void deleteProperty(@PathVariable Long id) {
+        propertyService.deleteById(id);
     }
 }

@@ -23,20 +23,8 @@ public class WebUserServiceImpl extends BaseServiceImpl<WebUser> implements WebU
     }
 
     @Override
-    public WebUser create(WebUser webUser) {
-        return webUserRepository.save(webUser);
-    }
-
-    @Override
-    public WebUser read(Long id) {
-        return webUserRepository.findById(id).orElseThrow();
-    }
-
-    @Override
     public WebUser readWebUser(Long tin) {
-        //return webUserRepository.readWebUserByTin(tin);
         return webUserRepository.readWebUserByTin(tin);
-        //return webUser;
     }
 
     public List<WebUser> readWebUserByFirstName(String name) {
