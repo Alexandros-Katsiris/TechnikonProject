@@ -35,6 +35,7 @@ public class Property extends BaseModel{
     private PropertyType propertyType;
 
     @ManyToOne()
+    @JoinColumn(referencedColumnName = "tin")
     private WebUser webUser;
 
     @Column

@@ -12,6 +12,5 @@ import java.util.List;
 public interface PropertyRepository extends JpaRepository<Property, Long> {
     Property readPropertyByE9Number(Long e9Number);
 
-    @Query(value = "SELECT * FROM property WHERE tin_number = :tin", nativeQuery = true)
-    List<Property> searchPropertiesByTin(@Param("tin")Long tin);
+    List<Property> findByWebUserTin(Long tin);
 }

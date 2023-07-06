@@ -2,10 +2,7 @@ package com.example.technikonproject.controller;
 
 import com.example.technikonproject.domain.PropertyRepair;
 import com.example.technikonproject.service.PropertyRepairService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -23,6 +20,11 @@ public class PropertyRepairController {
         this.propertyRepairService = propertyRepairService;
     }
 
+    @PostMapping("/add/prRepairs")
+    public void addPropertyRepairs(@RequestBody PropertyRepair propertyRepair){
+        propertyRepairService.addPropertyRepairId(propertyRepair);
+    }
+
     @GetMapping("/get/properties/repair/date")
     public List<PropertyRepair> getPropertyRepairByDate(@RequestParam String date) throws ParseException {
             //Date dateConverted = formatter.parse(date);
@@ -30,8 +32,8 @@ public class PropertyRepairController {
             return propertyRepairService.searchPropertyRepairs(dateConverted);
     }
 
-    @GetMapping("/get/properties/repair/tin")
-    public List<PropertyRepair> getPropertyRepairByDate(@RequestParam Long tin) throws ParseException {
-        return propertyRepairService.searchPropertyRepairs(tin);
+    @GetMapping("/get/properties/repair/id")
+    public List<PropertyRepair> getPropertyRepairByDate(@RequestParam Long id) throws ParseException {
+        return propertyRepairService.searchPropertyRepairsByWebUserId(id);
     }
 }

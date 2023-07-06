@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public interface PropertyRepairRepository extends JpaRepository<PropertyRepair, Long> {
 
-    @Query(value = "SELECT * FROM property_repair WHERE web_user_id = :tin", nativeQuery = true)
-    List<PropertyRepair> searchPropertyRepair(@Param("tin") Long tin);
-    @Query(value = "SELECT * FROM property_repair WHERE date_of_scheduled_repair = :date", nativeQuery = true)
-    List<PropertyRepair> searchPropertyRepair(@Param("date") LocalDate date);
+    //@Query(value = "SELECT * FROM property_repair WHERE web_user_id = :tin", nativeQuery = true)
+    List<PropertyRepair> searchPropertyRepairsByWebUserId(Long id);
+//    @Query(value = "SELECT * FROM property_repair WHERE date_of_scheduled_repair = :date", nativeQuery = true)
+    List<PropertyRepair> searchPropertyRepairsByDateOfScheduledRepair(LocalDate date);
 }

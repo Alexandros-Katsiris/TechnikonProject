@@ -23,7 +23,7 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public List<Property> searchPropertiesByTin(Long tin) {
-        return propertyRepository.searchPropertiesByTin(tin).stream().toList();
+        return propertyRepository.findByWebUserTin(tin).stream().toList();
     }
 
     @Override
