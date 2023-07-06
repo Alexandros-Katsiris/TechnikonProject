@@ -41,19 +41,6 @@ public class WebUserServiceImpl implements WebUserService {
         return webUserRepository.readWebUserByEmail(email);
     }
 
-    @Override
-    public void updateWebUser(Long tin, String email, String password, String name) throws Exception {
-        if (!(email.isEmpty())) {
-            updateUserEmailNew(tin, email);
-        }
-        if (!(password.isEmpty())) {
-            updateUserPassword(tin, password);
-        }
-        if (!(name.isEmpty())) {
-            updateUserName(tin, name);
-        }
-
-    }
 
     @Override
     public void updateWebUser(WebUser webUser) throws Exception {
