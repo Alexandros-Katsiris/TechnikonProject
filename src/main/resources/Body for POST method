@@ -2,17 +2,18 @@ URL.
     http://localhost:8080/user/add
 
 {
-"tin": 2400675070,
+"tin": 11070,
 "firstName": "giannis",
 "address":{
 "streetName": "omirou",
 "streetNumber": 1,
-"zipcode": 11141
+"zipcode": 11141,
+"floorNumber": 23
 },
 "phoneNumber": 696969696,
-"email": "email2@email.com",
-"username": "name",
+"email": "ui@email.com",
+"username": "eio",
 "password": "scytalys",
-"admin": false,
-"surname": "malakas"
+"surname": "malakas",
+"admin": false
 }
