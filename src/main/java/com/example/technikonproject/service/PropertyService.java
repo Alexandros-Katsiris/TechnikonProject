@@ -8,9 +8,9 @@ public interface PropertyService {
 
     void addNewProperty(Property property);
 
-    List<Property> searchPropertiesByTin(Long tin);
+    List<Property> findPropertiesByTin(Long tin);
 
-    Property readProperty(Long e9Number);
+    Property findProperty(Long e9Number);
 
     void update(Property property, Long e9Number);
 

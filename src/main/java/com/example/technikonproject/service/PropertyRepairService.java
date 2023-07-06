@@ -9,8 +9,8 @@ public interface PropertyRepairService {
 
     void addPropertyRepairId(PropertyRepair propertyRepair);
 
-    List<PropertyRepair> searchPropertyRepairs(LocalDate date);
-    List<PropertyRepair> searchPropertyRepairsByWebUserId(Long tin);
+    List<PropertyRepair> findPropertyRepairsByRangeOfDates(LocalDate dateStart, LocalDate dateEnd);
+    List<PropertyRepair> findPropertyRepairsByWebUserId(Long tin);
 
     void updatePropertyRepair();
 

@@ -23,12 +23,12 @@ public class PropertyRepairServiceImpl implements PropertyRepairService {
     }
 
     @Override
-    public List<PropertyRepair> searchPropertyRepairs(LocalDate date) {
-        return propertyRepairRepository.searchPropertyRepairsByDateOfScheduledRepair(date);
+    public List<PropertyRepair> findPropertyRepairsByRangeOfDates(LocalDate dateStart, LocalDate dateEnd) {
+        return propertyRepairRepository.searchPropertyRepairsByDateOfScheduledRepairBetween(dateStart, dateEnd);
     }
 
     @Override
-    public List<PropertyRepair> searchPropertyRepairsByWebUserId(Long id) {
+    public List<PropertyRepair> findPropertyRepairsByWebUserId(Long id) {
         return propertyRepairRepository.searchPropertyRepairsByWebUserId(id);
     }
 

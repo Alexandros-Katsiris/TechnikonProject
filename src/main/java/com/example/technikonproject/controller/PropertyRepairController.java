@@ -20,20 +20,21 @@ public class PropertyRepairController {
         this.propertyRepairService = propertyRepairService;
     }
 
+    //Not working correctly
     @PostMapping("/add/prRepairs")
     public void addPropertyRepairs(@RequestBody PropertyRepair propertyRepair){
         propertyRepairService.addPropertyRepairId(propertyRepair);
     }
 
     @GetMapping("/get/properties/repair/date")
-    public List<PropertyRepair> getPropertyRepairByDate(@RequestParam String date) throws ParseException {
-            //Date dateConverted = formatter.parse(date);
-            LocalDate dateConverted = LocalDate.parse(date);
-            return propertyRepairService.searchPropertyRepairs(dateConverted);
+    public List<PropertyRepair> getPropertyRepairByDate(@RequestParam String dateStart, @RequestParam String dateEnd) throws ParseException {
+            LocalDate dateStartConverted = LocalDate.parse(dateStart);
+            LocalDate dateEndConverted = LocalDate.parse(dateEnd);
+            return propertyRepairService.findPropertyRepairsByRangeOfDates(dateStartConverted, dateEndConverted);
     }
 
     @GetMapping("/get/properties/repair/id")
     public List<PropertyRepair> getPropertyRepairByDate(@RequestParam Long id) throws ParseException {
-        return propertyRepairService.searchPropertyRepairsByWebUserId(id);
+        return propertyRepairService.findPropertyRepairsByWebUserId(id);
     }
 }

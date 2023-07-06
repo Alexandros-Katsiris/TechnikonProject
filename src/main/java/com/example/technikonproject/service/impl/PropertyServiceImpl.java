@@ -22,13 +22,13 @@ public class PropertyServiceImpl implements PropertyService {
     }
 
     @Override
-    public List<Property> searchPropertiesByTin(Long tin) {
+    public List<Property> findPropertiesByTin(Long tin) {
         return propertyRepository.findByWebUserTin(tin).stream().toList();
     }
 
     @Override
-    public Property readProperty(Long e9Number) {
-        return propertyRepository.readPropertyByE9Number(e9Number);
+    public Property findProperty(Long e9Number) {
+        return propertyRepository.findPropertyByE9Number(e9Number);
     }
 
     @Override

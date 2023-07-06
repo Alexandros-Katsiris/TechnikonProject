@@ -19,12 +19,12 @@ public class PropertyController {
     // Search Properties. Search by e9 -> admin/user, search by tin number -> admin only
     @GetMapping("/getByE9/{e9Number}")
     public Property readProperty(@PathVariable Long e9Number){
-        return propertyService.readProperty(e9Number);
+        return propertyService.findProperty(e9Number);
     }
 
     @GetMapping("/getByTin/{tin}")
     public List<Property> readPropertiesByTin(@PathVariable Long tin){
-        return propertyService.searchPropertiesByTin(tin);
+        return propertyService.findPropertiesByTin(tin);
     }
 
     @PostMapping("/addProperty")

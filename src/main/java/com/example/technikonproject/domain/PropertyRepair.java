@@ -3,6 +3,7 @@ package com.example.technikonproject.domain;
 import com.example.technikonproject.domain.enums.RepairStatus;
 import com.example.technikonproject.domain.enums.RepairType;
 import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,10 +25,12 @@ public class PropertyRepair extends BaseModel{
 
     @NotNull
     @ManyToOne
+    @JoinColumn(referencedColumnName = "tin")
     private WebUser webUser;
 
     @NotNull
     @ManyToOne
+    @JoinColumn(referencedColumnName = "e9number")
     private Property property;
 
     @NotNull
