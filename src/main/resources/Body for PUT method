@@ -1,0 +1,19 @@
+URL
+http://localhost:8080/user/updateUser
+
+{
+"id":1,
+"tin": 2400675070,
+"firstName": "kosta",
+"address":{
+"streetName": "omirou",
+"streetNumber": 10,
+"zipcode": 11141
+},
+"phoneNumber": 696969696,
+"email": "email2@email.com",
+"username": "name",
+"password": "scytalys",
+"admin": false,
+"surname": "malakas"
+}

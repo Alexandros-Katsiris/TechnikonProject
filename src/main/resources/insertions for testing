@@ -37,3 +37,33 @@ values
     (5000,CAST('2012-12-12' AS TIMESTAMP),1,1,1,1,1),
     (1000,CAST('2012-12-12' AS TIMESTAMP),2,2,2,2,2);
 
+
+
+
+
+=====================================================================
+
+insert into addresses (id,streetname,streetnumber, zipcode)
+values
+    (1, 'omirou', 8, 11141),
+    (2, 'vasileiadou', 18, 11141);
+
+
+insert into webusers (id,tin,"address_id",email,firstname,phonenumber,password, surname, username,isAdmin)
+values
+    (1,170214943, 1, 'email@email.com', ',mitsos', 694018495, 'password', 'paparis', 'user',true),
+    (2,248966566, 2, 'email2@email.com', 'giannis', 696969696, 'scytalys', 'malakas', 'name',false);
+
+
+insert into properties (id,e9number,address_id,webuser_id,yearofconstruction)
+values
+    (1,15439857,1, 1, CAST('2012-12-12' AS TIMESTAMP)),
+    (2,25465765,2, 2, CAST('2012-12-12' AS TIMESTAMP));
+
+insert into propertyrepairs(costofrepair, dateofscheduledrepair, id,
+                           property_id,
+                           webuser_id)
+values
+    (5000,CAST('2012-12-12' AS TIMESTAMP),1,1,1),
+    (1000,CAST('2012-12-12' AS TIMESTAMP),2,2,2);
+

@@ -17,7 +17,9 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public void addAddress(Address address) {addressRepository.save(address);}
+    public Address addAddress(Address address) {
+        return addressRepository.save(address);
+    }
 
     @Override
     public Address findAddressById(Long id) {

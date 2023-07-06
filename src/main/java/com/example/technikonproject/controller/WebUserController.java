@@ -15,48 +15,45 @@ public class WebUserController {
         this.webUserService = webUserService;
     }
 
-    // Develop -> remove all hard copy elements and variables
-    // Develop -> Search also with email and name
+    @PostMapping("/add")
+    public void addWebUser(@RequestBody WebUser webUser) {
+        webUserService.create(webUser);
+    }
 
-    // Search User Methods
-//    @GetMapping("/{tinNumber}")
-//    public WebUser readWebUser(@PathVariable Long tinNumber){
-//        return webUserService.readWebUser(tinNumber);
-//    }
-    @GetMapping("/")
-    public WebUser readWebUser(@RequestParam(name ="tin") Long tin){
+    @GetMapping("/id")
+    public WebUser read(@RequestParam(name = "id") Long id) {
+        return webUserService.read(id);
+    }
+
+    @GetMapping("/tin")
+    public WebUser readWebUser(@RequestParam(name = "tin") Long tin) {
         return webUserService.readWebUser(tin);
     }
 
-    @GetMapping("/name/")
-    public List<WebUser> readWebUserByFirstName(@RequestParam(name ="name") String name){
+    @GetMapping("/name/{name}")
+    public List<WebUser> readWebUserByFirstName(@PathVariable String name) {
         return webUserService.readWebUserByFirstName(name);
     }
 
-    @GetMapping("/email/")
-    public WebUser readWebUserByEmail(@RequestParam String email){
+    @GetMapping("/email/{email}")
+    public WebUser readWebUserByEmail(@PathVariable String email) {
         return webUserService.readWebUserByEmail(email);
     }
 
-    @PostMapping("/add")
-    public void addWebUser(@RequestBody WebUser webUser){
-        webUserService.addWebUser(webUser);
+    @PutMapping("/updateUser")
+    public void updateUser(@RequestBody WebUser webUser
+    ) throws Exception {
+        webUserService.update(webUser);
     }
 
-    // Update User Methods
-//    @PutMapping("/update/{tin}")
-//    public void updateWebUser(@RequestBody WebUser webUser, @PathVariable("tin") Long tinNumber) throws Exception {
-//        webUserService.updateWebUser(webUser,tinNumber);
-//    }
-
-    @PutMapping("/updateUser/{tin}")
-    public void updateUser(@RequestBody WebUser webUser)
-            throws Exception{
-        webUserService.updateWebUser(webUser);
+    @DeleteMapping("/deleteId/{id}")
+    public void delete(@PathVariable Long id) {
+        webUserService.deleteById(id);
     }
 
-    @DeleteMapping("/delete/{tinNumber}")
-    public void deleteWebUser(@PathVariable Long tinNumber){
-        webUserService.deleteWebUser(tinNumber);
+    @DeleteMapping("/delete/{tin}")
+    public void deleteByTin(@PathVariable Long tin) {
+        webUserService.deleteByTin(tin);
     }
+
 }

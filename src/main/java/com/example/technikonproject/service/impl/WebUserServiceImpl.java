@@ -5,30 +5,37 @@ import com.example.technikonproject.domain.subDomain.Address;
 import com.example.technikonproject.repository.WebUserRepository;
 import com.example.technikonproject.service.AddressService;
 import com.example.technikonproject.service.WebUserService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class WebUserServiceImpl implements WebUserService {
+@RequiredArgsConstructor
+public class WebUserServiceImpl extends BaseServiceImpl<WebUser> implements WebUserService {
     private final WebUserRepository webUserRepository;
     private final AddressService addressService;
 
-    public WebUserServiceImpl(WebUserRepository webUserRepository, AddressService addressService) {
-        this.webUserRepository = webUserRepository;
-        this.addressService = addressService;
+    @Override
+    public JpaRepository<WebUser, Long> getRepository() {
+        return webUserRepository;
     }
 
+    @Override
+    public WebUser create(WebUser webUser) {
+        return webUserRepository.save(webUser);
+    }
 
     @Override
-    public void addWebUser(WebUser webUser) {
-        webUserRepository.save(webUser);
+    public WebUser read(Long id) {
+        return webUserRepository.findById(id).orElseThrow();
     }
 
     @Override
     public WebUser readWebUser(Long tin) {
         //return webUserRepository.readWebUserByTin(tin);
-        return webUserRepository.findById(tin).orElseThrow();
+        return webUserRepository.readWebUserByTin(tin);
         //return webUser;
     }
 
@@ -41,22 +48,20 @@ public class WebUserServiceImpl implements WebUserService {
         return webUserRepository.readWebUserByEmail(email);
     }
 
-
     @Override
-    public void updateWebUser(WebUser webUser) throws Exception {
+    public void update(WebUser webUser) {
 
         WebUser webUserOld = webUserRepository.findById(webUser.getId()).orElseThrow();
         webUserOld.setEmail(updateUserEmail(webUser, webUserOld));
         webUserOld.setPassword(updateUserPassword(webUser, webUserOld));
         webUserOld.setFirstName(updateUserName(webUser, webUserOld));
-        webUserOld.setAddress(updateUserAddress(webUser.getAddress(),webUserOld.getAddress()));
+        webUserOld.setAddress(updateUserAddress(webUser.getAddress(), webUserOld.getAddress()));
         webUserRepository.save(webUserOld);
     }
 
     private String updateUserName(WebUser webUserNew, WebUser webUserOld) {
         if (!webUserNew.getFirstName().isEmpty() &&
                 !webUserNew.getFirstName().equals(webUserOld.getFirstName())) {
-            //webUserOld.setFirstName(webUserNew.getFirstName());
             return webUserNew.getFirstName();
         }
         return webUserOld.getFirstName();
@@ -79,43 +84,46 @@ public class WebUserServiceImpl implements WebUserService {
     }
 
     private Address updateUserAddress(Address newAddress, Address oldAddress) {
-        boolean updateAddress = false;
-        if (!newAddress.getStreetName().equals(oldAddress.getStreetName()) &&
-            !newAddress.getStreetName().isEmpty()){
-            updateAddress = true;
-        }
+        boolean updateAddress = !newAddress.getStreetName().equals(oldAddress.getStreetName()) &&
+                !newAddress.getStreetName().isEmpty();
         if (!(newAddress.getStreetNumber().equals(oldAddress.getStreetNumber())) &&
-            !(newAddress.getStreetNumber() == 0) &&
-            !(newAddress.getStreetNumber() == null)){
+                !(newAddress.getStreetNumber() == 0) &&
+                !(newAddress.getStreetNumber() == null)) {
             updateAddress = true;
         }
-        if(!(newAddress.getZipcode().equals(oldAddress.getZipcode())) &&
-            !(newAddress.getZipcode() == 0) &&
-            !(newAddress.getZipcode() == null)){
+        if (!(newAddress.getZipcode().equals(oldAddress.getZipcode())) &&
+                !(newAddress.getZipcode() == 0) &&
+                !(newAddress.getZipcode() == null)) {
             updateAddress = true;
         }
         //To be implemented\/
 
         if (updateAddress) {
             Address existingAddress = addressService.addressExist(newAddress);
-            if(existingAddress==null){
+            if (existingAddress == null) {
                 addressService.addAddress(newAddress);
                 return newAddress;
-            }else{
+            } else {
                 return existingAddress;
             }
-        }else{
+        } else {
             return oldAddress;
         }
     }
 
-    @Override
-    public void deleteWebUser(Long tin) {
-        if (webUserRepository.existsById(tin))
-            webUserRepository.deleteById(tin);
-        else
-            System.out.println("No User Found");
+    public void deleteByTin(Long tin) {
+        WebUser webUser = webUserRepository.readWebUserByTin(tin);
+        if (checkNullability(webUser)) {
+            webUserRepository.deleteByTin(tin);
+        }
     }
 
+    private boolean checkNullability(WebUser webUser) {
+        if (webUser == null) {
+            logger.warn("WebUser does not exist.");
+            return true;
+        }
+        return false;
+    }
 
 }
