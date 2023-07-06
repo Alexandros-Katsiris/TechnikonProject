@@ -23,7 +23,7 @@ class WebUserServiceImplTest {
 
     private WebUserServiceImpl webUserServiceTest;
 
-    private  final Address address = new Address(
+    private final Address address = new Address(
             1L,
             "stname",
             123,
@@ -94,7 +94,7 @@ class WebUserServiceImplTest {
     @Test
     void canDeleteWebUser() {
         //when
-        webUserServiceTest.deleteWebUser(1L);
+        webUserServiceTest.deleteByTin(1L);
         //then
         verify(webUserRepository).existsById(1L);
         //verify(webUserRepository).deleteById(1L);

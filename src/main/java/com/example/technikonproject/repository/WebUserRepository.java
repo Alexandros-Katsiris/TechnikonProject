@@ -10,9 +10,10 @@ import java.util.List;
 public interface WebUserRepository extends JpaRepository<WebUser, Long> {
     //void deleteByTin(Integer tin);
     WebUser readWebUserByTin(Long tin);
+
     List<WebUser> readWebUserByFirstName(String name);
+
     WebUser readWebUserByEmail(String email);
-    Long getWebUserByTin(Long Tin);
 
-
+    void deleteByTin(Long tin);
 }
