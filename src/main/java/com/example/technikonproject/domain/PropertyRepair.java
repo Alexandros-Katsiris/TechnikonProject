@@ -35,6 +35,10 @@ public class PropertyRepair extends BaseModel{
     private LocalDate dateOfScheduledRepair;
 
     @NotNull
+    @Column(length = 250)
+    private String description;
+
+    @NotNull
     @Column
     private BigDecimal costOfRepair;
 
