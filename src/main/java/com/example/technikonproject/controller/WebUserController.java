@@ -40,9 +40,8 @@ public class WebUserController {
         return webUserService.readWebUserByEmail(email);
     }
 
-    @PutMapping("/updateUser/{tin}")
-    public void updateUser(@PathVariable("tin") Long tin,
-                           @RequestBody WebUser webUser
+    @PutMapping("/updateUser")
+    public void updateUser(@RequestBody WebUser webUser
     ) throws Exception {
         webUserService.update(webUser);
     }
