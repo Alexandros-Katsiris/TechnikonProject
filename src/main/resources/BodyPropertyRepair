@@ -1,0 +1,59 @@
+{
+"id": 1,
+"webUser":{
+"id": 1,
+"tin": 170214943,
+"firstName": ",mitsos",
+"address":{
+"id": 1,
+"streetName": "omirou",
+"streetNumber": 8,
+"zipcode": 11141,
+"floorNumber": null
+},
+"phoneNumber": 694018495,
+"email": "email@email.com",
+"username": "user",
+"password": "password",
+"surname": "paparis",
+"admin": true
+},
+"property":{
+"id": 1,
+"e9Number": 15439857,
+"yearOfConstruction": "2012-12-11T22:00:00.000+00:00",
+"address":{
+"id": 1,
+"streetName": "omirou",
+"streetNumber": 8,
+"zipcode": 11141,
+"floorNumber": null
+},
+"propertyType": "DETACHED_HOUSE",
+"webUser":{
+"id": 1,
+"tin": 170214943,
+"firstName": ",mitsos",
+"address":{
+"id": 1,
+"streetName": "omirou",
+"streetNumber": 8,
+"zipcode": 11141,
+"floorNumber": null
+},
+"phoneNumber": 694018495,
+"email": "email@email.com",
+"username": "user",
+"password": "password",
+"surname": "paparis",
+"admin": true
+},
+"picture": null,
+"location": null
+},
+"dateOfScheduledRepair": "2012-12-12",
+"description": "MPLA MPLA",
+"costOfRepair": 5000.00,
+"repairType": "DAY_TO_DAY",
+"repairStatus": "PENDING"
+}

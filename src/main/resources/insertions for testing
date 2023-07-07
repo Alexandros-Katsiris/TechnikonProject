@@ -1,48 +1,3 @@
-insert into address (id,streetname,streetnumber, zipcode)
-values
-    (1, 'omirou', 8, 11141),
-    (2, 'vasileiadou', 18, 11141);
-
-
-insert into webusers (id,tin,"address_id",email,firstname,phonenumber,password, surname, username,isAdmin)
-values
-    (1,170214943, 1, 'email@email.com', ',mitsos', 694018495, 'password', 'paparis', 'user',true),
-    (2,248966566, 2, 'email2@email.com', 'giannis', 696969696, 'scytalys', 'malakas', 'name',false);
-
-insert into propertytype(id, propertytype)
-values
-    (1,'SPITI'),
-    (2,'KATASTIMA');
-
-insert into repairtype(id, repairtype)
-values
-    (1,'ANAKATASKEYH'),
-    (2,'EPISKEYH'),
-    (3,'VAPSIMO');
-
-insert into repairstatus(id, repairstatus)
-values
-    (1,'TELEIWSE'),
-    (2,'KSEKINISE');
-
-insert into property (id,e9number,address_id,webuser_id,yearofconstruction)
-values
-    (1,15439857,1, 1, CAST('2012-12-12' AS TIMESTAMP)),
-    (2,25465765,2, 2, CAST('2012-12-12' AS TIMESTAMP));
-
-insert into propertyrepair(costofrepair, dateofscheduledrepair, id,
-                            property_id, repairstatus_id, repairtype_id,
-                            webuser_id)
-values
-    (5000,CAST('2012-12-12' AS TIMESTAMP),1,1,1,1,1),
-    (1000,CAST('2012-12-12' AS TIMESTAMP),2,2,2,2,2);
-
-
-
-
-
-=====================================================================
-
 insert into addresses (id,streetname,streetnumber, zipcode)
 values
     (1, 'omirou', 8, 11141),
@@ -55,15 +10,14 @@ values
     (2,248966566, 2, 'email2@email.com', 'giannis', 696969696, 'scytalys', 'malakas', 'name',false);
 
 
-insert into properties (id,e9number,address_id,webuser_id,yearofconstruction)
+insert into properties (id,e9number,address_id,webuser_tin,yearofconstruction,propertytype)
 values
-    (1,15439857,1, 1, CAST('2012-12-12' AS TIMESTAMP)),
-    (2,25465765,2, 2, CAST('2012-12-12' AS TIMESTAMP));
+    (1,15439857,1, 170214943, CAST('2012-12-12' AS TIMESTAMP),'DETACHED_HOUSE'),
+    (2,25465765,2, 248966566, CAST('2012-12-12' AS TIMESTAMP),'DETACHED_HOUSE');
 
 insert into propertyrepairs(costofrepair, dateofscheduledrepair, id,
-                           property_id,
-                           webuser_id)
+                            property_e9Number,
+                            webuser_tin,repairstatus,repairtype,description)
 values
-    (5000,CAST('2012-12-12' AS TIMESTAMP),1,1,1),
-    (1000,CAST('2012-12-12' AS TIMESTAMP),2,2,2);
-
+    (5000,CAST('2012-12-12' AS TIMESTAMP),1,15439857,170214943,'0','0','MPLA MPLA'),
+    (1000,CAST('2012-12-12' AS TIMESTAMP),2,25465765,248966566,'0','0','MPLA MPLA MPLA MPLA');
