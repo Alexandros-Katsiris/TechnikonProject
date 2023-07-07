@@ -44,7 +44,6 @@ public class PropertyRepairServiceImpl implements PropertyRepairService {
         propertyRepairOld.setRepairType(updatePropertyRepairType(propertyRepairOld, propertyRepair));
         propertyRepairOld.setWebUser(updatePropertyRepairWebUser(propertyRepairOld, propertyRepair));
         propertyRepairOld.setDateOfScheduledRepair(updatePropertyRepairDateOfScheduledRepair(propertyRepairOld, propertyRepair));
-        propertyRepairOld.setId(updatePropertyRepairId(propertyRepairOld, propertyRepair));
         propertyRepairOld.setDescription(updatePropertyRepairDescription(propertyRepairOld, propertyRepair));
         propertyRepairRepository.save(propertyRepairOld);
     }
@@ -91,8 +90,7 @@ public class PropertyRepairServiceImpl implements PropertyRepairService {
         return propertyRepairNew.getDateOfScheduledRepair();
     }
 
-    private Long updatePropertyRepairId(PropertyRepair propertyRepairOld, PropertyRepair propertyRepairNew) {
-    }
+
 
     private String updatePropertyRepairDescription(PropertyRepair propertyRepairOld, PropertyRepair propertyRepairNew) {
         if (propertyRepairNew.getDescription().isEmpty() &&
@@ -100,8 +98,5 @@ public class PropertyRepairServiceImpl implements PropertyRepairService {
             return propertyRepairOld.getDescription();
         return propertyRepairNew.getDescription();
     }
-    @Override
-    public void deletePropertyRepair(Long propertyRepairId) {
-        propertyRepairRepository.deleteById(propertyRepairId);
-    }
+
 }

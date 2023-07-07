@@ -37,4 +37,9 @@ public class PropertyRepairController {
     public List<PropertyRepair> getPropertyRepairByDate(@RequestParam Long id) throws ParseException {
         return propertyRepairService.findPropertyRepairsByWebUserId(id);
     }
+
+    @PutMapping("/update")
+    public void updateProperty(@RequestBody PropertyRepair propertyRepair) throws Exception{
+        propertyRepairService.updatePropertyRepair(propertyRepair);
+    }
 }

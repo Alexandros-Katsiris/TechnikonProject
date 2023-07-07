@@ -41,8 +41,10 @@ public class PropertyServiceImpl extends BaseServiceImpl<Property> implements Pr
         propertyRepository.save(property);
     }
 
-    @Override
-    public void deleteProperty(Long e9Number) {
-        propertyRepository.deleteById(e9Number);
-    }
+
+    //To implement the controller\/
+//    @Override
+//    public void deleteProperty(Long e9Number) {
+//        propertyRepository.deleteById(e9Number);
+//    }
 }

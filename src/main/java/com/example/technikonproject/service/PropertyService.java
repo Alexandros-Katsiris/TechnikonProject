@@ -12,7 +12,5 @@ public interface PropertyService extends BaseService<Property, Long> {
 
     void update(Property property, Long e9Number);
 
-    void deleteProperty(Long e9Number);
-
     PropertyDto readPropertyDto(Long e9Number);
 }
