@@ -12,7 +12,4 @@ public interface PropertyRepairService {
     List<PropertyRepair> findPropertyRepairsByRangeOfDates(LocalDate dateStart, LocalDate dateEnd);
     List<PropertyRepair> findPropertyRepairsByWebUserId(Long tin);
 
-    void updatePropertyRepair();
-
-    void deletePropertyRepair(Long propertyRepairId);
-}
+    void updatePropertyRepair(PropertyRepair propertyRepair);
