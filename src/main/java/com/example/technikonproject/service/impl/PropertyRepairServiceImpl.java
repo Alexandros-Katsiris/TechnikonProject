@@ -4,6 +4,8 @@ import com.example.technikonproject.domain.PropertyRepair;
 import com.example.technikonproject.domain.WebUser;
 import com.example.technikonproject.domain.enums.RepairStatus;
 import com.example.technikonproject.domain.enums.RepairType;
+import com.example.technikonproject.dto.PropertyRepairDto;
+import com.example.technikonproject.mapper.MapStructMapper;
 import com.example.technikonproject.repository.PropertyRepairRepository;
 import com.example.technikonproject.service.PropertyRepairService;
 import org.springframework.stereotype.Service;
@@ -16,9 +18,16 @@ import java.util.List;
 public class PropertyRepairServiceImpl implements PropertyRepairService {
 
     private final PropertyRepairRepository propertyRepairRepository;
+    private final MapStructMapper mapStructMapper;
 
-    public PropertyRepairServiceImpl(PropertyRepairRepository propertyRepairRepository) {
+    public PropertyRepairServiceImpl(PropertyRepairRepository propertyRepairRepository, MapStructMapper mapStructMapper) {
         this.propertyRepairRepository = propertyRepairRepository;
+        this.mapStructMapper = mapStructMapper;
+    }
+
+    @Override
+    public PropertyRepairDto findPropertyRepair(Long id){
+        return mapStructMapper.propertyRepairToPropertyRepairDto(propertyRepairRepository.findById(id).orElseThrow());
     }
 
     @Override

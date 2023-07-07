@@ -2,6 +2,8 @@ package com.example.technikonproject.domain;
 
 import com.example.technikonproject.domain.enums.RepairStatus;
 import com.example.technikonproject.domain.enums.RepairType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -23,12 +25,14 @@ public class PropertyRepair extends BaseModel{
 
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties()
+    @JsonIgnore
+    @ManyToOne()
     @JoinColumn(referencedColumnName = "tin")
     private WebUser webUser;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(referencedColumnName = "e9number")
     private Property property;
 

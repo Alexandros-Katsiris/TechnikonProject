@@ -1,6 +1,7 @@
 package com.example.technikonproject.controller;
 
 import com.example.technikonproject.domain.PropertyRepair;
+import com.example.technikonproject.dto.PropertyRepairDto;
 import com.example.technikonproject.service.PropertyRepairService;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,8 @@ public class PropertyRepairController {
     //private final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
     private final PropertyRepairService propertyRepairService;
+
+
 
     public PropertyRepairController(PropertyRepairService propertyRepairService) {
         this.propertyRepairService = propertyRepairService;
@@ -36,6 +39,11 @@ public class PropertyRepairController {
     @GetMapping("/get/properties/repair/id")
     public List<PropertyRepair> getPropertyRepairByDate(@RequestParam Long id) throws ParseException {
         return propertyRepairService.findPropertyRepairsByWebUserId(id);
+    }
+
+    @GetMapping("getById")
+    public PropertyRepairDto getPropertyRepairDto(@RequestParam Long id) throws Exception{
+        return propertyRepairService.findPropertyRepair(id);
     }
 
     @PutMapping("/update")

@@ -3,7 +3,7 @@ package com.example.technikonproject.dto;
 import lombok.Data;
 
 @Data
-public class WebUserDto {
+public class WebUserForRepairDto {
 
     private Long tin;
 
@@ -11,10 +11,5 @@ public class WebUserDto {
 
     private String surname;
 
-    private AddressDto address;
-
-    private Integer phoneNumber;
-
-    private String email;
-
+    private String phoneNumber;
 }

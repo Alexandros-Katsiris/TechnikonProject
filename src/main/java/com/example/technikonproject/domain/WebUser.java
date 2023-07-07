@@ -24,7 +24,7 @@ public class WebUser extends BaseModel{
     private String firstName;
 
     @Column(length = 50, nullable = false, updatable = false)
-    private String Surname;
+    private String surname;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(nullable = false,unique = true)

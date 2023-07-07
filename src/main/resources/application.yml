@@ -25,7 +25,7 @@ spring:
             max-lifetime: 60000
             maximum-pool-size: 10
             minimum-idle: 1
-            pool-name: eshopConnectionPooling
+            pool-name: techikonConnectionPooling
             transaction-isolation: TRANSACTION_READ_COMMITTED
             username: scytalys
             password: password

@@ -1,11 +1,10 @@
 package com.example.technikonproject.mapper;
 
 import com.example.technikonproject.domain.Property;
+import com.example.technikonproject.domain.PropertyRepair;
 import com.example.technikonproject.domain.WebUser;
 import com.example.technikonproject.domain.subDomain.Address;
-import com.example.technikonproject.dto.AddressDto;
-import com.example.technikonproject.dto.PropertyDto;
-import com.example.technikonproject.dto.WebUserDto;
+import com.example.technikonproject.dto.*;
 import org.mapstruct.Mapper;
 
 @Mapper()
@@ -16,4 +15,9 @@ public interface MapStructMapper {
     AddressDto addressToAddressDto(Address address);
 
     PropertyDto propertyToPropertyDto(Property property);
+
+    PropertyRepairDto propertyRepairToPropertyRepairDto(PropertyRepair propertyRepair);
+
+    WebUserForRepairDto webUserToWebUserTinDto(WebUser webUser);
 }
+
