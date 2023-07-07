@@ -2,6 +2,8 @@ package com.example.technikonproject.service.impl;
 
 import com.example.technikonproject.domain.WebUser;
 import com.example.technikonproject.domain.subDomain.Address;
+import com.example.technikonproject.dto.WebUserDto;
+import com.example.technikonproject.mapper.MapStructMapper;
 import com.example.technikonproject.repository.WebUserRepository;
 import com.example.technikonproject.service.AddressService;
 import com.example.technikonproject.service.WebUserService;
@@ -16,27 +18,25 @@ import java.util.List;
 public class WebUserServiceImpl extends BaseServiceImpl<WebUser> implements WebUserService {
     private final WebUserRepository webUserRepository;
     private final AddressService addressService;
+    private final MapStructMapper mapStructMapper;
+
 
     @Override
     public JpaRepository<WebUser, Long> getRepository() {
         return webUserRepository;
     }
 
-    @Override
-    public WebUser create(WebUser webUser) {
-        return webUserRepository.save(webUser);
-    }
-
-    @Override
-    public WebUser read(Long id) {
-        return webUserRepository.findById(id).orElseThrow();
-    }
 
     @Override
     public WebUser readWebUser(Long tin) {
         //return webUserRepository.readWebUserByTin(tin);
         return webUserRepository.readWebUserByTin(tin);
         //return webUser;
+    }
+
+    @Override
+    public WebUserDto readDto(Long id){
+        return mapStructMapper.webUserToWebUserDto(read(id));
     }
 
     public List<WebUser> readWebUserByFirstName(String name) {

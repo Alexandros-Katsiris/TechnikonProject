@@ -1,6 +1,7 @@
 package com.example.technikonproject.controller;
 
 import com.example.technikonproject.domain.Property;
+import com.example.technikonproject.dto.PropertyDto;
 import com.example.technikonproject.service.PropertyService;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +19,8 @@ public class PropertyController {
 
     // Search Properties. Search by e9 -> admin/user, search by tin number -> admin only
     @GetMapping("/getByE9/{e9Number}")
-    public Property readProperty(@PathVariable Long e9Number){
-        return propertyService.findProperty(e9Number);
+    public PropertyDto readPropertyDto(@PathVariable Long e9Number){
+        return propertyService.readPropertyDto(e9Number);
     }
 
     @GetMapping("/getByTin/{tin}")

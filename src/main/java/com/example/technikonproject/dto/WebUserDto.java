@@ -1,6 +1,5 @@
 package com.example.technikonproject.dto;
 
-import com.example.technikonproject.domain.subDomain.Address;
 import lombok.Data;
 
 @Data
@@ -12,7 +11,7 @@ public class WebUserDto {
 
     private String Surname;
 
-    private Address address;
+    private AddressDto address;
 
     private Integer phoneNumber;
 

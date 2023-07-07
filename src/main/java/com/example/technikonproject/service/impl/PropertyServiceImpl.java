@@ -1,6 +1,8 @@
 package com.example.technikonproject.service.impl;
 
 import com.example.technikonproject.domain.Property;
+import com.example.technikonproject.dto.PropertyDto;
+import com.example.technikonproject.mapper.MapStructMapper;
 import com.example.technikonproject.repository.PropertyRepository;
 import com.example.technikonproject.service.PropertyService;
 import org.springframework.stereotype.Service;
@@ -11,14 +13,21 @@ import java.util.List;
 public class PropertyServiceImpl implements PropertyService {
 
     private final PropertyRepository propertyRepository;
+    private final MapStructMapper mapStructMapper;
 
-    public PropertyServiceImpl(PropertyRepository propertyRepository) {
+    public PropertyServiceImpl(PropertyRepository propertyRepository, MapStructMapper mapStructMapper) {
         this.propertyRepository = propertyRepository;
+        this.mapStructMapper = mapStructMapper;
     }
 
     @Override
     public void addNewProperty(Property property) {
         propertyRepository.save(property);
+    }
+
+    @Override
+    public PropertyDto readPropertyDto(Long e9Number){
+        return mapStructMapper.propertyToPropertyDto(propertyRepository.findPropertyByE9Number(e9Number));
     }
 
     @Override
