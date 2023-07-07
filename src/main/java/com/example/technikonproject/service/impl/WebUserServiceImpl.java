@@ -29,9 +29,7 @@ public class WebUserServiceImpl extends BaseServiceImpl<WebUser> implements WebU
 
     @Override
     public WebUser readWebUser(Long tin) {
-        //return webUserRepository.readWebUserByTin(tin);
         return webUserRepository.readWebUserByTin(tin);
-        //return webUser;
     }
 
     @Override

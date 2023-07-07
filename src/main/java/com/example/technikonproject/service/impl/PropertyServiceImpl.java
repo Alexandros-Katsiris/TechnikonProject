@@ -5,17 +5,24 @@ import com.example.technikonproject.dto.PropertyDto;
 import com.example.technikonproject.mapper.MapStructMapper;
 import com.example.technikonproject.repository.PropertyRepository;
 import com.example.technikonproject.service.PropertyService;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class PropertyServiceImpl implements PropertyService {
+public class PropertyServiceImpl extends BaseServiceImpl<Property> implements PropertyService {
 
     private final PropertyRepository propertyRepository;
     private final MapStructMapper mapStructMapper;
 
     public PropertyServiceImpl(PropertyRepository propertyRepository, MapStructMapper mapStructMapper) {
+    @Override
+    public JpaRepository<Property, Long> getRepository() {
+        return propertyRepository;
+    }
+
+    public PropertyServiceImpl(PropertyRepository propertyRepository) {
         this.propertyRepository = propertyRepository;
         this.mapStructMapper = mapStructMapper;
     }
