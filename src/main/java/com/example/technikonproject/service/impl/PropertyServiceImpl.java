@@ -5,35 +5,28 @@ import com.example.technikonproject.dto.PropertyDto;
 import com.example.technikonproject.mapper.MapStructMapper;
 import com.example.technikonproject.repository.PropertyRepository;
 import com.example.technikonproject.service.PropertyService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class PropertyServiceImpl extends BaseServiceImpl<Property> implements PropertyService {
 
     private final PropertyRepository propertyRepository;
     private final MapStructMapper mapStructMapper;
 
-    public PropertyServiceImpl(PropertyRepository propertyRepository, MapStructMapper mapStructMapper) {
-    @Override
+
     public JpaRepository<Property, Long> getRepository() {
         return propertyRepository;
     }
 
-    public PropertyServiceImpl(PropertyRepository propertyRepository) {
-        this.propertyRepository = propertyRepository;
-        this.mapStructMapper = mapStructMapper;
-    }
+
 
     @Override
-    public void addNewProperty(Property property) {
-        propertyRepository.save(property);
-    }
-
-    @Override
-    public PropertyDto readPropertyDto(Long e9Number){
+    public PropertyDto readPropertyDto(Long e9Number) {
         return mapStructMapper.propertyToPropertyDto(propertyRepository.findPropertyByE9Number(e9Number));
     }
 
@@ -42,10 +35,6 @@ public class PropertyServiceImpl extends BaseServiceImpl<Property> implements Pr
         return propertyRepository.findByWebUserTin(tin).stream().toList();
     }
 
-    @Override
-    public Property findProperty(Long e9Number) {
-        return propertyRepository.findPropertyByE9Number(e9Number);
-    }
 
     @Override
     public void update(Property property, Long e9Number) {
