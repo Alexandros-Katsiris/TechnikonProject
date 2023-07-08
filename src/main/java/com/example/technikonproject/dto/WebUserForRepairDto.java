@@ -7,9 +7,9 @@ public class WebUserForRepairDto {
 
     private Long tin;
 
-    private String firstName;
-
-    private String surname;
-
-    private String phoneNumber;
+//    private String firstName;
+//
+//    private String surname;
+//
+//    private String phoneNumber;
 }

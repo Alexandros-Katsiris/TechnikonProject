@@ -19,5 +19,8 @@ public interface MapStructMapper {
     PropertyRepairDto propertyRepairToPropertyRepairDto(PropertyRepair propertyRepair);
 
     WebUserForRepairDto webUserToWebUserTinDto(WebUser webUser);
+
+    PropertyForRepairDto propertyToPropertyE9Dto(Property property);
+
 }
 

@@ -36,13 +36,15 @@ public class PropertyRepairServiceImpl implements PropertyRepairService {
     }
 
     @Override
-    public List<PropertyRepair> findPropertyRepairsByRangeOfDates(LocalDate dateStart, LocalDate dateEnd) {
-        return propertyRepairRepository.searchPropertyRepairsByDateOfScheduledRepairBetween(dateStart, dateEnd);
+    public List<PropertyRepairDto> findPropertyRepairsByRangeOfDates(LocalDate dateStart, LocalDate dateEnd) {
+        List<PropertyRepair> prRepairs = propertyRepairRepository.searchPropertyRepairsByDateOfScheduledRepairBetween(dateStart, dateEnd);
+        return prRepairs.stream().map(mapStructMapper::propertyRepairToPropertyRepairDto).toList();
     }
 
     @Override
-    public List<PropertyRepair> findPropertyRepairsByWebUserId(Long id) {
-        return propertyRepairRepository.searchPropertyRepairsByWebUserId(id);
+    public List<PropertyRepairDto> findPropertyRepairsByWebUserId(Long id) {
+        List<PropertyRepair> prRepairs = propertyRepairRepository.searchPropertyRepairsByWebUserId(id);
+        return prRepairs.stream().map(mapStructMapper::propertyRepairToPropertyRepairDto).toList();
     }
 
     @Override

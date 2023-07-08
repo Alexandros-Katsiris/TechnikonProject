@@ -18,4 +18,7 @@ public class PropertyRepairDto {
     private BigDecimal costOfRepair;
 
     private WebUserForRepairDto webUser;
+
+    private PropertyForRepairDto property;
+
 }

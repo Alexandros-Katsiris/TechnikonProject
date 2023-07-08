@@ -13,10 +13,7 @@ import java.util.List;
 @RequestMapping("/propertyRepair")
 public class PropertyRepairController {
 
-    //private final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-
     private final PropertyRepairService propertyRepairService;
-
 
 
     public PropertyRepairController(PropertyRepairService propertyRepairService) {
@@ -29,15 +26,17 @@ public class PropertyRepairController {
         propertyRepairService.addPropertyRepairId(propertyRepair);
     }
 
+
     @GetMapping("/get/properties/repair/date")
-    public List<PropertyRepair> getPropertyRepairByDate(@RequestParam String dateStart, @RequestParam String dateEnd) throws ParseException {
+    public List<PropertyRepairDto> getPropertyRepairByDate(@RequestParam String dateStart, @RequestParam String dateEnd) throws ParseException {
             LocalDate dateStartConverted = LocalDate.parse(dateStart);
             LocalDate dateEndConverted = LocalDate.parse(dateEnd);
             return propertyRepairService.findPropertyRepairsByRangeOfDates(dateStartConverted, dateEndConverted);
     }
 
-    @GetMapping("/get/properties/repair/id")
-    public List<PropertyRepair> getPropertyRepairByDate(@RequestParam Long id) throws ParseException {
+    // From PDF -> ::: User ID in case we want to display all the repairs made for a property owner :::
+    @GetMapping("/get/properties/repair/webUserId")
+    public List<PropertyRepairDto> getPropertyRepairByWebUserId(@RequestParam Long id) throws ParseException {
         return propertyRepairService.findPropertyRepairsByWebUserId(id);
     }
 
