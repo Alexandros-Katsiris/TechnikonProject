@@ -6,7 +6,7 @@ values
 
 insert into webusers (id,tin,"address_id",email,firstname,phonenumber,password, surname, username,isAdmin)
 values
-    (1,170214943, 1, 'email@email.com', ',mitsos', 694018495, 'password', 'paparis', 'user',true),
+    (1,170214943, 1, 'email@email.com', 'mitsos', 694018495, 'password', 'paparis', 'user',true),
     (2,248966566, 2, 'email2@email.com', 'giannis', 696969696, 'scytalys', 'malakas', 'name',false);
 
 

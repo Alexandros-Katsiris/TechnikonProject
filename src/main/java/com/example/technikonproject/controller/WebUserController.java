@@ -28,19 +28,18 @@ public class WebUserController {
     }
 
 
-
     @GetMapping("/tin")
-    public WebUser readByTIn(@RequestParam(name = "tin") Long tin) {
+    public WebUserDto readByTIn(@RequestParam(name = "tin") Long tin) {
         return webUserService.readWebUser(tin);
     }
 
     @GetMapping("/name/{name}")
-    public List<WebUser> readByFirstName(@PathVariable String name) {
+    public List<WebUserDto> readByFirstName(@PathVariable String name) {
         return webUserService.readWebUserByFirstName(name);
     }
 
     @GetMapping("/email/{email}")
-    public WebUser readByEmail(@PathVariable String email) {
+    public WebUserDto readByEmail(@PathVariable String email) {
         return webUserService.readWebUserByEmail(email);
     }
 

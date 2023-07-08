@@ -26,24 +26,25 @@ public class WebUserServiceImpl extends BaseServiceImpl<WebUser> implements WebU
         return webUserRepository;
     }
 
-
-    @Override
-    public WebUser readWebUser(Long tin) {
-        return webUserRepository.readWebUserByTin(tin);
-    }
-
     @Override
     public WebUserDto readDto(Long id){
         return mapStructMapper.webUserToWebUserDto(read(id));
     }
 
-    public List<WebUser> readWebUserByFirstName(String name) {
-        return webUserRepository.readWebUserByFirstName(name);
+    @Override
+    public WebUserDto readWebUser(Long tin) {
+        return mapStructMapper.webUserToWebUserDto(webUserRepository.readWebUserByTin(tin));
+    }
+
+
+    public List<WebUserDto> readWebUserByFirstName(String name) {
+        List<WebUser> webUsers = webUserRepository.readWebUserByFirstName(name);
+        return webUsers.stream().map(mapStructMapper::webUserToWebUserDto).toList();
     }
 
     @Override
-    public WebUser readWebUserByEmail(String email) {
-        return webUserRepository.readWebUserByEmail(email);
+    public WebUserDto readWebUserByEmail(String email) {
+        return mapStructMapper.webUserToWebUserDto(webUserRepository.readWebUserByEmail(email));
     }
 
     @Override

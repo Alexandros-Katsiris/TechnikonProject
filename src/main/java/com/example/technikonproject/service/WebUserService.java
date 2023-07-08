@@ -8,11 +8,11 @@ import java.util.List;
 
 public interface WebUserService extends BaseService<WebUser, Long> {
 
-    WebUser readWebUser(Long tin);
+    WebUserDto readWebUser(Long tin);
 
-    List<WebUser> readWebUserByFirstName(String name);
+    List<WebUserDto> readWebUserByFirstName(String name);
 
-    WebUser readWebUserByEmail(String email);
+    WebUserDto readWebUserByEmail(String email);
 
     void update(WebUser webuser);
 
