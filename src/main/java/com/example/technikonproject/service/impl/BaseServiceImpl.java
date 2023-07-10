@@ -23,9 +23,16 @@ public abstract class BaseServiceImpl<T extends BaseModel> extends BaseComponent
         return item;
     }
 
+    //    @Override
+//    public void update(final T item) {
+//        logger.trace("Updating {}.", item);
+//        getRepository().save(item);
+//    }
     @Override
-    public void update(final T item) {
-        logger.trace("Updating {}.", item);
+    public void update(T item) {
+        if (!getRepository().existsById(item.getId())) {
+            throw new RuntimeException("Cant update non-existing entity");
+        }
         getRepository().save(item);
     }
 

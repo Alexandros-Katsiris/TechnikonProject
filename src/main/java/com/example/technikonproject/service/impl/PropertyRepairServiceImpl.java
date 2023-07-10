@@ -8,6 +8,7 @@ import com.example.technikonproject.dto.PropertyRepairDto;
 import com.example.technikonproject.mapper.MapStructMapper;
 import com.example.technikonproject.repository.PropertyRepairRepository;
 import com.example.technikonproject.service.PropertyRepairService;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -15,9 +16,11 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Service
-public class PropertyRepairServiceImpl implements PropertyRepairService {
+public class PropertyRepairServiceImpl extends BaseServiceImpl<PropertyRepair>
+        implements PropertyRepairService {
 
     private final PropertyRepairRepository propertyRepairRepository;
+
     private final MapStructMapper mapStructMapper;
 
     public PropertyRepairServiceImpl(PropertyRepairRepository propertyRepairRepository, MapStructMapper mapStructMapper) {
@@ -26,23 +29,30 @@ public class PropertyRepairServiceImpl implements PropertyRepairService {
     }
 
     @Override
-    public PropertyRepairDto findPropertyRepair(Long id){
+    public JpaRepository<PropertyRepair, Long> getRepository() {
+        return propertyRepairRepository;
+    }
+
+    @Override
+    public PropertyRepairDto findPropertyRepair(Long id) {
         return mapStructMapper.propertyRepairToPropertyRepairDto(propertyRepairRepository.findById(id).orElseThrow());
     }
 
+//    @Override
+//    public void addPropertyRepairId(PropertyRepair propertyRepair) {
+//        propertyRepairRepository.save(propertyRepair);
+//    }
+
     @Override
-    public void addPropertyRepairId(PropertyRepair propertyRepair) {
-        propertyRepairRepository.save(propertyRepair);
+    public List<PropertyRepairDto> findPropertyRepairsByRangeOfDates(LocalDate dateStart, LocalDate dateEnd) {
+        List<PropertyRepair> prRepairs = propertyRepairRepository.searchPropertyRepairsByDateOfScheduledRepairBetween(dateStart, dateEnd);
+        return prRepairs.stream().map(mapStructMapper::propertyRepairToPropertyRepairDto).toList();
     }
 
     @Override
-    public List<PropertyRepair> findPropertyRepairsByRangeOfDates(LocalDate dateStart, LocalDate dateEnd) {
-        return propertyRepairRepository.searchPropertyRepairsByDateOfScheduledRepairBetween(dateStart, dateEnd);
-    }
-
-    @Override
-    public List<PropertyRepair> findPropertyRepairsByWebUserId(Long id) {
-        return propertyRepairRepository.searchPropertyRepairsByWebUserId(id);
+    public List<PropertyRepairDto> findPropertyRepairsByWebUserId(Long id) {
+        List<PropertyRepair> prRepairs = propertyRepairRepository.searchPropertyRepairsByWebUserId(id);
+        return prRepairs.stream().map(mapStructMapper::propertyRepairToPropertyRepairDto).toList();
     }
 
     @Override
@@ -63,7 +73,7 @@ public class PropertyRepairServiceImpl implements PropertyRepairService {
     private RepairType updatePropertyRepairType(PropertyRepair propertyRepairOld, PropertyRepair propertyRepairNew) {
         if (propertyRepairNew.getRepairType() != null &&
                 !propertyRepairNew.getRepairType().equals(propertyRepairOld.getRepairType()))
-            return propertyRepairNew.getRepairType() ;
+            return propertyRepairNew.getRepairType();
         return propertyRepairOld.getRepairType();
     }
 
@@ -100,12 +110,10 @@ public class PropertyRepairServiceImpl implements PropertyRepairService {
     }
 
 
-
     private String updatePropertyRepairDescription(PropertyRepair propertyRepairOld, PropertyRepair propertyRepairNew) {
         if (propertyRepairNew.getDescription().isEmpty() &&
                 propertyRepairNew.getDescription().equals(propertyRepairOld.getDescription()))
             return propertyRepairOld.getDescription();
         return propertyRepairNew.getDescription();
     }
-
 }

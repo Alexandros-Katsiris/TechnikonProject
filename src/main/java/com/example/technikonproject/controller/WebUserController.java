@@ -17,45 +17,44 @@ public class WebUserController {
         this.webUserService = webUserService;
     }
 
-    @PostMapping("/add")
+    @PostMapping()
     public void add(@RequestBody WebUser webUser) {
         webUserService.create(webUser);
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public WebUserDto readDto(@RequestParam(name = "id") Long id) {
         return webUserService.readDto(id);
     }
 
 
-
-    @GetMapping("/tin")
+    @GetMapping(params = "tin")
     public WebUser readByTIn(@RequestParam(name = "tin") Long tin) {
         return webUserService.readWebUser(tin);
     }
 
-    @GetMapping("/name/{name}")
+    @GetMapping(params = "username")
     public List<WebUser> readByFirstName(@PathVariable String name) {
         return webUserService.readWebUserByFirstName(name);
     }
 
-    @GetMapping("/email/{email}")
+    @GetMapping(params = "email")
     public WebUser readByEmail(@PathVariable String email) {
         return webUserService.readWebUserByEmail(email);
     }
 
-    @PutMapping("/updateUser")
+    @PutMapping()
     public void update(@RequestBody WebUser webUser
     ) throws Exception {
         webUserService.update(webUser);
     }
 
-    @DeleteMapping("/deleteId/{id}")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         webUserService.deleteById(id);
     }
 
-    @DeleteMapping("/delete/{tin}")
+    @DeleteMapping(params = "tin")
     public void deleteByTin(@PathVariable Long tin) {
         webUserService.deleteByTin(tin);
     }

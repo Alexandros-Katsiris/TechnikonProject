@@ -13,41 +13,40 @@ import java.util.List;
 @RequestMapping("/propertyRepair")
 public class PropertyRepairController {
 
-    //private final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-
     private final PropertyRepairService propertyRepairService;
-
 
 
     public PropertyRepairController(PropertyRepairService propertyRepairService) {
         this.propertyRepairService = propertyRepairService;
     }
 
-    //Not working correctly
-    @PostMapping("/add/prRepairs")
-    public void addPropertyRepairs(@RequestBody PropertyRepair propertyRepair){
-        propertyRepairService.addPropertyRepairId(propertyRepair);
+//    //Not working correctly
+//    @PostMapping()
+//    public void addPropertyRepairs(@RequestBody PropertyRepair propertyRepair){
+//        propertyRepairService.addPropertyRepairId(propertyRepair);
+//    }
+
+
+    @GetMapping(params = {"dateStart", "dateEnd"})
+    public List<PropertyRepairDto> getPropertyRepairByDate(String dateStart, String dateEnd) throws ParseException {
+        LocalDate dateStartConverted = LocalDate.parse(dateStart);
+        LocalDate dateEndConverted = LocalDate.parse(dateEnd);
+        return propertyRepairService.findPropertyRepairsByRangeOfDates(dateStartConverted, dateEndConverted);
     }
 
-    @GetMapping("/get/properties/repair/date")
-    public List<PropertyRepair> getPropertyRepairByDate(@RequestParam String dateStart, @RequestParam String dateEnd) throws ParseException {
-            LocalDate dateStartConverted = LocalDate.parse(dateStart);
-            LocalDate dateEndConverted = LocalDate.parse(dateEnd);
-            return propertyRepairService.findPropertyRepairsByRangeOfDates(dateStartConverted, dateEndConverted);
-    }
-
-    @GetMapping("/get/properties/repair/id")
-    public List<PropertyRepair> getPropertyRepairByDate(@RequestParam Long id) throws ParseException {
+    // From PDF -> ::: User ID in case we want to display all the repairs made for a property owner :::
+    @GetMapping(params = "userId")
+    public List<PropertyRepairDto> getPropertyRepairByWebUserId(Long id) throws ParseException {
         return propertyRepairService.findPropertyRepairsByWebUserId(id);
     }
 
-    @GetMapping("getById")
-    public PropertyRepairDto getPropertyRepairDto(@RequestParam Long id) throws Exception{
+    @GetMapping("/{id}")
+    public PropertyRepairDto getPropertyRepairDto(@PathVariable Long id) throws Exception {
         return propertyRepairService.findPropertyRepair(id);
     }
 
-    @PutMapping("/update")
-    public void updateProperty(@RequestBody PropertyRepair propertyRepair) throws Exception{
+    @PutMapping()
+    public void updateProperty(@RequestBody PropertyRepair propertyRepair) throws Exception {
         propertyRepairService.updatePropertyRepair(propertyRepair);
     }
 }

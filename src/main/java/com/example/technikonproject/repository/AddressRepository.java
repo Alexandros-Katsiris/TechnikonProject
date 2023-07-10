@@ -11,5 +11,5 @@ public interface AddressRepository extends JpaRepository<Address, Long> {
 
     List<Address> findAddressByStreetNameAndStreetNumberAndZipcode(String name, Integer number, Integer zipCode);
 
-    Address findAddressById(Long id);
+//    Address findAddressById(Long id);
 }

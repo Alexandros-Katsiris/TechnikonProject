@@ -1,0 +1,28 @@
+{
+"e9Number": 15439857,
+"yearOfConstruction": "2012-12-11T22:00:00.000+00:00",
+"address":{
+"streetName": "omirou",
+"streetNumber": 8,
+"zipcode": 11141,
+"floorNumber": null
+},
+"propertyType": null,
+"webUser":{
+"tin": 170214943,
+"firstName": ",mitsos",
+"address":{
+ "streetName": "omirou",
+ "streetNumber": 8, "zipcode": 11141,
+ "floorNumber": null
+ },
+"phoneNumber": 694018495,
+"email": "email@email.com",
+"username": "user",
+"password": "password",
+"admin": true,
+"surname": "paparis"
+},
+"picture": null,
+"location": null
+}

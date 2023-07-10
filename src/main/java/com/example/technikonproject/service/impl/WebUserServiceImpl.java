@@ -33,7 +33,7 @@ public class WebUserServiceImpl extends BaseServiceImpl<WebUser> implements WebU
     }
 
     @Override
-    public WebUserDto readDto(Long id){
+    public WebUserDto readDto(Long id) {
         return mapStructMapper.webUserToWebUserDto(read(id));
     }
 
@@ -99,7 +99,7 @@ public class WebUserServiceImpl extends BaseServiceImpl<WebUser> implements WebU
         if (updateAddress) {
             Address existingAddress = addressService.addressExist(newAddress);
             if (existingAddress == null) {
-                addressService.addAddress(newAddress);
+                addressService.create(newAddress);
                 return newAddress;
             } else {
                 return existingAddress;

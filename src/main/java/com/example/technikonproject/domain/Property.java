@@ -1,7 +1,7 @@
 package com.example.technikonproject.domain;
 
-import com.example.technikonproject.domain.subDomain.Address;
 import com.example.technikonproject.domain.enums.PropertyType;
+import com.example.technikonproject.domain.subDomain.Address;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,9 +15,9 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-@Table(name="properties")
+@Table(name = "properties")
 @SequenceGenerator(name = "idGenerator", sequenceName = "property_seq", initialValue = 1, allocationSize = 1)
-public class Property extends BaseModel{
+public class Property extends BaseModel {
 
 
     @Column(unique = true)
@@ -26,8 +26,8 @@ public class Property extends BaseModel{
     @Column
     private Date yearOfConstruction;
 
-    @ManyToOne
-    @JoinColumn
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(referencedColumnName = "id", nullable = false, unique = true)
     private Address address;
 
     @Column
