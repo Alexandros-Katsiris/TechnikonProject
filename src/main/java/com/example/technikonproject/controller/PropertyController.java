@@ -17,34 +17,34 @@ public class PropertyController {
         this.propertyService = propertyService;
     }
 
-    @PostMapping("/addProperty")
+    @PostMapping()
     public void addProperty(@RequestBody Property property) {
         propertyService.create(property);
     }
 
     // Search Properties. Search by e9 -> admin/user, search by tin number -> admin only
-    @GetMapping("/getByE9/{e9Number}")
-    public PropertyDto readPropertyDto(@PathVariable Long e9Number){
+    @GetMapping(params = "e9Number")
+    public PropertyDto readPropertyDto(Long e9Number){
         return propertyService.readPropertyDto(e9Number);
     }
 
-    @GetMapping("/getByTin/{tin}")
-    public List<Property> readPropertiesByTin(@PathVariable Long tin) {
+    @GetMapping(params = "tin")
+    public List<Property> readPropertiesByTin(Long tin) {
         return propertyService.findPropertiesByTin(tin);
     }
 
-    @GetMapping("/getById")
-    public Property read(@RequestParam(name = "id") Long id) {
+    @GetMapping("/{id}")
+    public Property read(@PathVariable Long id) {
         return propertyService.read(id);
     }
 
-    @PutMapping("/updateProperty")
+    @PutMapping()
     public void updateProperty(@RequestBody Property property) {
         propertyService.update(property);
     }
 
-    @DeleteMapping("/delete/{e9Number}")
-    public void deleteProperty(@PathVariable Long id) {
-        propertyService.deleteById(id);
+    @DeleteMapping(params = "e9Number")
+    public void deleteProperty(Long e9Number) {
+        propertyService.deleteById(e9Number);
     }
 }

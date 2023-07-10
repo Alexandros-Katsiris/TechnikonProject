@@ -26,7 +26,7 @@ public class WebUser extends BaseModel{
     @Column(length = 50, nullable = false, updatable = false)
     private String surname;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(nullable = false,unique = true)
     private Address address;
 
