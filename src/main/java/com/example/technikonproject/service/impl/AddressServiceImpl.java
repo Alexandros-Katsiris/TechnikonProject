@@ -3,12 +3,14 @@ package com.example.technikonproject.service.impl;
 import com.example.technikonproject.domain.subDomain.Address;
 import com.example.technikonproject.repository.AddressRepository;
 import com.example.technikonproject.service.AddressService;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class AddressServiceImpl implements AddressService {
+public class AddressServiceImpl extends BaseServiceImpl<Address>
+        implements AddressService {
 
     private final AddressRepository addressRepository;
 
@@ -17,14 +19,19 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Address addAddress(Address address) {
-        return addressRepository.save(address);
+    public JpaRepository<Address, Long> getRepository() {
+        return addressRepository;
     }
 
-    @Override
-    public Address findAddressById(Long id) {
-        return addressRepository.findAddressById(id);
-    }
+//    @Override
+//    public Address addAddress(Address address) {
+//        return addressRepository.save(address);
+//    }
+
+//    @Override
+//    public Address findAddressById(Long id) {
+//        return addressRepository.findAddressById(id);
+//    }
 
     @Override
     public Address addressExist(Address address) {

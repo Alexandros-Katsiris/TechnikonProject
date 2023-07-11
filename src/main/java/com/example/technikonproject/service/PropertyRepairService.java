@@ -6,9 +6,9 @@ import com.example.technikonproject.dto.PropertyRepairDto;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface PropertyRepairService {
+public interface PropertyRepairService extends BaseService<PropertyRepair, Long> {
 
-    void addPropertyRepairId(PropertyRepair propertyRepair);
+//    void addPropertyRepairId(PropertyRepair propertyRepair);
 
     List<PropertyRepairDto> findPropertyRepairsByRangeOfDates(LocalDate dateStart, LocalDate dateEnd);
     List<PropertyRepairDto> findPropertyRepairsByWebUserId(Long tin);

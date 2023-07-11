@@ -25,6 +25,11 @@ public class PropertyRepairController {
     public void addPropertyRepairs(@RequestBody PropertyRepair propertyRepair){
         propertyRepairService.addPropertyRepairId(propertyRepair);
     }
+//    //Not working correctly
+//    @PostMapping()
+//    public void addPropertyRepairs(@RequestBody PropertyRepair propertyRepair){
+//        propertyRepairService.addPropertyRepairId(propertyRepair);
+//    }
 
 
     @GetMapping(params = {"dateStart", "dateEnd"})

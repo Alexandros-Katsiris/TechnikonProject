@@ -25,8 +25,6 @@ public class PropertyServiceImpl extends BaseServiceImpl<Property> implements Pr
         return propertyRepository;
     }
 
-
-
     @Override
     public PropertyDto readPropertyDto(Long e9Number) {
         return mapStructMapper.propertyToPropertyDto(propertyRepository.findPropertyByE9Number(e9Number));

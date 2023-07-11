@@ -8,6 +8,7 @@ import com.example.technikonproject.dto.PropertyRepairDto;
 import com.example.technikonproject.mapper.MapStructMapper;
 import com.example.technikonproject.repository.PropertyRepairRepository;
 import com.example.technikonproject.service.PropertyRepairService;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -15,9 +16,11 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Service
-public class PropertyRepairServiceImpl implements PropertyRepairService {
+public class PropertyRepairServiceImpl extends BaseServiceImpl<PropertyRepair>
+        implements PropertyRepairService {
 
     private final PropertyRepairRepository propertyRepairRepository;
+
     private final MapStructMapper mapStructMapper;
 
     public PropertyRepairServiceImpl(PropertyRepairRepository propertyRepairRepository, MapStructMapper mapStructMapper) {
@@ -26,14 +29,19 @@ public class PropertyRepairServiceImpl implements PropertyRepairService {
     }
 
     @Override
+    public JpaRepository<PropertyRepair, Long> getRepository() {
+        return propertyRepairRepository;
+    }
+
+    @Override
     public PropertyRepairDto findPropertyRepair(Long id){
         return mapStructMapper.propertyRepairToPropertyRepairDto(propertyRepairRepository.findById(id).orElseThrow());
     }
 
-    @Override
-    public void addPropertyRepairId(PropertyRepair propertyRepair) {
-        propertyRepairRepository.save(propertyRepair);
-    }
+//    @Override
+//    public void addPropertyRepairId(PropertyRepair propertyRepair) {
+//        propertyRepairRepository.save(propertyRepair);
+//    }
 
     @Override
     public List<PropertyRepairDto> findPropertyRepairsByRangeOfDates(LocalDate dateStart, LocalDate dateEnd) {
@@ -65,7 +73,7 @@ public class PropertyRepairServiceImpl implements PropertyRepairService {
     private RepairType updatePropertyRepairType(PropertyRepair propertyRepairOld, PropertyRepair propertyRepairNew) {
         if (propertyRepairNew.getRepairType() != null &&
                 !propertyRepairNew.getRepairType().equals(propertyRepairOld.getRepairType()))
-            return propertyRepairNew.getRepairType() ;
+            return propertyRepairNew.getRepairType();
         return propertyRepairOld.getRepairType();
     }
 
