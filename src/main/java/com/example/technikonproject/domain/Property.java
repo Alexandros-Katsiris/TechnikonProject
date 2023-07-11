@@ -16,7 +16,7 @@ import java.util.Date;
 @Setter
 @Entity
 @Table(name = "properties")
-@SequenceGenerator(name = "idGenerator", sequenceName = "property_seq", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "idGenerator", sequenceName = "property_seq", allocationSize = 1)
 public class Property extends BaseModel {
 
 
@@ -26,8 +26,7 @@ public class Property extends BaseModel {
     @Column
     private Date yearOfConstruction;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(nullable = false,unique = true)
+    @Embedded
     private Address address;
 
     @Column

@@ -12,7 +12,6 @@ public class PropertyDto {
 
     private Date yearOfConstruction;
 
-    private AddressDto address;
 
     private PropertyType propertyType;
 

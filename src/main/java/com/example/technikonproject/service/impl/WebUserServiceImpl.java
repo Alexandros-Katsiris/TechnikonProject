@@ -4,7 +4,6 @@ import com.example.technikonproject.domain.WebUser;
 import com.example.technikonproject.dto.WebUserDto;
 import com.example.technikonproject.mapper.MapStructMapper;
 import com.example.technikonproject.repository.WebUserRepository;
-import com.example.technikonproject.service.AddressService;
 import com.example.technikonproject.service.WebUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,7 +15,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class WebUserServiceImpl extends BaseServiceImpl<WebUser> implements WebUserService {
     private final WebUserRepository webUserRepository;
-    private final AddressService addressService;
     private final MapStructMapper mapStructMapper;
 
 
@@ -53,7 +51,7 @@ public class WebUserServiceImpl extends BaseServiceImpl<WebUser> implements WebU
         webUserOld.setEmail(updateUserEmail(webUser, webUserOld));
         webUserOld.setPassword(updateUserPassword(webUser, webUserOld));
         webUserOld.setFirstName(updateUserName(webUser, webUserOld));
-        webUserOld.setAddress(addressService.updateAddress(webUser.getAddress(), webUserOld.getAddress()));
+        webUserOld.setAddress(webUser.getAddress());
         webUserRepository.save(webUserOld);
     }
 

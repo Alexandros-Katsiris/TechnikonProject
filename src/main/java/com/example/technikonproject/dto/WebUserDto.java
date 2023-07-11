@@ -11,8 +11,6 @@ public class WebUserDto {
 
     private String surname;
 
-    private AddressDto address;
-
     private Integer phoneNumber;
 
     private String email;

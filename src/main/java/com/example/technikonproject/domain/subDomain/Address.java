@@ -1,7 +1,6 @@
 package com.example.technikonproject.domain.subDomain;
 
-import com.example.technikonproject.domain.BaseModel;
-import jakarta.persistence.*;
+import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,21 +10,19 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity
-@Table(name="addresses",uniqueConstraints = {@UniqueConstraint(name = "UniqueAddressAndNumberAndFloorNumberAndZipCode", columnNames = {"streetname","streetnumber","floornumber","zipcode"})})
-@SequenceGenerator(name = "idGenerator", sequenceName = "address_seq", initialValue = 1, allocationSize = 1)
-public class Address extends BaseModel {
+@Embeddable
+public class Address {
 
 
-    @Column(nullable = false)
+
     private String streetName;
 
-    @Column(nullable = false)
+
     private Integer streetNumber;
 
-    @Column(nullable = false)
+
     private Integer zipcode;
 
-    @Column(nullable = false)
+
     private Integer floorNumber;
 }

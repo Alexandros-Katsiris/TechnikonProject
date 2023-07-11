@@ -14,7 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name="webUsers")
-@SequenceGenerator(name = "idGenerator", sequenceName = "web_user_seq", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "idGenerator", sequenceName = "web_user_seq", allocationSize = 1)
 public class WebUser extends BaseModel{
 
     @Column(unique = true, updatable = false)
@@ -26,8 +26,7 @@ public class WebUser extends BaseModel{
     @Column(length = 50, nullable = false, updatable = false)
     private String surname;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(nullable = false,unique = true)
+    @Embedded
     private Address address;
 
     @Column(nullable = false,updatable = false)

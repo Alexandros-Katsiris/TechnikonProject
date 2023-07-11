@@ -5,7 +5,6 @@ import com.example.technikonproject.dto.PropertyRepairDto;
 import com.example.technikonproject.service.PropertyRepairService;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -20,20 +19,13 @@ public class PropertyRepairController {
         this.propertyRepairService = propertyRepairService;
     }
 
-    //Not working correctly
     @PostMapping()
     public void addPropertyRepairs(@RequestBody PropertyRepair propertyRepair){
         propertyRepairService.create(propertyRepair);
     }
-//    //Not working correctly
-//    @PostMapping()
-//    public void addPropertyRepairs(@RequestBody PropertyRepair propertyRepair){
-//        propertyRepairService.addPropertyRepairId(propertyRepair);
-//    }
-
 
     @GetMapping(params = {"dateStart", "dateEnd"})
-    public List<PropertyRepairDto> getPropertyRepairByDate(String dateStart,String dateEnd) throws ParseException {
+    public List<PropertyRepairDto> getPropertyRepairByDate(String dateStart,String dateEnd){
             LocalDate dateStartConverted = LocalDate.parse(dateStart);
             LocalDate dateEndConverted = LocalDate.parse(dateEnd);
             return propertyRepairService.findPropertyRepairsByRangeOfDates(dateStartConverted, dateEndConverted);
@@ -41,7 +33,7 @@ public class PropertyRepairController {
 
     // From PDF -> ::: User ID in case we want to display all the repairs made for a property owner :::
     @GetMapping(params = "userId")
-    public List<PropertyRepairDto> getPropertyRepairByWebUserId(Long id) throws ParseException {
+    public List<PropertyRepairDto> getPropertyRepairByWebUserId(Long id){
         return propertyRepairService.findPropertyRepairsByWebUserId(id);
     }
 

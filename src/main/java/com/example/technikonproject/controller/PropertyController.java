@@ -43,8 +43,8 @@ public class PropertyController {
         propertyService.update(property);
     }
 
-    @DeleteMapping(params = "id")
-    public void deleteProperty(Long id) {
+    @DeleteMapping("/{id}")
+    public void deleteProperty(@PathVariable Long id) {
         propertyService.deleteById(id);
     }
 }

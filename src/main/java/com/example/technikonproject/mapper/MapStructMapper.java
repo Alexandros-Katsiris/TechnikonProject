@@ -3,7 +3,6 @@ package com.example.technikonproject.mapper;
 import com.example.technikonproject.domain.Property;
 import com.example.technikonproject.domain.PropertyRepair;
 import com.example.technikonproject.domain.WebUser;
-import com.example.technikonproject.domain.subDomain.Address;
 import com.example.technikonproject.dto.*;
 import org.mapstruct.Mapper;
 
@@ -11,8 +10,6 @@ import org.mapstruct.Mapper;
 public interface MapStructMapper {
 
     WebUserDto webUserToWebUserDto(WebUser webUser);
-
-    AddressDto addressToAddressDto(Address address);
 
     PropertyDto propertyToPropertyDto(Property property);
 
