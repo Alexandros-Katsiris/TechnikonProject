@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface PropertyRepairService extends BaseService<PropertyRepair, Long> {
 
-//    void addPropertyRepairId(PropertyRepair propertyRepair);
 
     List<PropertyRepairDto> findPropertyRepairsByRangeOfDates(LocalDate dateStart, LocalDate dateEnd);
     List<PropertyRepairDto> findPropertyRepairsByWebUserId(Long tin);

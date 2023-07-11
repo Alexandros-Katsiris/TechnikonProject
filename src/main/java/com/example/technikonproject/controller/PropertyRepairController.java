@@ -23,7 +23,7 @@ public class PropertyRepairController {
     //Not working correctly
     @PostMapping()
     public void addPropertyRepairs(@RequestBody PropertyRepair propertyRepair){
-        propertyRepairService.addPropertyRepairId(propertyRepair);
+        propertyRepairService.create(propertyRepair);
     }
 //    //Not working correctly
 //    @PostMapping()

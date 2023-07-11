@@ -23,15 +23,7 @@ public class AddressServiceImpl extends BaseServiceImpl<Address>
         return addressRepository;
     }
 
-//    @Override
-//    public Address addAddress(Address address) {
-//        return addressRepository.save(address);
-//    }
 
-//    @Override
-//    public Address findAddressById(Long id) {
-//        return addressRepository.findAddressById(id);
-//    }
 
     @Override
     public Address addressExist(Address address) {
@@ -66,7 +58,7 @@ public class AddressServiceImpl extends BaseServiceImpl<Address>
         if (updateAddress) {
             Address existingAddress = addressExist(newAddress);
             if (existingAddress == null) {
-                addAddress(newAddress);
+                create(newAddress);
                 return newAddress;
             } else {
                 return existingAddress;
