@@ -2,7 +2,6 @@ package com.example.technikonproject.controller;
 
 import com.example.technikonproject.domain.WebUser;
 import com.example.technikonproject.dto.WebUserDto;
-import com.example.technikonproject.mapper.MapStructMapper;
 import com.example.technikonproject.service.WebUserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +12,7 @@ import java.util.List;
 public class WebUserController {
     private final WebUserService webUserService;
 
-    public WebUserController(WebUserService webUserService, MapStructMapper mapStructMapper) {
+    public WebUserController(WebUserService webUserService) {
         this.webUserService = webUserService;
     }
 
@@ -26,7 +25,6 @@ public class WebUserController {
     public WebUserDto readDto(@PathVariable(name = "id") Long id) {
         return webUserService.readDto(id);
     }
-
 
     @GetMapping(params = "tin")
     public WebUserDto readByTin(Long tin) {

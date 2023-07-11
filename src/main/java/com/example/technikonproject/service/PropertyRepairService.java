@@ -10,6 +10,7 @@ public interface PropertyRepairService extends BaseService<PropertyRepair, Long>
 
 
     List<PropertyRepairDto> findPropertyRepairsByRangeOfDates(LocalDate dateStart, LocalDate dateEnd);
+
     List<PropertyRepairDto> findPropertyRepairsByWebUserId(Long tin);
 
     void updatePropertyRepair(PropertyRepair propertyRepair);

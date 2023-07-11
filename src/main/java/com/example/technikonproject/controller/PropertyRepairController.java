@@ -20,30 +20,30 @@ public class PropertyRepairController {
     }
 
     @PostMapping()
-    public void addPropertyRepairs(@RequestBody PropertyRepair propertyRepair){
+    public void addPropertyRepairs(@RequestBody PropertyRepair propertyRepair) {
         propertyRepairService.create(propertyRepair);
     }
 
     @GetMapping(params = {"dateStart", "dateEnd"})
-    public List<PropertyRepairDto> getPropertyRepairByDate(String dateStart,String dateEnd){
-            LocalDate dateStartConverted = LocalDate.parse(dateStart);
-            LocalDate dateEndConverted = LocalDate.parse(dateEnd);
-            return propertyRepairService.findPropertyRepairsByRangeOfDates(dateStartConverted, dateEndConverted);
+    public List<PropertyRepairDto> getPropertyRepairByDate(String dateStart, String dateEnd) {
+        LocalDate dateStartConverted = LocalDate.parse(dateStart);
+        LocalDate dateEndConverted = LocalDate.parse(dateEnd);
+        return propertyRepairService.findPropertyRepairsByRangeOfDates(dateStartConverted, dateEndConverted);
     }
 
     // From PDF -> ::: User ID in case we want to display all the repairs made for a property owner :::
-    @GetMapping(params = "userId")
-    public List<PropertyRepairDto> getPropertyRepairByWebUserId(Long id){
+    @GetMapping(params = "id")
+    public List<PropertyRepairDto> getPropertyRepairByWebUserId(Long id) {
         return propertyRepairService.findPropertyRepairsByWebUserId(id);
     }
 
     @GetMapping("/{id}")
-    public PropertyRepairDto getPropertyRepairDto(@PathVariable Long id) throws Exception{
+    public PropertyRepairDto getPropertyRepairDto(@PathVariable Long id) throws Exception {
         return propertyRepairService.findPropertyRepair(id);
     }
 
     @PutMapping()
-    public void updateProperty(@RequestBody PropertyRepair propertyRepair) throws Exception{
+    public void updateProperty(@RequestBody PropertyRepair propertyRepair) throws Exception {
         propertyRepairService.updatePropertyRepair(propertyRepair);
     }
 }

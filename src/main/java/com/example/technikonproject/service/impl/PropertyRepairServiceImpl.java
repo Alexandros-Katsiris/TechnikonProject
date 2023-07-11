@@ -34,7 +34,7 @@ public class PropertyRepairServiceImpl extends BaseServiceImpl<PropertyRepair>
     }
 
     @Override
-    public PropertyRepairDto findPropertyRepair(Long id){
+    public PropertyRepairDto findPropertyRepair(Long id) {
         return mapStructMapper.propertyRepairToPropertyRepairDto(propertyRepairRepository.findById(id).orElseThrow());
     }
 
@@ -67,8 +67,6 @@ public class PropertyRepairServiceImpl extends BaseServiceImpl<PropertyRepair>
         propertyRepairRepository.save(propertyRepairOld);
     }
 
-    public void updatePropertyRepairShortDescription(PropertyRepair propertyRepairOld, PropertyRepair propertyRepairNew) {
-    }
 
     private RepairType updatePropertyRepairType(PropertyRepair propertyRepairOld, PropertyRepair propertyRepairNew) {
         if (propertyRepairNew.getRepairType() != null &&
@@ -108,7 +106,6 @@ public class PropertyRepairServiceImpl extends BaseServiceImpl<PropertyRepair>
             return propertyRepairOld.getDateOfScheduledRepair();
         return propertyRepairNew.getDateOfScheduledRepair();
     }
-
 
 
     private String updatePropertyRepairDescription(PropertyRepair propertyRepairOld, PropertyRepair propertyRepairNew) {

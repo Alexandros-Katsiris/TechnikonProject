@@ -24,7 +24,7 @@ public class PropertyController {
 
     // Search Properties. Search by e9 -> admin/user, search by tin number -> admin only
     @GetMapping(params = "e9Number")
-    public PropertyDto readPropertyDto(Long e9Number){
+    public PropertyDto readPropertyDto(Long e9Number) {
         return propertyService.readPropertyDto(e9Number);
     }
 

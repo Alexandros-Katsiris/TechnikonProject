@@ -17,9 +17,9 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@Table(name="propertyRepairs")
+@Table(name = "propertyRepairs")
 @SequenceGenerator(name = "idGenerator", sequenceName = "property_repair_seq", allocationSize = 1)
-public class PropertyRepair extends BaseModel{
+public class PropertyRepair extends BaseModel {
 
 
     @NotNull

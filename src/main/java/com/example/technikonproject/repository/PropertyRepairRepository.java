@@ -11,5 +11,6 @@ import java.util.List;
 public interface PropertyRepairRepository extends JpaRepository<PropertyRepair, Long> {
 
     List<PropertyRepair> searchPropertyRepairsByWebUserId(Long id);
+
     List<PropertyRepair> searchPropertyRepairsByDateOfScheduledRepairBetween(LocalDate dateStart, LocalDate dateEnd);
 }
