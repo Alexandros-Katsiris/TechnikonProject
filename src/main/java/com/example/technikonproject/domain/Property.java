@@ -26,8 +26,8 @@ public class Property extends BaseModel{
     @Column
     private Date yearOfConstruction;
 
-    @ManyToOne
-    @JoinColumn
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(nullable = false,unique = true)
     private Address address;
 
     @Column
@@ -35,7 +35,6 @@ public class Property extends BaseModel{
     private PropertyType propertyType;
 
     @ManyToOne()
-    @JoinColumn(referencedColumnName = "tin")
     private WebUser webUser;
 
     @Column

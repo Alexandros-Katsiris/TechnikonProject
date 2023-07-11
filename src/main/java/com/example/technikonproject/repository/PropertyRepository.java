@@ -11,4 +11,5 @@ public interface PropertyRepository extends JpaRepository<Property, Long> {
     Property findPropertyByE9Number(Long e9Number);
 
     List<Property> findByWebUserTin(Long tin);
+
 }

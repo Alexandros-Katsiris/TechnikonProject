@@ -1,7 +1,6 @@
 package com.example.technikonproject.service.impl;
 
 import com.example.technikonproject.domain.WebUser;
-import com.example.technikonproject.domain.subDomain.Address;
 import com.example.technikonproject.dto.WebUserDto;
 import com.example.technikonproject.mapper.MapStructMapper;
 import com.example.technikonproject.repository.WebUserRepository;
@@ -54,7 +53,7 @@ public class WebUserServiceImpl extends BaseServiceImpl<WebUser> implements WebU
         webUserOld.setEmail(updateUserEmail(webUser, webUserOld));
         webUserOld.setPassword(updateUserPassword(webUser, webUserOld));
         webUserOld.setFirstName(updateUserName(webUser, webUserOld));
-        webUserOld.setAddress(updateUserAddress(webUser.getAddress(), webUserOld.getAddress()));
+        webUserOld.setAddress(addressService.updateAddress(webUser.getAddress(), webUserOld.getAddress()));
         webUserRepository.save(webUserOld);
     }
 
@@ -80,34 +79,6 @@ public class WebUserServiceImpl extends BaseServiceImpl<WebUser> implements WebU
         }
         return webUserOld.getEmail();
 
-    }
-
-    private Address updateUserAddress(Address newAddress, Address oldAddress) {
-        boolean updateAddress = !newAddress.getStreetName().equals(oldAddress.getStreetName()) &&
-                !newAddress.getStreetName().isEmpty();
-        if (!(newAddress.getStreetNumber().equals(oldAddress.getStreetNumber())) &&
-                !(newAddress.getStreetNumber() == 0) &&
-                !(newAddress.getStreetNumber() == null)) {
-            updateAddress = true;
-        }
-        if (!(newAddress.getZipcode().equals(oldAddress.getZipcode())) &&
-                !(newAddress.getZipcode() == 0) &&
-                !(newAddress.getZipcode() == null)) {
-            updateAddress = true;
-        }
-        //To be implemented\/
-
-        if (updateAddress) {
-            Address existingAddress = addressService.addressExist(newAddress);
-            if (existingAddress == null) {
-                addressService.addAddress(newAddress);
-                return newAddress;
-            } else {
-                return existingAddress;
-            }
-        } else {
-            return oldAddress;
-        }
     }
 
     public void deleteByTin(Long tin) {

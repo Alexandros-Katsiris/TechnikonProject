@@ -28,11 +28,44 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public Address addressExist(Address address) {
-        List<Address> addresses = addressRepository.findAddressByStreetNameAndStreetNumberAndZipcode(address.getStreetName(),address.getStreetNumber(),address.getZipcode());
+        List<Address> addresses = addressRepository.findAddressByStreetNameAndStreetNumberAndZipcodeAndFloorNumber(address.getStreetName(),address.getStreetNumber(),address.getZipcode(), address.getFloorNumber());
         if(addresses.size()==0){
             return null;
         }else{
             return addresses.get(addresses.size()-1);
+        }
+    }
+
+    public Address updateAddress(Address newAddress, Address oldAddress) {
+        boolean updateAddress = false;
+        if (!(newAddress.getStreetName().equals(oldAddress.getStreetName())) &&
+                !(newAddress.getStreetName().isEmpty())) {
+            updateAddress = true;
+        }
+        if (!(newAddress.getStreetNumber().equals(oldAddress.getStreetNumber())) &&
+                !(newAddress.getStreetNumber() == 0)) {
+            updateAddress = true;
+        }
+        if (!(newAddress.getZipcode().equals(oldAddress.getZipcode())) &&
+                !(newAddress.getZipcode() == 0)) {
+            updateAddress = true;
+        }
+        if (!(newAddress.getFloorNumber().equals(oldAddress.getFloorNumber())) &&
+                !(newAddress.getFloorNumber() == 0)) {
+            updateAddress = true;
+        }
+
+
+        if (updateAddress) {
+            Address existingAddress = addressExist(newAddress);
+            if (existingAddress == null) {
+                addAddress(newAddress);
+                return newAddress;
+            } else {
+                return existingAddress;
+            }
+        } else {
+            return oldAddress;
         }
     }
 }

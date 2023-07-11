@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface AddressRepository extends JpaRepository<Address, Long> {
 
-    List<Address> findAddressByStreetNameAndStreetNumberAndZipcode(String name, Integer number, Integer zipCode);
+    List<Address> findAddressByStreetNameAndStreetNumberAndZipcodeAndFloorNumber(String name, Integer number, Integer zipCode,Integer floorNumber);
 
     Address findAddressById(Long id);
 }

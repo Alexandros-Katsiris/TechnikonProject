@@ -7,4 +7,5 @@ public interface AddressService {
     Address addAddress(Address address);
     Address findAddressById(Long id);
     Address addressExist(Address address);
+    Address updateAddress(Address newAddress, Address oldAddress);
 }

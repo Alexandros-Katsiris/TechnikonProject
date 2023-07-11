@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="addresses",uniqueConstraints = {@UniqueConstraint(name = "UniqueAddressAndNumberAndFloorNumber", columnNames = {"streetname","streetnumber","floornumber"})})
+@Table(name="addresses",uniqueConstraints = {@UniqueConstraint(name = "UniqueAddressAndNumberAndFloorNumberAndZipCode", columnNames = {"streetname","streetnumber","floornumber","zipcode"})})
 @SequenceGenerator(name = "idGenerator", sequenceName = "address_seq", initialValue = 1, allocationSize = 1)
 public class Address extends BaseModel {
 
@@ -26,6 +26,6 @@ public class Address extends BaseModel {
     @Column(nullable = false)
     private Integer zipcode;
 
-    @Column()
+    @Column(nullable = false)
     private Integer floorNumber;
 }

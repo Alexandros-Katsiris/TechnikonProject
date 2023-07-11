@@ -43,8 +43,8 @@ public class PropertyController {
         propertyService.update(property);
     }
 
-    @DeleteMapping(params = "e9Number")
-    public void deleteProperty(Long e9Number) {
-        propertyService.deleteById(e9Number);
+    @DeleteMapping(params = "id")
+    public void deleteProperty(Long id) {
+        propertyService.deleteById(id);
     }
 }
