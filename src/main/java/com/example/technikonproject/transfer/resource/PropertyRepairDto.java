@@ -1,4 +1,4 @@
-package com.example.technikonproject.dto;
+package com.example.technikonproject.transfer.resource;
 
 import com.example.technikonproject.domain.enums.RepairStatus;
 import com.example.technikonproject.domain.enums.RepairType;

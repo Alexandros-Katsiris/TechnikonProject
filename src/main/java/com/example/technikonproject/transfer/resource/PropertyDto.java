@@ -1,4 +1,4 @@
-package com.example.technikonproject.dto;
+package com.example.technikonproject.transfer.resource;
 
 import com.example.technikonproject.domain.enums.PropertyType;
 import lombok.Data;
@@ -11,7 +11,6 @@ public class PropertyDto {
     private Long e9Number;
 
     private Date yearOfConstruction;
-
 
     private PropertyType propertyType;
 

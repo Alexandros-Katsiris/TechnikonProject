@@ -3,7 +3,7 @@ package com.example.technikonproject.mapper;
 import com.example.technikonproject.domain.Property;
 import com.example.technikonproject.domain.PropertyRepair;
 import com.example.technikonproject.domain.WebUser;
-import com.example.technikonproject.dto.*;
+import com.example.technikonproject.transfer.resource.*;
 import org.mapstruct.Mapper;
 
 @Mapper()

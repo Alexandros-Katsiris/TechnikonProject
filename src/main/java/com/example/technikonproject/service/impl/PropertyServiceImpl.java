@@ -1,7 +1,7 @@
 package com.example.technikonproject.service.impl;
 
 import com.example.technikonproject.domain.Property;
-import com.example.technikonproject.dto.PropertyDto;
+import com.example.technikonproject.transfer.resource.PropertyDto;
 import com.example.technikonproject.mapper.MapStructMapper;
 import com.example.technikonproject.repository.PropertyRepository;
 import com.example.technikonproject.service.PropertyService;
@@ -34,15 +34,6 @@ public class PropertyServiceImpl extends BaseServiceImpl<Property> implements Pr
     }
 
 
-    @Override
-    public void update(Property property) {
-        propertyRepository.save(property);
-    }
 
 
-    //To implement the controller\/
-//    @Override
-//    public void deleteProperty(Long e9Number) {
-//        propertyRepository.deleteById(e9Number);
-//    }
 }

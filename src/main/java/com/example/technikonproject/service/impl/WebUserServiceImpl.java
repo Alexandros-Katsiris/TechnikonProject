@@ -1,7 +1,7 @@
 package com.example.technikonproject.service.impl;
 
 import com.example.technikonproject.domain.WebUser;
-import com.example.technikonproject.dto.WebUserDto;
+import com.example.technikonproject.transfer.resource.WebUserDto;
 import com.example.technikonproject.mapper.MapStructMapper;
 import com.example.technikonproject.repository.WebUserRepository;
 import com.example.technikonproject.service.WebUserService;

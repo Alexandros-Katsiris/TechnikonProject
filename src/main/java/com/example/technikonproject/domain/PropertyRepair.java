@@ -23,7 +23,7 @@ public class PropertyRepair extends BaseModel {
 
 
     @NotNull
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     private WebUser webUser;
 
     @NotNull

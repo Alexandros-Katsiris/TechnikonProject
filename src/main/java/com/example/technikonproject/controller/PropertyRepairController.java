@@ -1,7 +1,7 @@
 package com.example.technikonproject.controller;
 
 import com.example.technikonproject.domain.PropertyRepair;
-import com.example.technikonproject.dto.PropertyRepairDto;
+import com.example.technikonproject.transfer.resource.PropertyRepairDto;
 import com.example.technikonproject.service.PropertyRepairService;
 import org.springframework.web.bind.annotation.*;
 

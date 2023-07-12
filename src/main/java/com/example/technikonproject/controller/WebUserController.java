@@ -1,7 +1,7 @@
 package com.example.technikonproject.controller;
 
 import com.example.technikonproject.domain.WebUser;
-import com.example.technikonproject.dto.WebUserDto;
+import com.example.technikonproject.transfer.resource.WebUserDto;
 import com.example.technikonproject.service.WebUserService;
 import org.springframework.web.bind.annotation.*;
 

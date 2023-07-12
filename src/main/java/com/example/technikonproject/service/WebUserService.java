@@ -1,7 +1,7 @@
 package com.example.technikonproject.service;
 
 import com.example.technikonproject.domain.WebUser;
-import com.example.technikonproject.dto.WebUserDto;
+import com.example.technikonproject.transfer.resource.WebUserDto;
 
 import java.util.List;
 

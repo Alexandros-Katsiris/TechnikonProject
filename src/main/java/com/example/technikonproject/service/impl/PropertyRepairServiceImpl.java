@@ -4,7 +4,7 @@ import com.example.technikonproject.domain.PropertyRepair;
 import com.example.technikonproject.domain.WebUser;
 import com.example.technikonproject.domain.enums.RepairStatus;
 import com.example.technikonproject.domain.enums.RepairType;
-import com.example.technikonproject.dto.PropertyRepairDto;
+import com.example.technikonproject.transfer.resource.PropertyRepairDto;
 import com.example.technikonproject.mapper.MapStructMapper;
 import com.example.technikonproject.repository.PropertyRepairRepository;
 import com.example.technikonproject.service.PropertyRepairService;
@@ -37,11 +37,6 @@ public class PropertyRepairServiceImpl extends BaseServiceImpl<PropertyRepair>
     public PropertyRepairDto findPropertyRepair(Long id) {
         return mapStructMapper.propertyRepairToPropertyRepairDto(propertyRepairRepository.findById(id).orElseThrow());
     }
-
-//    @Override
-//    public void addPropertyRepairId(PropertyRepair propertyRepair) {
-//        propertyRepairRepository.save(propertyRepair);
-//    }
 
     @Override
     public List<PropertyRepairDto> findPropertyRepairsByRangeOfDates(LocalDate dateStart, LocalDate dateEnd) {

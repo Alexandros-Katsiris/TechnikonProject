@@ -1,7 +1,7 @@
 package com.example.technikonproject.service;
 
 import com.example.technikonproject.domain.Property;
-import com.example.technikonproject.dto.PropertyDto;
+import com.example.technikonproject.transfer.resource.PropertyDto;
 
 import java.util.List;
 
