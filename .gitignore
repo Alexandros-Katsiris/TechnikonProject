@@ -19,6 +19,7 @@ target/
 *.iml
 *.ipr
 logs
+/src/main/resources/insertions for testing
 
 ### NetBeans ###
 /nbproject/private/
