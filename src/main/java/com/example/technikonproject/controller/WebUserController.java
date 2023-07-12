@@ -9,10 +9,7 @@ import com.example.technikonproject.transfer.ApiResponse;
 import com.example.technikonproject.transfer.resource.WebUserResource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,6 +33,14 @@ public class WebUserController extends BaseController<WebUser, WebUserResource> 
         return webUserMapper;
     }
 
+    @Override
+    @GetMapping("/{id}")
+    public ResponseEntity<ApiResponse<WebUserResource>> read(@PathVariable("id") final Long id) {
+        return ResponseEntity.ok(
+                ApiResponse.<WebUserResource>builder().data(getMapper().toResource(getBaseService().read(id))).build());
+    }
+
+
     @GetMapping(params = {"email"})
     public ResponseEntity<ApiResponse<WebUserResource>> findByEmail(@RequestParam String email) {
         return ResponseEntity.ok(
@@ -49,14 +54,6 @@ public class WebUserController extends BaseController<WebUser, WebUserResource> 
                 ApiResponse.<WebUserResource>builder().data(getMapper().toResource(webUserService.readWebUser(tin)))
                         .build());
     }
-
-//    @PutMapping()
-//    public ResponseEntity<ApiResponse<WebUserResource>> update(@RequestBody WebUser webUser) {
-//        return ResponseEntity.ok(
-//                ApiResponse.<WebUserResource>builder().data(getMapper().toResource(webUserService.update(webUser)))
-//                        .build());
-//
-//    }
 
     @GetMapping(params = {"firstName"})
     public ResponseEntity<ApiResponse<List<WebUserResource>>> findByFirstName(@RequestParam String firstName) {

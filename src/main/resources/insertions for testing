@@ -1,23 +1,17 @@
-insert into addresses (id,streetname,streetnumber, zipcode)
+insert into webusers (id,tin,floornumber,zipcode,streetname,streetnumber,email,firstname,phonenumber,password, surname, username,isAdmin)
 values
-    (1, 'omirou', 8, 11141),
-    (2, 'vasileiadou', 18, 11141);
+    (1,170214943,1,11141,'omirou',8, 'email@email.com', 'mitsos', 694018495, 'password', 'paparis', 'user',true),
+    (2,248966566,1,11141,'omirou',8, 'email2@email.com', 'giannis', 696969696, 'scytalys', 'malakas', 'name',false);
 
 
-insert into webusers (id,tin,"address_id",email,firstname,phonenumber,password, surname, username,isAdmin)
+insert into properties (id,e9number,webuser_id,yearofconstruction,propertytype,streetnumber,zipcode,streetname,floornumber)
 values
-    (1,170214943, 1, 'email@email.com', 'mitsos', 694018495, 'password', 'paparis', 'user',true),
-    (2,248966566, 2, 'email2@email.com', 'giannis', 696969696, 'scytalys', 'malakas', 'name',false);
-
-
-insert into properties (id,e9number,address_id,webuser_tin,yearofconstruction,propertytype)
-values
-    (1,15439857,1, 170214943, CAST('2012-12-12' AS TIMESTAMP),'DETACHED_HOUSE'),
-    (2,25465765,2, 248966566, CAST('2012-12-12' AS TIMESTAMP),'DETACHED_HOUSE');
+    (1,15439857, 1, CAST('2012-12-12' AS TIMESTAMP),'DETACHED_HOUSE',1,11141,'omirou',8),
+    (2,25465765, 2, CAST('2012-12-12' AS TIMESTAMP),'DETACHED_HOUSE',1,11141,'omirou',8);
 
 insert into propertyrepairs(costofrepair, dateofscheduledrepair, id,
-                            property_e9Number,
-                            webuser_tin,repairstatus,repairtype,description)
+                            property_id,
+                            webuser_id,repairstatus,repairtype,description)
 values
-    (5000,CAST('2012-12-12' AS TIMESTAMP),1,15439857,170214943,'0','0','MPLA MPLA'),
-    (1000,CAST('2012-12-12' AS TIMESTAMP),2,25465765,248966566,'0','0','MPLA MPLA MPLA MPLA');
+    (5000,CAST('2012-12-12' AS TIMESTAMP),1,1,1,'0','0','MPLA MPLA'),
+    (1000,CAST('2012-12-12' AS TIMESTAMP),2,2,2,'0','0','MPLA MPLA MPLA MPLA');

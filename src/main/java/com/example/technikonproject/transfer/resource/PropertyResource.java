@@ -2,7 +2,6 @@ package com.example.technikonproject.transfer.resource;
 
 import com.example.technikonproject.domain.enums.PropertyType;
 import com.example.technikonproject.domain.subDomain.Address;
-import com.example.technikonproject.transfer.resource.medInfo.WebUserMedInfoResource;
 import lombok.Data;
 
 import java.util.Date;
@@ -14,7 +13,7 @@ public class PropertyResource extends BaseResource{
 
     private Address address;
 
-    private WebUserMedInfoResource webUserMedInfoResource;
+    private WebUserResource webUser;
 
     private Date yearOfConstruction;
 

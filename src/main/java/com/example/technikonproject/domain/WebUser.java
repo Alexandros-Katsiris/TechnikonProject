@@ -36,7 +36,7 @@ public class WebUser extends BaseModel {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(length = 20, nullable = false, unique = true, updatable = false)
+    @Column(length = 20, unique = true, updatable = false)
     private String username;
 
     @Column(nullable = false)

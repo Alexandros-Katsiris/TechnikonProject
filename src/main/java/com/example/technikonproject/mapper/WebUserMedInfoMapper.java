@@ -4,6 +4,6 @@ import com.example.technikonproject.domain.WebUser;
 import com.example.technikonproject.transfer.resource.medInfo.WebUserMedInfoResource;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", config = IgnoreUnmappedMapperConfig.class)
 public interface WebUserMedInfoMapper extends BaseMapper<WebUser, WebUserMedInfoResource>{
 }
