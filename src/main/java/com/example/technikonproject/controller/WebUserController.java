@@ -1,7 +1,7 @@
 package com.example.technikonproject.controller;
 
 import com.example.technikonproject.domain.WebUser;
-import com.example.technikonproject.transfer.resource.WebUserDto;
+import com.example.technikonproject.transfer.resource.WebUserResource;
 import com.example.technikonproject.service.WebUserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,22 +22,22 @@ public class WebUserController {
     }
 
     @GetMapping("/{id}")
-    public WebUserDto readDto(@PathVariable(name = "id") Long id) {
-        return webUserService.readDto(id);
+    public WebUserResource readDto(@PathVariable(name = "id") Long id) {
+        return webUserService.read(id);
     }
 
     @GetMapping(params = "tin")
-    public WebUserDto readByTin(Long tin) {
+    public WebUserResource readByTin(Long tin) {
         return webUserService.readWebUser(tin);
     }
 
     @GetMapping(params = "username")
-    public List<WebUserDto> readByFirstName(String name) {
+    public List<WebUserResource> readByFirstName(String name) {
         return webUserService.readWebUserByFirstName(name);
     }
 
     @GetMapping(params = "email")
-    public WebUserDto readByEmail(String email) {
+    public WebUserResource readByEmail(String email) {
         return webUserService.readWebUserByEmail(email);
     }
 

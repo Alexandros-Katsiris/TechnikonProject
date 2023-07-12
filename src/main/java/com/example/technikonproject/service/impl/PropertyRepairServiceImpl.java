@@ -4,8 +4,6 @@ import com.example.technikonproject.domain.PropertyRepair;
 import com.example.technikonproject.domain.WebUser;
 import com.example.technikonproject.domain.enums.RepairStatus;
 import com.example.technikonproject.domain.enums.RepairType;
-import com.example.technikonproject.transfer.resource.PropertyRepairDto;
-import com.example.technikonproject.mapper.MapStructMapper;
 import com.example.technikonproject.repository.PropertyRepairRepository;
 import com.example.technikonproject.service.PropertyRepairService;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,11 +19,9 @@ public class PropertyRepairServiceImpl extends BaseServiceImpl<PropertyRepair>
 
     private final PropertyRepairRepository propertyRepairRepository;
 
-    private final MapStructMapper mapStructMapper;
 
-    public PropertyRepairServiceImpl(PropertyRepairRepository propertyRepairRepository, MapStructMapper mapStructMapper) {
+    public PropertyRepairServiceImpl(PropertyRepairRepository propertyRepairRepository) {
         this.propertyRepairRepository = propertyRepairRepository;
-        this.mapStructMapper = mapStructMapper;
     }
 
     @Override
@@ -34,20 +30,18 @@ public class PropertyRepairServiceImpl extends BaseServiceImpl<PropertyRepair>
     }
 
     @Override
-    public PropertyRepairDto findPropertyRepair(Long id) {
-        return mapStructMapper.propertyRepairToPropertyRepairDto(propertyRepairRepository.findById(id).orElseThrow());
+    public PropertyRepair findPropertyRepair(Long id) {
+        return propertyRepairRepository.findById(id).orElseThrow();
     }
 
     @Override
-    public List<PropertyRepairDto> findPropertyRepairsByRangeOfDates(LocalDate dateStart, LocalDate dateEnd) {
-        List<PropertyRepair> prRepairs = propertyRepairRepository.searchPropertyRepairsByDateOfScheduledRepairBetween(dateStart, dateEnd);
-        return prRepairs.stream().map(mapStructMapper::propertyRepairToPropertyRepairDto).toList();
+    public List<PropertyRepair> findPropertyRepairsByRangeOfDates(LocalDate dateStart, LocalDate dateEnd) {
+        return propertyRepairRepository.searchPropertyRepairsByDateOfScheduledRepairBetween(dateStart, dateEnd);
     }
 
     @Override
-    public List<PropertyRepairDto> findPropertyRepairsByWebUserId(Long id) {
-        List<PropertyRepair> prRepairs = propertyRepairRepository.searchPropertyRepairsByWebUserId(id);
-        return prRepairs.stream().map(mapStructMapper::propertyRepairToPropertyRepairDto).toList();
+    public List<PropertyRepair> findPropertyRepairsByWebUserId(Long id) {
+        return propertyRepairRepository.searchPropertyRepairsByWebUserId(id);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.example.technikonproject.controller;
 
 import com.example.technikonproject.domain.Property;
-import com.example.technikonproject.transfer.resource.PropertyDto;
+import com.example.technikonproject.transfer.resource.PropertyResource;
 import com.example.technikonproject.service.PropertyService;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +24,7 @@ public class PropertyController {
 
     // Search Properties. Search by e9 -> admin/user, search by tin number -> admin only
     @GetMapping(params = "e9Number")
-    public PropertyDto readPropertyDto(Long e9Number) {
+    public PropertyResource readPropertyDto(Long e9Number) {
         return propertyService.readPropertyDto(e9Number);
     }
 

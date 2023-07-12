@@ -29,8 +29,8 @@ public class Property extends BaseModel {
     @Embedded
     private Address address;
 
-    @Column
     @Enumerated(EnumType.STRING)
+    @Column(updatable = false)
     private PropertyType propertyType;
 
     @ManyToOne()

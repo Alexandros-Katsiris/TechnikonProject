@@ -1,7 +1,6 @@
 package com.example.technikonproject.service;
 
 import com.example.technikonproject.domain.Property;
-import com.example.technikonproject.transfer.resource.PropertyDto;
 
 import java.util.List;
 
@@ -11,5 +10,5 @@ public interface PropertyService extends BaseService<Property, Long> {
 
     void update(Property property);
 
-    PropertyDto readPropertyDto(Long e9Number);
+    Property readProperty(Long e9Number);
 }

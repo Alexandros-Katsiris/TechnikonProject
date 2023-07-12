@@ -1,7 +1,6 @@
 package com.example.technikonproject.service;
 
 import com.example.technikonproject.domain.PropertyRepair;
-import com.example.technikonproject.transfer.resource.PropertyRepairDto;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -9,13 +8,13 @@ import java.util.List;
 public interface PropertyRepairService extends BaseService<PropertyRepair, Long> {
 
 
-    List<PropertyRepairDto> findPropertyRepairsByRangeOfDates(LocalDate dateStart, LocalDate dateEnd);
+    List<PropertyRepair> findPropertyRepairsByRangeOfDates(LocalDate dateStart, LocalDate dateEnd);
 
-    List<PropertyRepairDto> findPropertyRepairsByWebUserId(Long tin);
+    List<PropertyRepair> findPropertyRepairsByWebUserId(Long tin);
 
     void updatePropertyRepair(PropertyRepair propertyRepair);
 
-    PropertyRepairDto findPropertyRepair(Long id);
+    PropertyRepair findPropertyRepair(Long id);
 
     //List<PropertyRepair> findAll();
 }

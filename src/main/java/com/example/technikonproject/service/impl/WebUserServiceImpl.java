@@ -1,7 +1,7 @@
 package com.example.technikonproject.service.impl;
 
 import com.example.technikonproject.domain.WebUser;
-import com.example.technikonproject.transfer.resource.WebUserDto;
+import com.example.technikonproject.transfer.resource.WebUserResource;
 import com.example.technikonproject.mapper.MapStructMapper;
 import com.example.technikonproject.repository.WebUserRepository;
 import com.example.technikonproject.service.WebUserService;
@@ -24,24 +24,18 @@ public class WebUserServiceImpl extends BaseServiceImpl<WebUser> implements WebU
     }
 
     @Override
-    public WebUserDto readDto(Long id) {
-        return mapStructMapper.webUserToWebUserDto(read(id));
+    public WebUser readWebUser(Long tin) {
+        return webUserRepository.readWebUserByTin(tin);
+    }
+
+
+    public List<WebUser> readWebUserByFirstName(String name) {
+        return webUserRepository.readWebUserByFirstName(name);
     }
 
     @Override
-    public WebUserDto readWebUser(Long tin) {
-        return mapStructMapper.webUserToWebUserDto(webUserRepository.readWebUserByTin(tin));
-    }
-
-
-    public List<WebUserDto> readWebUserByFirstName(String name) {
-        List<WebUser> webUsers = webUserRepository.readWebUserByFirstName(name);
-        return webUsers.stream().map(mapStructMapper::webUserToWebUserDto).toList();
-    }
-
-    @Override
-    public WebUserDto readWebUserByEmail(String email) {
-        return mapStructMapper.webUserToWebUserDto(webUserRepository.readWebUserByEmail(email));
+    public WebUser readWebUserByEmail(String email) {
+        return webUserRepository.readWebUserByEmail(email);
     }
 
     @Override

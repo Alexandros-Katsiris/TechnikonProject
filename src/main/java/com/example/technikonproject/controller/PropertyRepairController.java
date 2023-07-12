@@ -1,7 +1,7 @@
 package com.example.technikonproject.controller;
 
 import com.example.technikonproject.domain.PropertyRepair;
-import com.example.technikonproject.transfer.resource.PropertyRepairDto;
+import com.example.technikonproject.transfer.resource.PropertyRepairResource;
 import com.example.technikonproject.service.PropertyRepairService;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +25,7 @@ public class PropertyRepairController {
     }
 
     @GetMapping(params = {"dateStart", "dateEnd"})
-    public List<PropertyRepairDto> getPropertyRepairByDate(String dateStart, String dateEnd) {
+    public List<PropertyRepairResource> getPropertyRepairByDate(String dateStart, String dateEnd) {
         LocalDate dateStartConverted = LocalDate.parse(dateStart);
         LocalDate dateEndConverted = LocalDate.parse(dateEnd);
         return propertyRepairService.findPropertyRepairsByRangeOfDates(dateStartConverted, dateEndConverted);
@@ -33,12 +33,12 @@ public class PropertyRepairController {
 
     // From PDF -> ::: User ID in case we want to display all the repairs made for a property owner :::
     @GetMapping(params = "id")
-    public List<PropertyRepairDto> getPropertyRepairByWebUserId(Long id) {
+    public List<PropertyRepairResource> getPropertyRepairByWebUserId(Long id) {
         return propertyRepairService.findPropertyRepairsByWebUserId(id);
     }
 
     @GetMapping("/{id}")
-    public PropertyRepairDto getPropertyRepairDto(@PathVariable Long id) throws Exception {
+    public PropertyRepairResource getPropertyRepairDto(@PathVariable Long id) throws Exception {
         return propertyRepairService.findPropertyRepair(id);
     }
 

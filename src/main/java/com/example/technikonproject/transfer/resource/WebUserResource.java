@@ -1,9 +1,10 @@
 package com.example.technikonproject.transfer.resource;
 
+import com.example.technikonproject.domain.subDomain.Address;
 import lombok.Data;
 
 @Data
-public class WebUserDto {
+public class WebUserResource extends BaseResource{
 
     private Long tin;
 
@@ -14,5 +15,7 @@ public class WebUserDto {
     private Integer phoneNumber;
 
     private String email;
+
+    private Address address;
 
 }

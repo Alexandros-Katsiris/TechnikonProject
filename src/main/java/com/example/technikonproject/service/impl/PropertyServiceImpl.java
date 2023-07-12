@@ -1,8 +1,6 @@
 package com.example.technikonproject.service.impl;
 
 import com.example.technikonproject.domain.Property;
-import com.example.technikonproject.transfer.resource.PropertyDto;
-import com.example.technikonproject.mapper.MapStructMapper;
 import com.example.technikonproject.repository.PropertyRepository;
 import com.example.technikonproject.service.PropertyService;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +14,6 @@ import java.util.List;
 public class PropertyServiceImpl extends BaseServiceImpl<Property> implements PropertyService {
 
     private final PropertyRepository propertyRepository;
-    private final MapStructMapper mapStructMapper;
 
 
     public JpaRepository<Property, Long> getRepository() {
@@ -24,8 +21,8 @@ public class PropertyServiceImpl extends BaseServiceImpl<Property> implements Pr
     }
 
     @Override
-    public PropertyDto readPropertyDto(Long e9Number) {
-        return mapStructMapper.propertyToPropertyDto(propertyRepository.findPropertyByE9Number(e9Number));
+    public Property readProperty(Long e9Number) {
+        return propertyRepository.findPropertyByE9Number(e9Number);
     }
 
     @Override

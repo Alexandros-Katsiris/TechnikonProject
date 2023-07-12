@@ -1,22 +1,19 @@
 package com.example.technikonproject.service;
 
 import com.example.technikonproject.domain.WebUser;
-import com.example.technikonproject.transfer.resource.WebUserDto;
 
 import java.util.List;
 
 
 public interface WebUserService extends BaseService<WebUser, Long> {
 
-    WebUserDto readWebUser(Long tin);
+    WebUser readWebUser(Long tin);
 
-    List<WebUserDto> readWebUserByFirstName(String name);
+    List<WebUser> readWebUserByFirstName(String name);
 
-    WebUserDto readWebUserByEmail(String email);
+    WebUser readWebUserByEmail(String email);
 
     void update(WebUser webuser);
-
-    WebUserDto readDto(Long id);
 
     void deleteByTin(Long tin);
 }
