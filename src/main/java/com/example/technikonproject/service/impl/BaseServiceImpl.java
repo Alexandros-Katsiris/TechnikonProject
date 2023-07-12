@@ -4,6 +4,9 @@ import com.example.technikonproject.base.BaseComponent;
 import com.example.technikonproject.domain.BaseModel;
 import com.example.technikonproject.service.BaseService;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 public abstract class BaseServiceImpl<T extends BaseModel> extends BaseComponent
         implements BaseService<T, Long> {
@@ -24,11 +27,11 @@ public abstract class BaseServiceImpl<T extends BaseModel> extends BaseComponent
     }
 
     @Override
-    public void update(T item) {
+    public T update(T item) {
         if (!getRepository().existsById(item.getId())) {
             throw new RuntimeException("Cant update non-existing entity");
         }
-        getRepository().save(item);
+        return getRepository().save(item);
     }
 
     @Override
@@ -43,5 +46,19 @@ public abstract class BaseServiceImpl<T extends BaseModel> extends BaseComponent
         final T itemFound = getRepository().getReferenceById(item.getId());
         logger.trace("Deleting {}.", itemFound);
         getRepository().delete(itemFound);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public boolean exists(final T item) {
+        logger.trace("Checking whether {} exists.", item);
+        return getRepository().existsById(item.getId());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<T> findAll() {
+        logger.trace("Retrieving all items.");
+        return getRepository().findAll();
     }
 }

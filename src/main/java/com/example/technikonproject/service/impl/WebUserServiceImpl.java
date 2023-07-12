@@ -1,8 +1,6 @@
 package com.example.technikonproject.service.impl;
 
 import com.example.technikonproject.domain.WebUser;
-import com.example.technikonproject.transfer.resource.WebUserResource;
-import com.example.technikonproject.mapper.MapStructMapper;
 import com.example.technikonproject.repository.WebUserRepository;
 import com.example.technikonproject.service.WebUserService;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +13,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class WebUserServiceImpl extends BaseServiceImpl<WebUser> implements WebUserService {
     private final WebUserRepository webUserRepository;
-    private final MapStructMapper mapStructMapper;
-
 
     @Override
     public JpaRepository<WebUser, Long> getRepository() {
@@ -28,7 +24,6 @@ public class WebUserServiceImpl extends BaseServiceImpl<WebUser> implements WebU
         return webUserRepository.readWebUserByTin(tin);
     }
 
-
     public List<WebUser> readWebUserByFirstName(String name) {
         return webUserRepository.readWebUserByFirstName(name);
     }
@@ -39,14 +34,14 @@ public class WebUserServiceImpl extends BaseServiceImpl<WebUser> implements WebU
     }
 
     @Override
-    public void update(WebUser webUser) {
+    public WebUser update(WebUser webUser) {
 
         WebUser webUserOld = webUserRepository.findById(webUser.getId()).orElseThrow();
         webUserOld.setEmail(updateUserEmail(webUser, webUserOld));
         webUserOld.setPassword(updateUserPassword(webUser, webUserOld));
         webUserOld.setFirstName(updateUserName(webUser, webUserOld));
         webUserOld.setAddress(webUser.getAddress());
-        webUserRepository.save(webUserOld);
+        return webUserRepository.save(webUserOld);
     }
 
     private String updateUserName(WebUser webUserNew, WebUser webUserOld) {

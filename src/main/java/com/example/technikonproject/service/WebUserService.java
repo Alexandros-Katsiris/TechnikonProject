@@ -13,7 +13,7 @@ public interface WebUserService extends BaseService<WebUser, Long> {
 
     WebUser readWebUserByEmail(String email);
 
-    void update(WebUser webuser);
+    WebUser update(WebUser webuser);
 
     void deleteByTin(Long tin);
 }

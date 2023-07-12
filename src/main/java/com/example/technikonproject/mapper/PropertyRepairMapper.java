@@ -2,6 +2,8 @@ package com.example.technikonproject.mapper;
 
 import com.example.technikonproject.domain.PropertyRepair;
 import com.example.technikonproject.transfer.resource.PropertyRepairResource;
+import org.mapstruct.Mapper;
 
-public interface propertyRepairMapper extends BaseMapper<PropertyRepair, PropertyRepairResource>{
+@Mapper(componentModel = "spring")
+public interface PropertyRepairMapper extends BaseMapper<PropertyRepair, PropertyRepairResource> {
 }

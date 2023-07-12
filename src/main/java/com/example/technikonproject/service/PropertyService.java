@@ -8,7 +8,7 @@ public interface PropertyService extends BaseService<Property, Long> {
 
     List<Property> findPropertiesByTin(Long tin);
 
-    void update(Property property);
+    Property update(Property property);
 
     Property readProperty(Long e9Number);
 }

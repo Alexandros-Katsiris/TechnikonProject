@@ -9,9 +9,7 @@ import java.util.List;
 
 @Repository
 public interface PropertyRepairRepository extends JpaRepository<PropertyRepair, Long> {
-
-    List<PropertyRepair> findAllLazy();
-
+    
     List<PropertyRepair> searchPropertyRepairsByWebUserId(Long id);
 
     List<PropertyRepair> searchPropertyRepairsByDateOfScheduledRepairBetween(LocalDate dateStart, LocalDate dateEnd);
