@@ -1,11 +1,15 @@
-package com.example.technikonproject.transfer.resource;
+package com.example.technikonproject.transfer.resource.webuser;
 
 import com.example.technikonproject.domain.subDomain.Address;
+import com.example.technikonproject.domain.subDomain.Role;
+import com.example.technikonproject.transfer.resource.BaseResource;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.util.Set;
+
 @Data
-public class WebUserResource extends BaseResource{
+public class WebUserResource extends BaseResource {
 
     private Long tin;
 
@@ -24,5 +28,7 @@ public class WebUserResource extends BaseResource{
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
+
+    private Set<Role> roles;
 
 }

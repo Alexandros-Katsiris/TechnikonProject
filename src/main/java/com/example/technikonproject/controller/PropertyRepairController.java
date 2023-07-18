@@ -6,7 +6,7 @@ import com.example.technikonproject.mapper.PropertyRepairMapper;
 import com.example.technikonproject.service.BaseService;
 import com.example.technikonproject.service.PropertyRepairService;
 import com.example.technikonproject.transfer.ApiResponse;
-import com.example.technikonproject.transfer.resource.PropertyRepairResource;
+import com.example.technikonproject.transfer.resource.propertyrepair.PropertyRepairResource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

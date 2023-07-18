@@ -42,7 +42,6 @@ public abstract class BaseController<T extends BaseModel, R extends BaseResource
                                 getBaseService().create(getMapper().toDomain(resource))
                         )
                 ).build(),
-                getNoCacheHeaders(),
                 HttpStatus.CREATED);
         //@formatter:on
     }
