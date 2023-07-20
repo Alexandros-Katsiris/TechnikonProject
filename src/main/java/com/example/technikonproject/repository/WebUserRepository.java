@@ -17,5 +17,4 @@ public interface WebUserRepository extends JpaRepository<WebUser, Long> {
 
     void deleteByTin(Long tin);
 
-
 }

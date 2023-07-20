@@ -6,6 +6,7 @@ import com.example.technikonproject.domain.enums.RepairStatus;
 import com.example.technikonproject.domain.enums.RepairType;
 import com.example.technikonproject.repository.PropertyRepairRepository;
 import com.example.technikonproject.service.PropertyRepairService;
+import com.example.technikonproject.dto.PropertyRepairAdminReportResource;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +43,11 @@ public class PropertyRepairServiceImpl extends BaseServiceImpl<PropertyRepair>
     @Override
     public List<PropertyRepair> findPropertyRepairsByWebUserId(Long id) {
         return propertyRepairRepository.searchPropertyRepairsByWebUserId(id);
+    }
+
+    @Override
+    public List<PropertyRepairAdminReportResource> getTotalCost(Long userId, Long propertyId){
+        return propertyRepairRepository.getTotalCost(userId, propertyId);
     }
 
     @Override

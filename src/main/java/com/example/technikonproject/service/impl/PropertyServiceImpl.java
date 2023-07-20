@@ -30,7 +30,4 @@ public class PropertyServiceImpl extends BaseServiceImpl<Property> implements Pr
         return propertyRepository.findByWebUserTin(tin).stream().toList();
     }
 
-
-
-
 }
