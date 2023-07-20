@@ -20,4 +20,6 @@ public interface BaseService<T extends BaseModel, K> {
 
     boolean exists(T item);
 
+    Long count();
+
 }

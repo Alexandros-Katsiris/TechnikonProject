@@ -47,4 +47,11 @@ public class PropertyController extends BaseController<Property, PropertyResourc
                 ApiResponse.<PropertyResource>builder().data(getMapper().toResource(propertyService.readProperty(e9)))
                         .build());
     }
+
+    @GetMapping("count")
+    public ResponseEntity<ApiResponse<Long>> countAllUsers() {
+        return ResponseEntity.ok(
+                ApiResponse.<Long>builder().data((propertyService.count()))
+                        .build());
+    }
 }

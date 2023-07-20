@@ -40,7 +40,6 @@ public class WebUserController extends BaseController<WebUser, WebUserResource> 
                 ApiResponse.<WebUserResource>builder().data(getMapper().toResource(getBaseService().read(id))).build());
     }
 
-
     @GetMapping(params = {"email"})
     public ResponseEntity<ApiResponse<WebUserResource>> findByEmail(@RequestParam String email) {
         return ResponseEntity.ok(
@@ -61,6 +60,13 @@ public class WebUserController extends BaseController<WebUser, WebUserResource> 
                 ApiResponse.<List<WebUserResource>>builder().data(getMapper().toResources(webUserService.readWebUserByFirstName(firstName)))
                         .build());
 
+    }
+
+    @GetMapping("count")
+    public ResponseEntity<ApiResponse<Long>> countAllUsers() {
+        return ResponseEntity.ok(
+                ApiResponse.<Long>builder().data((webUserService.count()))
+                        .build());
     }
 
 }

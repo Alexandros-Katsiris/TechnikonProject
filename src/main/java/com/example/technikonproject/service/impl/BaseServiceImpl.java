@@ -61,4 +61,10 @@ public abstract class BaseServiceImpl<T extends BaseModel> extends BaseComponent
         logger.trace("Retrieving all items.");
         return getRepository().findAll();
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Long count(){
+        return getRepository().count();
+    }
 }
