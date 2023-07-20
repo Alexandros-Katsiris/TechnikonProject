@@ -13,11 +13,11 @@ import lombok.Setter;
 @Embeddable
 public class Address {
 
-    private String streetName;
+    private String street;
 
-    private Integer streetNumber;
+    private Integer number;
 
-    private Integer zipcode;
+    private String city;
 
-    private Integer floorNumber;
+    private Integer pc;
 }

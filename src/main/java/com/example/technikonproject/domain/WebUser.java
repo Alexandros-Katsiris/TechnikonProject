@@ -34,7 +34,7 @@ public class WebUser extends BaseModel {
     private Address address;
 
     @Column(nullable = false, updatable = false)
-    private Integer phoneNumber;
+    private Long phoneNumber;
 
     @Email
     @Column(nullable = false, unique = true)

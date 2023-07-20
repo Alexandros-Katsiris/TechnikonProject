@@ -16,4 +16,6 @@ public interface WebUserRepository extends JpaRepository<WebUser, Long> {
     WebUser readWebUserByEmail(String email);
 
     void deleteByTin(Long tin);
+
+
 }

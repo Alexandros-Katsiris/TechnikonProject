@@ -17,7 +17,7 @@ public class WebUserResource extends BaseResource {
 
     private String surname;
 
-    private Integer phoneNumber;
+    private Long phoneNumber;
 
     private String email;
 
