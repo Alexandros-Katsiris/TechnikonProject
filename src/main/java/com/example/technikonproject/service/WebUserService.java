@@ -16,4 +16,6 @@ public interface WebUserService extends BaseService<WebUser, Long> {
     WebUser update(WebUser webuser);
 
     void deleteByTin(Long tin);
+
+    WebUser userLogin(String username, String password);
 }

@@ -75,6 +75,11 @@ public class WebUserServiceImpl extends BaseServiceImpl<WebUser> implements WebU
         }
     }
 
+    @Override
+    public WebUser userLogin(String username, String password) {
+        return webUserRepository.readWebUserByUsernameAndPassword(username, password);
+    }
+
     private boolean checkNullability(WebUser webUser) {
         if (webUser == null) {
             logger.warn("WebUser does not exist.");
@@ -82,5 +87,7 @@ public class WebUserServiceImpl extends BaseServiceImpl<WebUser> implements WebU
         }
         return false;
     }
+
+
 
 }
