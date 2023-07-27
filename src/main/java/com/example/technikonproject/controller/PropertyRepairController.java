@@ -52,10 +52,10 @@ public class PropertyRepairController extends BaseController<PropertyRepair, Pro
     }
 
 
-    @GetMapping(params = {"userId", "propertyId"})
-    public ResponseEntity<ApiResponse<List<PropertyRepairAdminReportResource>>> getStatus(Long userId, Long propertyId) {
+    @GetMapping(params = {"userId"})
+    public ResponseEntity<ApiResponse<List<PropertyRepairAdminReportResource>>> getStatus(Long userId) {
         return ResponseEntity.ok(
-                ApiResponse.<List<PropertyRepairAdminReportResource>>builder().data((propertyRepairService.getTotalCost(userId, propertyId)))
+                ApiResponse.<List<PropertyRepairAdminReportResource>>builder().data((propertyRepairService.getTotalCost(userId)))
                         .build());
     }
 

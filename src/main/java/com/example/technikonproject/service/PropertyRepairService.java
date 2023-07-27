@@ -17,5 +17,5 @@ public interface PropertyRepairService extends BaseService<PropertyRepair, Long>
 
     PropertyRepair findPropertyRepair(Long id);
 
-    List<PropertyRepairAdminReportResource> getTotalCost(Long userId, Long propertyId);
+    List<PropertyRepairAdminReportResource> getTotalCost(Long userId);
 }

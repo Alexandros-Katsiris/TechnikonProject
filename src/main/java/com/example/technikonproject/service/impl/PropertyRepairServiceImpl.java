@@ -46,8 +46,8 @@ public class PropertyRepairServiceImpl extends BaseServiceImpl<PropertyRepair>
     }
 
     @Override
-    public List<PropertyRepairAdminReportResource> getTotalCost(Long userId, Long propertyId){
-        return propertyRepairRepository.getTotalCost(userId, propertyId);
+    public List<PropertyRepairAdminReportResource> getTotalCost(Long userId){
+        return propertyRepairRepository.getTotalCost(userId);
     }
 
     @Override
