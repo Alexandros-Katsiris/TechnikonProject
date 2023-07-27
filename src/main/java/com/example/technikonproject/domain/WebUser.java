@@ -2,6 +2,7 @@ package com.example.technikonproject.domain;
 
 import com.example.technikonproject.domain.subDomain.Address;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,6 +19,7 @@ import lombok.Setter;
 public class WebUser extends BaseModel {
 
     @Column(unique = true, updatable = false)
+    @Digits(integer = 9,fraction = 0)
     private Long tin;
 
     @Column(length = 50, nullable = false, updatable = false)
@@ -30,6 +32,7 @@ public class WebUser extends BaseModel {
     private Address address;
 
     @Column(nullable = false, updatable = false)
+    @Digits(integer = 10,fraction = 0)
     private Long phoneNumber;
 
     @Email
