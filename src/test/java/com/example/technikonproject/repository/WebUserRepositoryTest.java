@@ -32,10 +32,10 @@ class WebUserRepositoryTest {
             new Address(
                     "stname",
                     123,
-                    12345,
+                    "12345",
                     8
             ),
-            2105698545,
+            "2105698545",
             "email@mail.com",
             "username",
             "password",
@@ -49,7 +49,7 @@ class WebUserRepositoryTest {
             new Address(
                     "stname2",
                     1223,
-                    123245,
+                    "123245",
                     82),
             456789789,
             "email2@mail.com",

@@ -26,22 +26,6 @@
         <lombok.mapstruct.binding.version>0.2.0</lombok.mapstruct.binding.version>
     </properties>
 
-    <!--    <dependencyManagement>-->
-    <!--        <dependencies>-->
-    <!--            &lt;!&ndash;-->
-    <!--            Asynchronous Logging @see https://logging.apache.org/log4j/2.x/manual/async.html-->
-    <!--            Hint:-->
-    <!--            Don't forget to set system property-->
-    <!--            -Dlog4j2.contextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector-->
-    <!--             to make all loggers asynchronous-->
-    <!--            &ndash;&gt;-->
-    <!--            <dependency>-->
-    <!--                <groupId>com.lmax</groupId>-->
-    <!--                <artifactId>disruptor</artifactId>-->
-    <!--                <version>${disruptor-maven-plugin.version}</version>-->
-    <!--            </dependency>-->
-    <!--        </dependencies>-->
-    <!--    </dependencyManagement>-->
 
     <dependencies>
 
@@ -89,6 +73,11 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
 
         <dependency>
@@ -147,6 +136,30 @@
             <groupId>com.lmax</groupId>
             <artifactId>disruptor</artifactId>
             <version>3.4.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
         </dependency>
 
     </dependencies>
